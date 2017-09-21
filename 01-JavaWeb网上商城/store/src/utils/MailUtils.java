@@ -31,7 +31,7 @@ public class MailUtils {
 		Authenticator auth = new Authenticator() {
 			public PasswordAuthentication getPasswordAuthentication() {
 				//设置发送人的帐号和密码
-				return new PasswordAuthentication("service", "123");
+				return new PasswordAuthentication("service", "service");
 			}
 		};
 
@@ -55,4 +55,9 @@ public class MailUtils {
 		// 3.创建 Transport用于将邮件发送
 		Transport.send(message);
 	}
+
+	public static void main(String[] args) throws MessagingException {
+
+	}
+	
 }

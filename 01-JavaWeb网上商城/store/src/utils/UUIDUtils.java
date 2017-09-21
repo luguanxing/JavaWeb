@@ -21,5 +21,6 @@ public class UUIDUtils {
 	
 	public static void main(String[] args) {
 		System.out.println(getId());
+		System.out.println(getCode());
 	}
 }

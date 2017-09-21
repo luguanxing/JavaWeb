@@ -45,7 +45,7 @@ public class BaseServlet extends HttpServlet {
 	
 	public String index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
 		response.setContentType("text/html;charset=utf-8");
-		response.getWriter().println("url错误");
+		response.getWriter().println("url没有对应的方法");
 		return null;
 	}
 	
