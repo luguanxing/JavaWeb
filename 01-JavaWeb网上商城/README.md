@@ -36,6 +36,35 @@
 ## 开发日志
 ```
 01-需求和实体分析、搭建开发环境、整合资源
+    servlet抽取:
+      之前编写的servlet的问题:
+        1.doget每次请求都会执行--- 重写service
+        2.用了大量 if else if 判断执行的是那个方法让方法执行
+          Method method = this.getClass().getMethod(mt, HttpServletRequest.class,HttpServletResponse.class);
+          method.invoke(this, request,response);
+        3.每个方法执行的结果无非就是请求转发或者重定向或者打印数据
+          让所有的方法都返回一个字符串
+            若最后的结果需要请求转发,就把转发的路径给返回
+            若最后的结果不需要请求转发,就返回一个null
+            String path=method.invoke(this, request,response);
+            if(path != null){
+              request.getx(path).forward(...)
+            }
+        4.所有servlet的service中的代码都一样
+          向上继续抽取
+          编写一个BaseServlet,将之前service方法中的代码复制过来即可,
+          然所有的servlet都继承baseservlet即可
+          不同模块各自的方法均通过反射调用
+        5.统一的错误页面
+
 02-分析抽取servlet、完成用户模块(servlet部分+注册+检验+登录+退出功能)
+      web请求->servlet获取数据并拼装成对象->调用service方法,返回或显示结果->service可能调用dao完成数据库相关操作
+
+03-完成前台商品模块(servlet部分+商品分类+商品列表+商品详情+分页)
+      ajax获取请求显示分类
+      转发到商品列表
+      转发到商品详情
+      静态包含显示商品信息(使库只包含一次)
+      使用pageBean化简分页操作
 
 ```
