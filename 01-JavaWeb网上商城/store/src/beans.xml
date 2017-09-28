@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<!--解耦合：分离接口和接口的实现类的耦合-->
+	<bean id="ProductDao" class="dao.impl.ProductDaoImpl"/>
+	<bean id="UserDao" class="dao.impl.UserDaoImpl"/>
+	<bean id="CategoryDao" class="dao.impl.CategoryDaoImpl"/>
+	<bean id="OrderDao" class="dao.impl.OrderDaoImpl"/>
+
+	<bean id="ProductService" class="service.impl.ProductServiceImpl"/>
+	<bean id="UserService" class="service.impl.UserServiceImpl"/>
+	<bean id="CategoryService" class="service.impl.CategoryServiceImpl"/>
+	<bean id="OrderService" class="service.impl.OrderServiceImpl"/>
+</beans>

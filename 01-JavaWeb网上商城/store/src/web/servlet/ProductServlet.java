@@ -4,7 +4,7 @@ import constant.Constant;
 import domain.PageBean;
 import domain.Product;
 import service.ProductService;
-import service.impl.ProductServiceImpl;
+import utils.BeanFactory;
 import web.servlet.base.BaseServlet;
 
 import javax.servlet.ServletException;
@@ -25,7 +25,7 @@ public class ProductServlet extends BaseServlet {
 			String pid = request.getParameter("pid");
 
 			//调用service获取单个商品:pid 返回值:product
-			ProductService service = new ProductServiceImpl();
+			ProductService service = (ProductService) BeanFactory.getBean("ProductService");
 			Product product = service.getById(pid);
 			if (product == null)
 				throw new Exception("商品不存在");
@@ -53,7 +53,7 @@ public class ProductServlet extends BaseServlet {
 
 			//调用service 分页查询商品 参数 ，返回pagebean
 			String cid = request.getParameter("cid");
-			ProductService service = new ProductServiceImpl();
+			ProductService service = (ProductService) BeanFactory.getBean("ProductService");
 			PageBean<Product> bean = service.findByPage(pageNumber, Constant.PRODUCT_PAGE_COUNT, cid);
 			if (pageNumber > bean.getTotalPage())
 				throw new Exception("查询页数不存在");

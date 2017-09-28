@@ -1,7 +1,7 @@
 package web.servlet;
 
 import service.CategoryService;
-import service.impl.CategoryServiceImpl;
+import utils.BeanFactory;
 import web.servlet.base.BaseServlet;
 
 import javax.servlet.ServletException;
@@ -19,7 +19,7 @@ public class CategoryServlet extends BaseServlet {
 		//查询所有分类
 		try {
 			//1.调用service查询分类返回json
-			CategoryService service = new CategoryServiceImpl();
+			CategoryService service = (CategoryService) BeanFactory.getBean("CategoryService");
 			String value = service.findAll();
 
 			//2.写回数据

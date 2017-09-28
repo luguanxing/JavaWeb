@@ -4,14 +4,12 @@ import constant.Constant;
 import domain.User;
 import org.apache.commons.beanutils.BeanUtils;
 import service.UserService;
-import service.impl.UserServiceImpl;
+import utils.BeanFactory;
 import utils.UUIDUtils;
 import web.servlet.base.BaseServlet;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -42,7 +40,7 @@ public class UserServlet extends BaseServlet {
 			user.setUid(UUIDUtils.getId());
 			user.setState(Constant.USER_IS_ACTIVE);
 			
-			UserService service = new UserServiceImpl();
+			UserService service = (UserService) BeanFactory.getBean("UserService");
 			String checkResult = service.isRegistable(user);
 			if (checkResult.equals("success")) {
 				//2.调用service方法完成注册
@@ -71,7 +69,7 @@ public class UserServlet extends BaseServlet {
 			String password = request.getParameter("password");
 
 			//2.调用service完成登录操作
-			UserService service = new UserServiceImpl();
+			UserService service = (UserService) BeanFactory.getBean("UserService");
 			User user = service.login(username, password);
 
 			//3.判断user结果生成提示信息
@@ -116,7 +114,7 @@ public class UserServlet extends BaseServlet {
 			String code = request.getParameter("code");
 
 			//2.调用serivce完成激活，返回user
-			UserService service = new UserServiceImpl();
+			UserService service = (UserService) BeanFactory.getBean("UserService");
 			User user = service.active(code);
 
 			//3.判断user，生成提示信息

@@ -2,7 +2,7 @@ package web.servlet;
 
 import domain.Product;
 import service.ProductService;
-import service.impl.ProductServiceImpl;
+import utils.BeanFactory;
 import web.servlet.base.BaseServlet;
 
 import javax.servlet.ServletException;
@@ -22,7 +22,7 @@ public class IndexServlet extends BaseServlet {
 		
 		try {
 			//调用productservice查询热门和最新商品
-			ProductService service = new ProductServiceImpl();
+			ProductService service = (ProductService) BeanFactory.getBean("ProductService");
 			List<Product> hotList = service.findHot();
 			List<Product> newList = service.findNew();
 

@@ -5,22 +5,6 @@ package domain;
  */
 public class User {
 	
-	/*
-		CREATE TABLE `user` (
-		  `uid` VARCHAR(32) NOT NULL,
-		  `username` VARCHAR(20) DEFAULT NULL,
-		  `password` VARCHAR(20) DEFAULT NULL,
-		  `name` VARCHAR(20) DEFAULT NULL,
-		  `email` VARCHAR(30) DEFAULT NULL,
-		  `telephone` VARCHAR(20) DEFAULT NULL,
-		  `birthday` DATE DEFAULT NULL,
-		  `sex` VARCHAR(10) DEFAULT NULL,
-		  `state` INT(11) DEFAULT NULL,
-		  `code` VARCHAR(64) DEFAULT NULL,
-		  PRIMARY KEY (`uid`)
-		) ENGINE=INNODB DEFAULT CHARSET=utf8;
-	 */
-	
 	private  String uid;
 	private  String username;
 	private  String password;

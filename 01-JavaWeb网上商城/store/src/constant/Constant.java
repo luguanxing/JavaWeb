@@ -28,4 +28,16 @@ public interface Constant {
 
 	//显示每页商品数
 	int PRODUCT_PAGE_COUNT = 12;
+	
+	//订单未付款
+	int ORDER_UNPAID = 0;
+	
+	//订单已付款
+	int ORDER_PAID = 1;
+	
+	//订单已发货
+	int ORDER_DELIVERED = 2;
+	
+	//订单已完成
+	int ORDER_FINISHED = 3;
 }

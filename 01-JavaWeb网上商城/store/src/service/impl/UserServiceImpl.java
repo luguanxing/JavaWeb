@@ -2,9 +2,9 @@ package service.impl;
 
 import constant.Constant;
 import dao.UserDao;
-import dao.impl.UserDaoImpl;
 import domain.User;
 import service.UserService;
+import utils.BeanFactory;
 import utils.MailUtils;
 
 import javax.mail.MessagingException;
@@ -14,11 +14,11 @@ import java.util.regex.Pattern;
  * Created by Administrator on 2017/9/19.
  */
 public class UserServiceImpl implements UserService {
-	
+
 	@Override
 	public void regist(User user) throws Exception {
 		//调用DAO往数据库中添加用户
-		UserDao dao = new UserDaoImpl();
+		UserDao dao = (UserDao) BeanFactory.getBean("UserDao");
 		dao.save(user);
 		
 		/*
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
 			user.setBirthday("1000-00-00");
 		}
 		try {
-			UserDao dao = new UserDaoImpl();
+			UserDao dao = (UserDao) BeanFactory.getBean("UserDao");
 			if (dao.getUserByUsername(user.getUsername()) != null) {
 				return "用户名已经存在";
 			}
@@ -73,15 +73,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User active(String code) throws Exception {
-		UserDao dao = new UserDaoImpl();
+		UserDao dao = (UserDao) BeanFactory.getBean("UserDao");
 		User user = dao.getByCode(code);
-		
+
 		//通过code获取用户
 		if (user == null)
 			return null;
 		user.setState(Constant.USER_IS_ACTIVE);
 		user.setCode(null);
-		
+
 		dao.update(user);
 		return user;
 	}
@@ -89,7 +89,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User login(String username, String password) throws Exception {
 		//调用DAO从数据库中获取用户
-		UserDao dao = new UserDaoImpl();
+		UserDao dao = (UserDao) BeanFactory.getBean("UserDao");
 		return dao.getUserByUsernameAndPassword(username, password);
 	}
 
@@ -105,5 +105,5 @@ public class UserServiceImpl implements UserService {
 		user.setEmail("12@s.c");
 		System.out.println(test.isRegistable(user));
 	}
-	
+
 }

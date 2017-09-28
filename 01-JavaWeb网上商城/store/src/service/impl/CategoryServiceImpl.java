@@ -1,9 +1,9 @@
 package service.impl;
 
 import dao.CategoryDao;
-import dao.impl.CategoryDaoImpl;
 import domain.Category;
 import service.CategoryService;
+import utils.BeanFactory;
 import utils.JsonUtil;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public String findAll() throws Exception {
 		//调用DAO 查询所有分类
-		CategoryDao dao = new CategoryDaoImpl();
+		CategoryDao dao = (CategoryDao) BeanFactory.getBean("CategoryDao");
 		List<Category> list = dao.findAll();
 		
 		//转化成JSON
