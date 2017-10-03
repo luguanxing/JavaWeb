@@ -22,4 +22,9 @@ public interface ProductDao {
 	void addProduct(Product product) throws Exception;
 
 	List<Product> findAll() throws Exception;
+
+	void delete(String pid) throws Exception;
+
+	void editProduct(Product product) throws Exception;
+
 }

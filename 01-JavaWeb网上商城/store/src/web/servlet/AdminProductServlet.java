@@ -27,15 +27,15 @@ public class AdminProductServlet extends BaseServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "获取商品列表失败");
-			return "jsp/msg.jsp";
+			return "/jsp/msg.jsp";
 		}
 	}
 
-	public String addProductUI(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String addProductUI(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			CategoryService service = (CategoryService) BeanFactory.getBean("CategoryService");
 			List list = service.findList();
-			request.setAttribute("list", list);
+			request.setAttribute("list", list);	//使得添加商品时有分类下拉框可选
 			return "/admin/product/add.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -44,4 +44,38 @@ public class AdminProductServlet extends BaseServlet {
 		}
 	}
 	
+	public String editProductUI(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			ProductService service = (ProductService) BeanFactory.getBean("ProductService");
+			String pid = request.getParameter("pid");
+			Product product = service.getById(pid);
+			
+			request.setAttribute("product", product);
+			CategoryService cservice = (CategoryService) BeanFactory.getBean("CategoryService");
+			
+			List list = cservice.findList();
+			request.setAttribute("list", list);
+			
+			return "/admin/product/edit.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("msg", "跳转修改商品页面失败");
+			return "/jsp/msg.jsp";
+		}
+	}
+
+	public String deleteProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			ProductService service = (ProductService) BeanFactory.getBean("ProductService");
+			String pid = request.getParameter("pid");
+			service.delete(pid);
+			List<Product> list = service.findAll();
+			request.setAttribute("list", list);
+			return "/admin/product/list.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("msg", "删除商品失败");
+			return "/jsp/msg.jsp";
+		}
+	}
 }

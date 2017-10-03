@@ -122,5 +122,14 @@
 		<servlet-name>AddProductServlet</servlet-name>
 		<url-pattern>/addProduct</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>EditProductServlet</servlet-name>
+		<servlet-class>web.servlet.EditProductServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditProductServlet</servlet-name>
+		<url-pattern>/editProduct</url-pattern>
+	</servlet-mapping>
 	
 </web-app>

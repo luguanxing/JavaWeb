@@ -85,13 +85,13 @@
 											<c:if test="${p.is_hot!=1 }">否</c:if>
 										</td>
 										<td align="center" style="HEIGHT: 22px">
-											<a href="${ pageContext.request.contextPath }/adminProduct_edit.action?pid=">
+											<a href="${ pageContext.request.contextPath }/adminProduct?method=editProductUI&pid=${p.pid}">
 												<img src="${pageContext.request.contextPath}/images/i_edit.gif" border="0" style="CURSOR: hand">
 											</a>
 										</td>
 
 										<td align="center" style="HEIGHT: 22px">
-											<a href="${ pageContext.request.contextPath }/adminProduct_delete.action?pid=">
+											<a href="${ pageContext.request.contextPath }/adminProduct?method=deleteProduct&pid=${p.pid}">
 												<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 											</a>
 										</td>

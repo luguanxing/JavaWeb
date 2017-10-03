@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <HTML>
 	<HEAD>
@@ -8,8 +9,8 @@
 	
 	<body>
 		<!--  -->
-		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/adminProduct_update.action" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="pid" value="">
+		<form id="userAction_save_do" name="Form1" action="${pageContext.request.contextPath}/editProduct" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="pid" value="${product.pid}">
 			
 			
 			&nbsp;
@@ -27,10 +28,10 @@
 						商品名称：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						<input type="text" name="pname" value="" id="userAction_save_do_logonName" class="bg"/>
+						<input type="text" name="pname" value="${product.pname}" id="userAction_save_do_logonName" class="bg"/>
 					</td>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						是否热门：
+						是否热门：<span style="color: red">(需重设*)</span>
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
 						
@@ -45,32 +46,32 @@
 						市场价格：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						<input type="text" name="market_price" value="" id="userAction_save_do_logonName" class="bg"/>
+						<input type="text" name="market_price" value="${product.market_price}" id="userAction_save_do_logonName" class="bg"/>
 					</td>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
 						商城价格：
 					</td>
 					<td class="ta_01" bgColor="#ffffff">
-						<input type="text" name="shop_price" value="" id="userAction_save_do_logonName" class="bg"/>
+						<input type="text" name="shop_price" value="${product.shop_price}" id="userAction_save_do_logonName" class="bg"/>
 					</td>
 				</tr>
 				<tr>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						商品图片：
+						商品图片：<span style="color: red">(需重设*)</span>
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
-						<input type="file" name="upload" />
+						<input type="file" name="pimage" />
 					</td>
 				</tr>
 				<tr>
 					<td width="18%" align="center" bgColor="#f5fafe" class="ta_01">
-						所属分类：
+						所属分类：<span style="color: red">(需重设*)</span>
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
-						<select name="categorySecond.csid">
-							
-								<option value=""></option>
-							
+						<select name="cid">
+							<c:forEach items="${list}" var="category">
+								<option value="${category.cid}">${category.cname}</option>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>
@@ -79,7 +80,7 @@
 						商品描述：
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
-						<textarea name="pdesc" rows="5" cols="30"></textarea>
+						<textarea name="pdesc" rows="5" cols="30">${product.pdesc}</textarea>
 					</td>
 				</tr>
 				<tr>

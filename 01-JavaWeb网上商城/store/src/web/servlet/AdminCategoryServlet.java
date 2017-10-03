@@ -32,7 +32,7 @@ public class AdminCategoryServlet extends BaseServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "后台查询分类失败");
-			return "jsp/msg.jsp";
+			return "/jsp/msg.jsp";
 		}
 	}
 	
@@ -56,9 +56,53 @@ public class AdminCategoryServlet extends BaseServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "添加分类失败");
-			return "jsp/msg.jsp"; 
+			return "/jsp/msg.jsp"; 
 		}
 		return null;
 	}
 	
+	public String editCategoryUI(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			CategoryService service = (CategoryService) BeanFactory.getBean("CategoryService");
+			String cid = request.getParameter("cid");
+			Category category = service.findById(cid);
+			request.setAttribute("category", category);
+			return "/admin/category/edit.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("msg", "跳转修改分类页面失败");
+			return "/jsp/msg.jsp";
+		}
+	}
+
+	public String editCategory(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			CategoryService service = (CategoryService) BeanFactory.getBean("CategoryService");
+			String cid = request.getParameter("cid");
+			String cname = request.getParameter("cname");
+			service.editCategory(cid, cname);
+			List<Category> list = service.findList();
+			request.setAttribute("list", list);
+			return "/admin/category/list.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("msg", "后台修改分类失败");
+			return "/jsp/msg.jsp";
+		}
+	}
+	
+	public String deleteCategory(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
+			CategoryService service = (CategoryService) BeanFactory.getBean("CategoryService");
+			String cid = request.getParameter("cid");
+			service.delete(cid);
+			List<Category> list = service.findList();
+			request.setAttribute("list", list);
+			return "/admin/category/list.jsp";
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("msg", "后台删除分类失败");
+			return "/jsp/msg.jsp";
+		}
+	}
 }

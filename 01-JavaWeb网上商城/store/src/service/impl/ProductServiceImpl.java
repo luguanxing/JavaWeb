@@ -62,8 +62,23 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> findAll() throws Exception {
+		//查询所有商品信息
 		ProductDao dao = (ProductDao) BeanFactory.getBean("ProductDao");
 		return dao.findAll();
+	}
+
+	@Override
+	public void delete(String pid) throws Exception {
+		ProductDao dao = (ProductDao) BeanFactory.getBean("ProductDao");
+		//删除商品
+		dao.delete(pid);
+	}
+
+	@Override
+	public void editProduct(Product product) throws Exception {
+		//添加商品
+		ProductDao dao = (ProductDao) BeanFactory.getBean("ProductDao");
+		dao.editProduct(product);
 	}
 
 }

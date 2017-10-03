@@ -41,5 +41,25 @@ public class CategoryServiceImpl implements CategoryService {
 		dao.add(category);
 	}
 
+	@Override
+	public void delete(String cid) throws Exception {
+		//删除分类
+		CategoryDao dao = (CategoryDao) BeanFactory.getBean("CategoryDao");
+		dao.delete(cid);
+	}
 
+	@Override
+	public Category findById(String cid) throws Exception {
+		//查询分类
+		CategoryDao dao = (CategoryDao) BeanFactory.getBean("CategoryDao");
+		return dao.findById(cid);
+	}
+
+	@Override
+	public void editCategory(String cid, String cname) throws Exception {
+		//修改分类
+		CategoryDao dao = (CategoryDao) BeanFactory.getBean("CategoryDao");
+		dao.editCategory(cid, cname);
+	}
+	
 }
