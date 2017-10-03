@@ -120,7 +120,7 @@
 						<hr/>
 
 						<div style="margin-top:5px; margin-left: 8%;;" >
-							<strong>将订单金额转到支付宝同时备注<span style="color: blue">姓名、手机号、地址和订单主要信息</span>或<span style="color: blue">订单编号</span>等待管理员后台审核后即可发货</strong>
+							<strong>将订单金额转到支付宝同时备注<span style="color: blue">姓名、手机号、地址和订单主要信息</span>或<span style="color: blue">订单编号</span>后点击<span style="color: red">确认订单</span>，等待管理员后台审核通过即可发货</strong>
 							<img src="${pageContext.request.contextPath}/img/pay.jpg" align="middle" />&nbsp;&nbsp;&nbsp;&nbsp;
 
 							<hr/>

@@ -53,4 +53,17 @@ public class ProductServiceImpl implements ProductService {
 		return pageBean;
 	}
 
+	@Override
+	public void addProduct(Product product) throws Exception {
+		//添加商品
+		ProductDao dao = (ProductDao) BeanFactory.getBean("ProductDao");
+		dao.addProduct(product);
+	}
+
+	@Override
+	public List<Product> findAll() throws Exception {
+		ProductDao dao = (ProductDao) BeanFactory.getBean("ProductDao");
+		return dao.findAll();
+	}
+
 }

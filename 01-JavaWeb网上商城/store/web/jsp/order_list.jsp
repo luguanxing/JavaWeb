@@ -140,6 +140,7 @@
 				</div>
 				<!-- 分页结束 -->
 			</c:if>
+		</div>
 			
 
 		<div style="margin-top:50px;">

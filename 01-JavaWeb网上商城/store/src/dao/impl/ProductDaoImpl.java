@@ -52,4 +52,20 @@ public class ProductDaoImpl implements ProductDao {
 		return ((Long)queryRunner.query(sql, new ScalarHandler(), cid, Constant.PRODUCT_IS_UP)).intValue();
 	}
 
+	@Override
+	public void addProduct(Product p) throws Exception {
+		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "INSERT INTO t_product VALUES(?,?,?,?,?,?,?,?,?,?)";
+		queryRunner.update(sql, p.getPid(), p.getPname(), p.getMarket_price(),
+				p.getShop_price(), p.getPimage(), p.getPdate(), p.getIs_hot(),
+				p.getPdesc(), p.getPflag(), p.getCategory().getCid());
+	}
+
+	@Override
+	public List<Product> findAll() throws Exception {
+		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "SELECT * FROM t_product WHERE pflag = ? ORDER BY pdate DESC";
+		return queryRunner.query(sql, new BeanListHandler<>(Product.class), Constant.PRODUCT_IS_UP);
+	}
+
 }
