@@ -13,6 +13,18 @@
 		<filter-name>EncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+
+	<filter>
+		<filter-name>PrivilegeFilter</filter-name>
+		<filter-class>web.filter.PrivilegeFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>PrivilegeFilter</filter-name>
+		<url-pattern>/jsp/order_list.jsp</url-pattern>
+		<url-pattern>/jsp/order_info.jsp</url-pattern>
+		<url-pattern>/order/*</url-pattern>
+	</filter-mapping>
+	
 	<!--应该再加个user过滤器，即检验session已登录后不能在跳转到登录和注册界面-->
 
 	
