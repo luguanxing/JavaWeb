@@ -24,6 +24,15 @@
 		<url-pattern>/jsp/order_info.jsp</url-pattern>
 		<url-pattern>/order/*</url-pattern>
 	</filter-mapping>
+
+	<filter>
+		<filter-name>AdminFilter</filter-name>
+		<filter-class>web.filter.AdminFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>AdminFilter</filter-name>
+		<url-pattern>/admin/*</url-pattern>
+	</filter-mapping>
 	
 	<!--应该再加个user过滤器，即检验session已登录后不能在跳转到登录和注册界面-->
 
@@ -130,6 +139,33 @@
 	<servlet-mapping>
 		<servlet-name>EditProductServlet</servlet-name>
 		<url-pattern>/editProduct</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminOrderServlet</servlet-name>
+		<servlet-class>web.servlet.AdminOrderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminOrderServlet</servlet-name>
+		<url-pattern>/adminOrder</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminLoginServlet</servlet-name>
+		<servlet-class>web.servlet.AdminLoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminLoginServlet</servlet-name>
+		<url-pattern>/adminLogin</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CaptchaServlet</servlet-name>
+		<servlet-class>web.servlet.CaptchaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CaptchaServlet</servlet-name>
+		<url-pattern>/getCaptcha</url-pattern>
 	</servlet-mapping>
 	
 </web-app>

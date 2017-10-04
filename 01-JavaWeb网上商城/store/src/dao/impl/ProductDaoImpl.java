@@ -86,10 +86,10 @@ public class ProductDaoImpl implements ProductDao {
 	}
 
 	@Override
-	public Integer findCid(Product product) throws Exception {
+	public String findCid(Product product) throws Exception {
 		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
 		String sql = "SELECT cid FROM t_product WHERE pid = ?";
-		return Integer.parseInt((String) queryRunner.query(sql, new ScalarHandler(), product.getPid()));
+		return (String) queryRunner.query(sql, new ScalarHandler(), product.getPid());
 	}
 
 }

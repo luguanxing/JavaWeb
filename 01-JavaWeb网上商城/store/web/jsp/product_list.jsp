@@ -36,7 +36,7 @@
 		<div class="row" style="width:1210px;margin:0 auto;">
 			<div class="col-md-12">
 				<ol class="breadcrumb">
-					<li><a href="#">首页</a></li>
+					<li><a href="${pageContext.request.contextPath}/">首页</a></li>
 				</ol>
 			</div>
 
@@ -104,43 +104,7 @@
 		</div>
 		<!-- 分页结束======================= -->
 
-		<!--
-       		商品浏览记录:
-        -->
-		<div style="width:1210px;margin:0 auto; padding: 0 9px;border: 1px solid #ddd;border-top: 2px solid #999;height: 246px;">
-
-			<h4 style="width: 50%;float: left;font: 14px/30px 微软雅黑 ">浏览记录</h4>
-			<div style="width: 50%;float: right;text-align: right;"><a href="">more</a></div>
-			<div style="clear: both;"></div>
-
-			<div style="overflow: hidden;">
-
-				<ul style="list-style: none;">
-					<li style="width: 150px;height: 216px ;float: left;margin: 0 8px 0 0;padding: 0 18px 15px;text-align: center;"><img src="${pageContext.request.contextPath}/products/1/cs10001.jpg" width="130px" height="130px" /></li>
-				</ul>
-
-			</div>
-		</div>
-		<div style="margin-top:50px;">
-			<img src="${pageContext.request.contextPath}/image/footer.jpg" width="100%" height="78" alt="我们的优势" title="我们的优势" />
-		</div>
-
-		<div style="text-align: center;margin-top: 5px;">
-			<ul class="list-inline">
-				<li><a>关于我们</a></li>
-				<li><a>联系我们</a></li>
-				<li><a>招贤纳士</a></li>
-				<li><a>法律声明</a></li>
-				<li><a>友情链接</a></li>
-				<li><a target="_blank">支付方式</a></li>
-				<li><a target="_blank">配送方式</a></li>
-				<li><a>服务声明</a></li>
-				<li><a>广告声明</a></li>
-			</ul>
-		</div>
-		<div style="text-align: center;margin-top: 5px;margin-bottom:20px;">
-			Copyright &copy; 2005-2016 传智商城 版权所有
-		</div>
+		<%@include file="/jsp/foot.jsp"%>
 
 	</body>
 

@@ -140,7 +140,7 @@ public class OrderServlet extends BaseServlet {
 			order.setTelephone(telephone);
 			order.setState(Constant.ORDER_PAID);
 			service.update(order);
-			response.sendRedirect("order?method=getById&oid="+order.getOid());
+			response.sendRedirect(request.getContextPath() + "order?method=getById&oid="+order.getOid());
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();

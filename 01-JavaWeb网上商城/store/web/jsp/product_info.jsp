@@ -35,10 +35,10 @@
 
 		<div class="container">
 			<div class="row">
-				<div style="border: 1px solid #e4e4e4;width:930px;margin-bottom:10px;margin:0 auto;padding:10px;margin-bottom:10px;">
-					<a href="./index.htm">首页&nbsp;&nbsp;&gt;</a>
-					<a href="./蔬菜分类.htm">蔬菜&nbsp;&nbsp;&gt;</a>
-					<a>无公害蔬菜</a>
+				<div style="width:950px;margin:0 auto;">
+					<div style="background-color:#d3d3d3;width:930px;padding:10px 10px;margin:10px 0 10px 0;">
+						<strong>商品信息</strong>
+					</div>
 				</div>
 
 				<div style="margin:0 auto;width:950px;">
@@ -88,12 +88,6 @@
 				</div>
 				<div class="clear"></div>
 				<div style="width:950px;margin:0 auto;">
-					<div style="background-color:#d3d3d3;width:930px;padding:10px 10px;margin:10px 0 10px 0;">
-						<strong>商品介绍</strong>
-					</div>
-					<div>
-						<img src="${pageContext.request.contextPath}/${product.pimage}">
-					</div>
 
 					<div style="background-color:#d3d3d3;width:930px;padding:10px 10px;margin:10px 0 10px 0;">
 						<strong>商品详情</strong>
@@ -107,27 +101,7 @@
 			</div>
 		</div>
 
-		<div style="margin-top:50px;">
-			<img src="${pageContext.request.contextPath}/image/footer.jpg" width="100%" height="78" alt="我们的优势"
-				 title="我们的优势"/>
-		</div>
-
-		<div style="text-align: center;margin-top: 5px;">
-			<ul class="list-inline">
-				<li><a>关于我们</a></li>
-				<li><a>联系我们</a></li>
-				<li><a>招贤纳士</a></li>
-				<li><a>法律声明</a></li>
-				<li><a>友情链接</a></li>
-				<li><a target="_blank">支付方式</a></li>
-				<li><a target="_blank">配送方式</a></li>
-				<li><a>服务声明</a></li>
-				<li><a>广告声明</a></li>
-			</ul>
-		</div>
-		<div style="text-align: center;margin-top: 5px;margin-bottom:20px;">
-			Copyright &copy; 2005-2016 传智商城 版权所有
-		</div>
+		<%@include file="/jsp/foot.jsp"%>
 
 	</body>
 	

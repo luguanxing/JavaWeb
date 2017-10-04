@@ -42,7 +42,7 @@ public class CartServlet extends BaseServlet {
 			Cart cart = GetCartFromRequest(request);
 			cart.addToCart(item);
 
-			response.sendRedirect("/jsp/cart.jsp");
+			response.sendRedirect(request.getContextPath() + "/jsp/cart.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "加入购物车失败");

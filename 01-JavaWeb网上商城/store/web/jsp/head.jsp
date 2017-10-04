@@ -30,7 +30,7 @@
 				${user.name},你好
 				<li><a href="${pageContext.request.contextPath}/order?method=findMyOrderByPage&pageNumber=1">我的订单</a></li>
 				<li><a href="${pageContext.request.contextPath}/jsp/cart.jsp">购物车</a></li>
-				<li><a href="/user?method=logout">退出</a></li>
+				<li><a href="${pageContext.request.contextPath}/user?method=logout">退出</a></li>
 			</c:if>
 		</ol>
 	</div>
@@ -58,13 +58,6 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav" id="c_ul">
 				</ul>
-				<form class="navbar-form navbar-right" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
-
 			</div>
 			<!-- /.navbar-collapse -->
 		</div>

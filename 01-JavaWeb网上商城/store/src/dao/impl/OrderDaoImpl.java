@@ -113,4 +113,17 @@ public class OrderDaoImpl implements OrderDao {
 		return (String) queryRunner.query(sql, new ScalarHandler(), oid);
 	}
 
+	@Override
+	public List<Order> findAllByState(String state) throws Exception {
+		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "SELECT * FROM t_orders ";
+		if (state == null || state.trim().isEmpty()) {
+			sql += "ORDER BY ordertime DESC";
+			return queryRunner.query(sql, new BeanListHandler<>(Order.class));
+		}
+		sql += "WHERE state = ? ORDER BY ordertime DESC";
+		
+		return queryRunner.query(sql, new BeanListHandler<>(Order.class), state);
+	}
+
 }

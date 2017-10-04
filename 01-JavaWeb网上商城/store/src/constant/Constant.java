@@ -23,8 +23,8 @@ public interface Constant {
 	//商品下架
 	int PRODUCT_IS_DOWN = 1;
 
-	//显示热门最新商品数
-	int PRODUCT_COUNT = 9;
+	//显示新商品数
+	int PRODUCT_COUNT = 12;
 
 	//显示每页商品数
 	int PRODUCT_PAGE_COUNT = 12;

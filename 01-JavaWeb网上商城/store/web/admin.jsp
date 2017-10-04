@@ -5,9 +5,7 @@
 	<head>
 		<title>网上商城管理中心</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<link href="${pageContext.request.contextPath }/css/general.css" rel="stylesheet" type="text/css"/>
-		<link href="${pageContext.request.contextPath }/css/main.css" rel="stylesheet" type="text/css"/>
-
+		<script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js" type="text/javascript"></script>
 		<style type="text/css">
 			body {
 				color: white;
@@ -31,6 +29,15 @@
 								<td><input type="password" name="password"/></td>
 							</tr>
 							<tr>
+								<td>验证码：</td>
+								<td><input type="text" name="inputCaptcha"/></td>
+								<td>
+									<a style="cursor: pointer" onclick="changeCaptcha()">
+										<img id="captcha" src="${pageContext.request.contextPath}/getCaptcha"/>
+									</a>
+								</td>
+							</tr>
+							<tr>
 								<td>&nbsp;</td>
 								<td><input type="submit" value="进入管理中心" class="button"/></td>
 							</tr>
@@ -39,23 +46,13 @@
 				</tr>
 			</table>
 		</form>
-		<script language="JavaScript">
-			<!--
-			document.forms['theForm'].elements['username'].focus();
+		<script type="text/javascript">
 
-			/**
-			 * 检查表单输入的内容
-			 */
-			function validate() {
-				var validator = new Validator('theForm');
-				validator.required('username', user_name_empty);
-				//validator.required('password', password_empty);
-				if (document.forms['theForm'].elements['captcha']) {
-					validator.required('captcha', captcha_empty);
-				}
-				return validator.passed();
+			function changeCaptcha() {
+				//加上时间戳避免读缓冲
+				var timestamp = (new Date()).valueOf();
+				$("#captcha").attr("src", "/getCaptcha?t="+timestamp);
 			}
 
-			//-->
 		</script>
 	</body>

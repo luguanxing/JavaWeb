@@ -25,6 +25,9 @@ public class OrderServiceImpl implements OrderService {
 			//开启事务
 			DataSourceUtils.startTransaction();
 
+			if (order.getItems() == null || order.getItems().isEmpty())
+				throw new Exception("空订单");
+			
 			//向t_order插入一条
 			dao.save(order);
 
@@ -76,6 +79,12 @@ public class OrderServiceImpl implements OrderService {
 		OrderDao dao = (OrderDao) BeanFactory.getBean("OrderDao");
 		String db_uid = dao.getUidByOid(oid);
 		return db_uid.equals(uid);
+	}
+
+	@Override
+	public List<Order> findAllByState(String state) throws Exception {
+		OrderDao dao = (OrderDao) BeanFactory.getBean("OrderDao");
+		return dao.findAllByState(state);
 	}
 
 

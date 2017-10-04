@@ -39,6 +39,12 @@ public class UserServlet extends BaseServlet {
 			BeanUtils.populate(user, request.getParameterMap());
 			user.setUid(UUIDUtils.getId());
 			user.setState(Constant.USER_IS_ACTIVE);
+			String captcha = (String)request.getSession().getAttribute("captcha");
+			String inputCaptcha = request.getParameter("inputCaptcha");
+			if (!captcha.equals(inputCaptcha)) {
+				request.setAttribute("msg", "验证码错误");
+				return "/jsp/register.jsp";
+			}
 			
 			UserService service = (UserService) BeanFactory.getBean("UserService");
 			String checkResult = service.isRegistable(user);
@@ -48,14 +54,14 @@ public class UserServlet extends BaseServlet {
 				//3.页面转发提示结果信息
 				request.setAttribute("msg", "<span style='color:green'>恭喜，注册成功！</span>");
 			} else {
-				request.setAttribute("msg", "<span style='color:red'>注册失败:" + checkResult + "</span>");
+				request.setAttribute("msg", "注册失败:" + checkResult);
 				request.setAttribute("user", user);
 				return "/jsp/register.jsp";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			//注册错误转发到msg.jsp
-			request.setAttribute("msg", "<span style='color:red'>抱歉，注册失败！</span>");
+			request.setAttribute("msg", "抱歉，注册失败！");
 			
 		}
 		return "/jsp/msg.jsp";
@@ -67,6 +73,12 @@ public class UserServlet extends BaseServlet {
 			//1.获取用户名和密码
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
+			String captcha = (String)request.getSession().getAttribute("captcha");
+			String inputCaptcha = request.getParameter("inputCaptcha");
+			if (!captcha.equals(inputCaptcha)) {
+				request.setAttribute("msg", "验证码错误");
+				return "/jsp/login.jsp";
+			}
 
 			//2.调用service完成登录操作
 			UserService service = (UserService) BeanFactory.getBean("UserService");
@@ -74,11 +86,11 @@ public class UserServlet extends BaseServlet {
 
 			//3.判断user结果生成提示信息
 			if (user == null) {
-				request.setAttribute("msg", "<span style='color:red'>用户名/密码错误</span>");
+				request.setAttribute("msg", "用户名/密码错误");
 				return "/jsp/login.jsp";
 			} else {
 				if (user.getState() == Constant.USER_IS_NOT_ACTIVE) {
-					request.setAttribute("msg", "<span style='color:red'>未激活</span>");
+					request.setAttribute("msg", "未激活");
 					return "/jsp/msg.jsp";
 				} else {
 					request.getSession().setAttribute("user", user);
@@ -90,7 +102,7 @@ public class UserServlet extends BaseServlet {
 						response.addCookie(cookie);
 					}
 					
-					response.sendRedirect("/");
+					response.sendRedirect(request.getContextPath() + "/");
 				}
 			}
 		} catch (Exception e) {
@@ -103,7 +115,7 @@ public class UserServlet extends BaseServlet {
 	public String logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//用户退出方法
 		request.getSession().invalidate();
-		response.sendRedirect("/");
+		response.sendRedirect(request.getContextPath() + "/");
 		return null;
 	}
 

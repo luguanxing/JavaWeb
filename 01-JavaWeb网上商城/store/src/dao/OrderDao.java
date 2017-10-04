@@ -24,4 +24,6 @@ public interface OrderDao {
 	void update(Order order) throws Exception;
 
 	String getUidByOid(String oid) throws Exception;
+
+	List<Order> findAllByState(String state) throws Exception;
 }
