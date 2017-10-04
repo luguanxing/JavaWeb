@@ -43,6 +43,8 @@ public class EditProductServlet extends HttpServlet {
 					map.put(key, fileitem.getString("utf-8"));
 				} else {	//文件
 					String name = fileitem.getName();
+					if (name == null || name.isEmpty())
+						continue;
 					String realName = UploadUtils.getRealName(name);
 					String uuidName = UploadUtils.getUUIDName(realName);
 					String dir = UploadUtils.getDir();
@@ -65,8 +67,11 @@ public class EditProductServlet extends HttpServlet {
 
 			//封装product
 			Product product = new Product();
-			map.put("pdate", new Date());
 			map.put("pflag", Constant.PRODUCT_IS_UP);
+			if (map.get("pimage") == null) {
+				String pimage_old = (String) map.get("pimage_old");
+				map.put("pimage", pimage_old);
+			}
 			BeanUtils.populate(product, map);
 			Category category = new Category();
 			category.setCid((String) map.get("cid"));

@@ -49,6 +49,8 @@ public class AdminProductServlet extends BaseServlet {
 			ProductService service = (ProductService) BeanFactory.getBean("ProductService");
 			String pid = request.getParameter("pid");
 			Product product = service.getById(pid);
+			Integer cid = service.findCid(product);
+			request.setAttribute("cid", cid);
 			
 			request.setAttribute("product", product);
 			CategoryService cservice = (CategoryService) BeanFactory.getBean("CategoryService");

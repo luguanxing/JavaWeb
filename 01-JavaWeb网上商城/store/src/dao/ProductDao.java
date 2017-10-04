@@ -27,4 +27,5 @@ public interface ProductDao {
 
 	void editProduct(Product product) throws Exception;
 
+	Integer findCid(Product product) throws Exception;
 }

@@ -38,59 +38,59 @@
 								<tr
 										style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #afd1f3">
 
-									<td align="center" width="18%">
+									<td align="center" width="15%">
 										序号
 									</td>
-									<td align="center" width="17%">
+									<td align="center" width="15%">
 										商品图片
 									</td>
-									<td align="center" width="17%">
+									<td align="center" width="15%">
 										商品名称
 									</td>
-									<td align="center" width="17%">
-										商品价格
+									<td align="center" width="15%">
+										商城价格
 									</td>
-									<td align="center" width="17%">
+									<td align="center" width="15%">
+										市场价格
+									</td>
+									<td align="center" width="15%">
 										是否热门
 									</td>
-									<td width="7%" align="center">
+									<td width="5%" align="center">
 										编辑
 									</td>
-									<td width="7%" align="center">
+									<td width="5%" align="center">
 										删除
 									</td>
 								</tr>
 								<c:forEach items="${list}" var="p" varStatus="vs">
-									<tr onmouseover="this.style.backgroundColor = 'white'"
-										onmouseout="this.style.backgroundColor = '#F5FAFE';">
-										<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-											width="18%">
+									<tr onmouseover="this.style.backgroundColor = 'white'" onmouseout="this.style.backgroundColor = '#F5FAFE';">
+										<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="15%">
 												${vs.count }
 										</td>
-										<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-											width="17%">
+										<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="15%">
 											<img width="40" height="45" src="${ pageContext.request.contextPath }/${p.pimage}">
 										</td>
-										<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-											width="17%">
+										<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="15%">
+												${p.pname }
+										</td>
+										<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="15%">
 												${p.market_price }
 										</td>
-										<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-											width="17%">
+										<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="15%">
 												${p.shop_price }
 										</td>
-										<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-											width="17%">
+										<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="15%">
 											<c:if test="${p.is_hot==1 }">是</c:if>
 											<c:if test="${p.is_hot!=1 }">否</c:if>
 										</td>
-										<td align="center" style="HEIGHT: 22px">
+										<td align="center" style="HEIGHT: 22px" width="5%">
 											<a href="${ pageContext.request.contextPath }/adminProduct?method=editProductUI&pid=${p.pid}">
 												<img src="${pageContext.request.contextPath}/images/i_edit.gif" border="0" style="CURSOR: hand">
 											</a>
 										</td>
 
-										<td align="center" style="HEIGHT: 22px">
+										<td align="center" style="HEIGHT: 22px" width="5%">
 											<a href="${ pageContext.request.contextPath }/adminProduct?method=deleteProduct&pid=${p.pid}">
 												<img src="${pageContext.request.contextPath}/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 											</a>

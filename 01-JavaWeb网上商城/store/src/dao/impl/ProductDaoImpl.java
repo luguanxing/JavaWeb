@@ -78,11 +78,18 @@ public class ProductDaoImpl implements ProductDao {
 	@Override
 	public void editProduct(Product p) throws Exception {
 		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
-		String sql = "UPDATE t_product SET pname = ?, market_price = ?, shop_price = ?, pimage = ?, pdate = ?, " +
+		String sql = "UPDATE t_product SET pname = ?, market_price = ?, shop_price = ?, pimage = ?, " +
 				"is_hot = ?, pdesc = ?, pflag = ?, cid = ? WHERE pid = ?";
 		queryRunner.update(sql, p.getPname(), p.getMarket_price(),
-				p.getShop_price(), p.getPimage(), p.getPdate(), p.getIs_hot(),
-				p.getPdesc(), p.getPflag(), p.getCategory().getCid(), p.getPid());
+				p.getShop_price(), p.getPimage(), p.getIs_hot(), p.getPdesc(),
+				p.getPflag(), p.getCategory().getCid(), p.getPid());
+	}
+
+	@Override
+	public Integer findCid(Product product) throws Exception {
+		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "SELECT cid FROM t_product WHERE pid = ?";
+		return Integer.parseInt((String) queryRunner.query(sql, new ScalarHandler(), product.getPid()));
 	}
 
 }

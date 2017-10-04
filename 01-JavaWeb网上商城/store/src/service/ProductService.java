@@ -25,4 +25,6 @@ public interface ProductService {
 	void delete(String pid) throws Exception;
 
 	void editProduct(Product product) throws Exception;
+
+	Integer findCid(Product product) throws Exception;
 }

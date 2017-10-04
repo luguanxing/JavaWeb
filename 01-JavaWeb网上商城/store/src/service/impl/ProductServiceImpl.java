@@ -81,4 +81,11 @@ public class ProductServiceImpl implements ProductService {
 		dao.editProduct(product);
 	}
 
+	@Override
+	public Integer findCid(Product product) throws Exception {
+		//查询商品cid
+		ProductDao dao = (ProductDao) BeanFactory.getBean("ProductDao");
+		return dao.findCid(product);
+	}
+
 }
