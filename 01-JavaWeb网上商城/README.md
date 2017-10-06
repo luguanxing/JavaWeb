@@ -1,12 +1,13 @@
 # JavaWeb网上商城
-
 <br><br>
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/index.jpg?raw=true)
+<br><br><br><br><br>
 
 ## 需求分析
 ![img](https://github.com/luguanxing/JavaWeb/blob/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/01-%E7%AE%80%E5%8D%95%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90.jpg?raw=true)
-<br><br>
+<br><br><br>
 
-##### 面向用户部分功能
+### 面向用户前台功能
 ```
   (1) 登录功能。如果是网上商城的用户，购买前需填写用户名、密码和验证码即可享受商城服务。
   (2) 注册功能。顾客首先要注册为网上商城的用户。注册时只要填写登录用户名、密码等信息并激活。
@@ -15,18 +16,27 @@
   (5) 付款功能。顾客在订单被销售方确认后，要选择付款方式，并付款给销售方，然后才可以收到货。 
 ```
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/order.jpg?raw=true)
+查看订单<br><br>
 
-<br><br>
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/buy.gif?raw=true)
+买东西<br><br>
 
-##### 后台管理部分功能
+
+<br><br><br><br><br>
+
+### 面向后台管理功能
 ```
   (1) 管理订单功能。管理员可以查询订单，根据用户是否确认、是否付款、是否 发货、是否归档将订单分类并进行管理。
   (2) 管理商品功能。管理员可以添加、查询、修改、删除商品。
   (3) 订单管理功能。管理员可以查看管理员和用户订单信息并修改。
 ```
-![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/product_list.jpg?raw=true)
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/admincheck.gif?raw=true)
+后台管理<br><br>
 
-<br><br>
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/product_list.jpg?raw=true)
+查看订单<br><br>
+
+<br><br><br><br><br>
 
 ## 实体分析
 ![img](https://github.com/luguanxing/JavaWeb/blob/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/02-%E5%AE%9E%E4%BD%93%E5%88%86%E6%9E%90.jpg?raw=true)
