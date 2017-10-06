@@ -16,7 +16,7 @@
   (5) 付款功能。顾客在订单被销售方确认后，要选择付款方式，并付款给销售方，然后才可以收到货。 
 ```
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/order.jpg?raw=true)
-查看订单<br><br>
+查看自己订单<br><br>
 
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/buy.gif?raw=true)
 买东西<br><br>
@@ -34,7 +34,7 @@
 后台管理<br><br>
 
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/product_list.jpg?raw=true)
-查看订单<br><br>
+商品管理<br><br>
 
 <br><br><br><br><br>
 
