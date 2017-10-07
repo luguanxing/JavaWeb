@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<!--解耦合：分离接口和接口的实现类的耦合-->
+	<bean id="CategoryDao" class="dao.impl.CategoryDaoImpl"/>
+	<bean id="CategoryService" class="service.impl.CategoryServiceImpl"/>
+
+	<bean id="RoadDao" class="dao.impl.RoadDaoImpl"/>
+	<bean id="RoadService" class="service.impl.RoadServiceImpl"/>
+	
+</beans>
