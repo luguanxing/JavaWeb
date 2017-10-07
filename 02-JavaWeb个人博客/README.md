@@ -14,27 +14,27 @@
 ## 开发日志
 ```
 案例1-显示项目分类
-header.jsp:加载/index显示项目分类条->使用异步的ajax方法,因为每页都有,设置request会过于繁琐
-CategoryServlet:调用service返回list,包装后以json格式设置转发
-CategoryService:调用dao
-CategoryDao:查询数据并返回
+	header.jsp:加载/index显示项目分类条->使用异步的ajax方法,因为每页都有,设置request会过于繁琐
+	CategoryServlet:调用service返回list,包装后以json格式设置转发
+	CategoryService:调用dao
+	CategoryDao:查询数据并返回
 
 案例2-标记index
-header.jsp:每个页面header.jsp对应显示高亮,使用JSTL表达式判断显示样式
-CategoryServlet:设置index
+	header.jsp:每个页面header.jsp对应显示高亮,使用JSTL表达式判断显示样式
+	CategoryServlet:设置index
 
 案例3-路线图设计
-(1)解决js、css冲突:将所有模块的js、css区分，如主页面的在main，路线图的在road
-(2)设计roaditem:
-	rid
-	title
-	content
-	date
-	year
-	查询时查出所有数据，根据year放到不同map中
-(3)jsp显示
-取出map里的每个项
-	map键为时间
-	map值为List，再遍历List即可
+	(1)解决js、css冲突:将所有模块的js、css区分，如主页面的在main，路线图的在road
+	(2)设计roaditem:
+		rid
+		title
+		content
+		date
+		year
+		查询时查出所有数据，根据year放到不同map中
+	(3)jsp显示
+		取出map里的每个项
+			map键为时间
+			map值为List，再遍历List即可
 
 ```
