@@ -52,5 +52,22 @@
 		<url-pattern>/road</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>CommentServlet</servlet-name>
+		<servlet-class>web.servlet.CommentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommentServlet</servlet-name>
+		<url-pattern>/comment</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CaptchaServlet</servlet-name>
+		<servlet-class>web.servlet.CaptchaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CaptchaServlet</servlet-name>
+		<url-pattern>/getCaptcha</url-pattern>
+	</servlet-mapping>
 
 </web-app>

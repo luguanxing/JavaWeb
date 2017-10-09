@@ -11,7 +11,7 @@
 <div class="header" id="home">
 		<div class="content white">
 			<nav class="navbar navbar-default" role="navigation">
-				<div class="container">
+				<div class="container" style="padding: 0 15px;">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 							<span class="sr-only"></span>
@@ -61,10 +61,10 @@
 							</c:if>
 
 							<c:if test="${index == 5}">
-								<li class="active"><a href="/">留言</a></li>
+								<li class="active"><a href="/comment">留言</a></li>
 							</c:if>
 							<c:if test="${index != 5}">
-								<li><a href="/">留言</a></li>
+								<li><a href="/comment">留言</a></li>
 							</c:if>
 						</ul>
 					</div>
