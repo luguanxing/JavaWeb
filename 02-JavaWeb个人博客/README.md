@@ -36,5 +36,15 @@
 		取出map里的每个项
 			map键为时间
 			map值为List，再遍历List即可
-
+			
+案例4-留言模块
+	展示留言(分页)
+		/comment?pageNumber=?
+		jsp: 页面上点击页数
+		servlet: 获取页数，设置调用service获取内容转发
+		service: 调用dao
+		dao: limitto
+	添加留言
+		post表单到/comment?addComment
+		
 ```
