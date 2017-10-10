@@ -37,7 +37,7 @@
 			map键为时间
 			map值为List，再遍历List即可
 			
-案例4-留言模块
+案例4-评论
 	展示留言(分页)
 		/comment?pageNumber=?
 		jsp: 页面上点击页数
@@ -47,4 +47,22 @@
 	添加留言
 		post表单到/comment?addComment
 		
+案例5-文章
+	设计article:
+		aid(uuid)
+		title(正常文字)
+		subtitle(正常文字)
+		content(html码)
+	展示留言(分页)
+		/article?pageNumber=?
+		jsp: 每个article只显示标题和子标题，页面上点击页数
+		servlet: 获取页数，设置调用service获取内容转发
+		service: 调用dao
+		dao: limitto
+	打开文章
+		/article?method=read&aid=
+		jsp:页面上点击打开文章，使用frame+自适应显示富文本内容(ueditor)
+		servlet: 获取文章aid，设置调用service获取内容转发
+		service: 调用dao
+		dao: 读内容
 ```
