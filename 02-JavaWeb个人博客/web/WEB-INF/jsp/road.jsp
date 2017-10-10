@@ -41,7 +41,7 @@
 		<%@include file="header.jsp"%>
 		
 		<div class="contact">
-			<div class="container">
+			<div class="container" style="padding: 0">
 				<h3 class="mytitle">学习路线图</h3>
 				<h2>编程之路2015-∞</h2>
 				<div id="timelineContainer" class="timelineContainer">

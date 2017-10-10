@@ -39,10 +39,10 @@
 							</c:if>
 							
 							<c:if test="${index == 3}">
-								<li class="active"><a href="/">文章</a></li>
+								<li class="active"><a href="/article">文章</a></li>
 							</c:if>
 							<c:if test="${index != 3}">
-								<li><a href="/">文章</a></li>
+								<li><a href="/article">文章</a></li>
 							</c:if>
 
 							<c:if test="${index == 4}">

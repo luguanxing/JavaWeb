@@ -12,5 +12,8 @@
 
 	<bean id="CommentDao" class="dao.impl.CommentDaoImpl"/>
 	<bean id="CommentService" class="service.impl.CommentServiceImpl"/>
+
+	<bean id="ArticleDao" class="dao.impl.ArticleDaoImpl"/>
+	<bean id="ArticleService" class="service.impl.ArticleServiceImpl"/>
 	
 </beans>

@@ -70,4 +70,13 @@
 		<url-pattern>/getCaptcha</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>ArticleServlet</servlet-name>
+		<servlet-class>web.servlet.ArticleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ArticleServlet</servlet-name>
+		<url-pattern>/article</url-pattern>
+	</servlet-mapping>
+
 </web-app>

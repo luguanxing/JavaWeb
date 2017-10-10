@@ -37,8 +37,8 @@ public class CommentServlet extends BaseServlet {
 			if (bean == null || pageNumber > bean.getTotalPage())
 				throw new Exception("查询内容页不存在");
 			//设置数据并转发
-			request.setAttribute("index", 5);
 			request.setAttribute("pagebean", bean);
+			request.setAttribute("index", 5);
 			return "WEB-INF/jsp/comment.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
