@@ -50,6 +50,8 @@
 案例5-文章
 	设计article:
 		aid(uuid)
+		date(正常文字)
+		click(正常文字)
 		title(正常文字)
 		subtitle(正常文字)
 		content(html码)
@@ -61,8 +63,24 @@
 		dao: limitto
 	打开文章
 		/article?method=read&aid=
-		jsp:页面上点击打开文章，使用frame+自适应显示富文本内容(ueditor)
+		jsp:页面上点击打开文章
 		servlet: 获取文章aid，设置调用service获取内容转发
 		service: 调用dao
 		dao: 读内容
+		
+案例6-项目
+		/project?pageNumber=?&type=?&sortby=?
+	展示留言(分页)
+		/article?pageNumber=?
+		jsp: 每个article只显示标题，图片，日期点，击数
+		servlet: 获取页数，设置调用service获取内容转发
+		service: 调用dao
+		dao: limitto
+	打开项目
+		/project?method=detail&pid=
+		jsp:页面上点击打开项目
+		servlet: 获取项目pid，设置调用service获取内容转发
+		service: 调用dao
+		dao: 读内容
+	解决bootstrap居中问题，12块先分成3块，3块组合成36块。。。
 ```
