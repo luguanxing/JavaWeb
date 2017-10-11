@@ -40,14 +40,14 @@
 											<ul style="margin: 0; padding: 0; border: 0">
 												<img class="img-responsive lot" style="width: 50%; margin-bottom: 10px;" src="${project.imagepath}" alt="">
 												<li>
-													日期:<div class="badge badge-info">${project.date}</div>
+													日期:<div class="badge badge-primary">${project.date}</div>
 												</li>
 												<li>
-													点击量:<div class="badge badge-info">${project.click}</div>
+													点击量:<div class="badge badge-success">${project.click}</div>
 												</li>
 												<li>
 													<a target="_blank" href=" ${project.link}">
-														<div class="badge badge-success">查看源码</div>
+														<div style="background-color: #4a75c3;" class="badge badge-success">查看源码</div>
 													</a>
 												</li>
 											</ul>

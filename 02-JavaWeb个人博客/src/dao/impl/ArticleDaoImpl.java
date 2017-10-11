@@ -40,8 +40,8 @@ public class ArticleDaoImpl implements ArticleDao {
 	@Override
 	public void update(Article a) throws Exception {
 		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
-		String sql = "UPDATE t_article SET DATE = ?, click = ?, title = ?, subtitle = ?, content = ? WHERE aid = ?;";
-		queryRunner.update(sql, a.getDate(), a.getClick(), a.getTitle(), a.getSubtitle(), a.getContent(), a.getAid());
+		String sql = "UPDATE t_article SET DATE = ?, click = ?, title = ?, content = ? WHERE aid = ?;";
+		queryRunner.update(sql, a.getDate(), a.getClick(), a.getTitle(), a.getContent(), a.getAid());
 	}
 
 }
