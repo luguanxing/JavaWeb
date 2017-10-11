@@ -7,6 +7,7 @@ public class Article {
 	
 	String aid;
 	String date;
+	Integer click;
 	String title;
 	String subtitle;
 	String content;
@@ -25,6 +26,14 @@ public class Article {
 
 	public void setDate(String date) {
 		this.date = date;
+	}
+
+	public Integer getClick() {
+		return click;
+	}
+
+	public void setClick(Integer click) {
+		this.click = click;
 	}
 
 	public String getTitle() {

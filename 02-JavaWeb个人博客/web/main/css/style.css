@@ -9,14 +9,14 @@
 	padding: 0;
 	margin-bottom: 5%;
 	opacity: 0;
-	border-radius: 0 0 5pt 5pt;
+	border-radius: 5pt;
 }
 
 .myarticleinfo {
 	border: 1px solid rgba(231, 231, 231, 1.00);
 	padding: 0;
 	margin-bottom: 5%;
-	border-radius: 0 0 5pt 5pt;
+	border-radius: 5pt;
 }
 
 .myarticle span {
@@ -30,10 +30,23 @@
 
 .myarticle p {
 	font-size: 1.2em;
-	color: #034098;
 	display: inline-block;
 	margin: 1em 0 0;
 	text-decoration: none;
+}
+
+.myproject {
+
+}
+
+.myempty {
+	
+}
+
+.myproject img {
+	margin: 5%;
+	width: 90%;
+	height: 40%;
 }
 
 html, body {
@@ -726,7 +739,6 @@ h4.side {
 	text-transform: uppercase;
 	font-size: 1.1em;
 	text-align: left;
-	border-radius: 5pt 5pt 0 0;
 }
 
 ul.stay {
@@ -909,7 +921,7 @@ div#example1 {
 }
 
 a.more {
-	background-color: #000;
+	background-color: #999;
 	padding: 0.5em 1em;
 	color: #fff;
 	font-size: 0.9em;
@@ -1280,9 +1292,8 @@ h3.tittle.bottom {
 }
 
 .m-b-text p {
-	font-size: 0.9em;
+	font-size: 1em;
 	color: #999;
-	line-height: 1.8em;
 	margin: 0.6em 0;
 }
 
@@ -1414,7 +1425,7 @@ li.list-group-item1 {
 }
 
 .badge-warning {
-	background-color: #ffc107;
+	background-color: #e18887;
 }
 
 .badge-danger {
@@ -2110,6 +2121,9 @@ a.bull1 {
 .about-grid-left {
 	padding: 1em;
 	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 10pt;
+	margin-bottom: 5%;
 }
 
 .history h3, .philosophy h3, .phi-bottom h3, h3.title, .contact h3, .leadership h3 {
@@ -2145,6 +2159,7 @@ h3.title, .contact h3 {
 	color: #999;
 	font-size: .9em;
 	line-height: 1.8em;
+	float: right;
 }
 
 .philosophy {

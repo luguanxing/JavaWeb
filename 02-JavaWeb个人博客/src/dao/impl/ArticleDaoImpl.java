@@ -37,4 +37,11 @@ public class ArticleDaoImpl implements ArticleDao {
 		return queryRunner.query(sql, new BeanHandler<>(Article.class), aid);
 	}
 
+	@Override
+	public void update(Article a) throws Exception {
+		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "UPDATE t_article SET DATE = ?, click = ?, title = ?, subtitle = ?, content = ? WHERE aid = ?;";
+		queryRunner.update(sql, a.getDate(), a.getClick(), a.getTitle(), a.getSubtitle(), a.getContent(), a.getAid());
+	}
+
 }

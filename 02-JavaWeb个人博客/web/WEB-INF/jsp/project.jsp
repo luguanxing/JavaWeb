@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 	<head>
-		<title>文章</title>
+		<title>代码</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<!-- 共同模块 -->
@@ -21,36 +21,34 @@
 		<div class="contact">
 			<div class="container">
 
-				<h3 class="mytitle">文章和笔记</h3>
+				<h3 class="mytitle">编程项目</h3>
 				
 				
 				<div class="mag-bottom">
 					<div class="grid">
 
-						
-						<center>
-							<c:forEach items="${pagebean.data}" var="article" varStatus="vs">
-								<div class="col-md-10 col-md-offset-1 about-grid-left myempty" style="opacity: 0">
-									<div class="history">
-										<h2>${article.title}</h2>
-										<div>
-											<p>点击量:<span class="badge badge-success  pull-right" style="color: white">${article.click}</span></p>
-											<p>日期:<span class="badge badge-warning pull-right" style="color: white">${article.date}</span></p>
-										</div>
-										<iframe scrolling="no" width="100%" id="content" frameborder="0" src="/article?method=readContent&aid=${article.aid}">
-										</iframe>
-										<div style="margin:3.5% 0; height: 1%">
-											<p style="margin: 0">
-												<a style="margin:0; float: right;" target="_blank" class="more label label-primary" href="${pageContext.request.contextPath}/article?method=read&aid=${article.aid}">详细内容</a>
-											</p>
-										</div>
+						<c:forEach items="${pagebean.data}" var="project" varStatus="vs">
+							<div class=" col-lg-4  col-md-4 col-sm-6   col-xs-12">
+								<div class="myproject myarticle col-lg-10 col-lg-offset-1  col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1  col-xs-12">
+									<h4 class="side" style="border-radius: 5pt 5pt 0 0;"><i class="glyphicon glyphicon-file" aria-hidden="true"></i>${project.title}</h4>
+									<center>
+										<a target="_blank" href="/project?method=detail&amp;pid=${project.pid}">
+											<img class="img-responsive lot" src="${project.imagepath}" alt="">
+										</a>
+									</center>
+									<div class="m-b-text">
+										<p>日期:<span class="badge badge-primary pull-right" style="color: white">${project.date}</span></p>
+										<p>点击量:<span class="badge badge-success  pull-right" style="color: white">${project.click}</span></p>
+										<h5>
+											<a target="_blank" style="margin: 3%;" class="more label label-primary" href="/project?method=detail&amp;pid=${project.pid}">详情</a>
+										</h5>
 									</div>
 								</div>
-							</c:forEach>
-						</center>
+							</div>
+						</c:forEach>
 						
-
 						<div class="clearfix"></div>
+						
 					</div>
 				</div>
 
@@ -60,21 +58,21 @@
 							<li class="disabled"><a href="javascript:void(0)">前一页</a></li>
 						</c:if>
 						<c:if test="${pagebean.pageNumber != 1}">
-							<li><a href="${pageContext.request.contextPath}/article?pageNumber=${pagebean.pageNumber-1}">前一页</a></li>
+							<li><a href="${pageContext.request.contextPath}/project?pageNumber=${pagebean.pageNumber-1}">前一页</a></li>
 						</c:if>
 						<c:forEach begin="1" end="${pagebean.totalPage}" var="n">
 							<c:if test="${pagebean.pageNumber == n}">
 								<li class="active"><a href="javascript:void(0)">${n}</a></li>
 							</c:if>
 							<c:if test="${pagebean.pageNumber != n}">
-								<li><a href="${pageContext.request.contextPath}article?pageNumber=${n}">${n}</a></li>
+								<li><a href="${pageContext.request.contextPath}project?pageNumber=${n}">${n}</a></li>
 							</c:if>
 						</c:forEach>
 						<c:if test="${pagebean.pageNumber == pagebean.totalPage}">
 							<li class="disabled"><a href="javascript:void(0)">后一页</a></li>
 						</c:if>
 						<c:if test="${pagebean.pageNumber != pagebean.totalPage}">
-							<li><a href="${pageContext.request.contextPath}/article?pageNumber=${pagebean.pageNumber+1}">后一页</a></li>
+							<li><a href="${pageContext.request.contextPath}/project?pageNumber=${pagebean.pageNumber+1}">后一页</a></li>
 						</c:if>
 					</ul>
 				</center>
@@ -88,12 +86,12 @@
 	</body>
 	
 	<script>
-		var sum = 700;
-		$(".myempty").each(function(){
+		var sum = 500;
+		$(".myproject").each(function(){
 			$(this).animate({
 				opacity: 1,
 			}, sum);
-			sum += 700;
+			sum += 350;
 		});
 	</script>
 	

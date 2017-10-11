@@ -20,29 +20,31 @@
 	<body>
 		
 		<%@include file="header.jsp"%>
-
+		
 		<div class="contact">
 			<div class="container">
 
-				<div class="technology myarticleinfo">
-					
-					<h2 class="tittle">
-						<i class="glyphicon glyphicon-file" aria-hidden="true"></i>
-						${article.title}
-					</h2>
-
-					<div class="issues">
-						<h3 style="width: 90%">${article.subtitle}</h3>
-						<h4 style="float: right">${article.date}</h4>
-						<iframe width="100%" id="content" frameborder="0" src="/article?method=readContent&aid=${article.aid}"></iframe>
-					</div>
-					
-					<div class="clearfix"></div>
-				</div>
+				<h3 class="mytitle">文章详情</h3>
 				
+				<div class="mag-bottom">
+					<div class="grid">
+						<center>
+							<div class="col-md-10 col-md-offset-1 about-grid-left">
+								<div class="history">
+									<h2>${article.title}</h2>
+									<div>
+										<p>点击量:<span class="badge badge-success  pull-right" style="color: white">${article.click}</span></p>
+										<p>日期:<span class="badge badge-warning pull-right" style="color: white">${article.date}</span></p>
+									</div>
+									<iframe width="100%" id="content" frameborder="0" src="/article?method=readContent&aid=${article.aid}"></iframe>
+								</div>
+								<div class="clearfix"></div>
+						</center>
+						<div class="clearfix"></div>
+					</div>
+				</div>
 			</div>
 		</div>
-			
 		
 		<%@include file="footer.jsp"%>
 		

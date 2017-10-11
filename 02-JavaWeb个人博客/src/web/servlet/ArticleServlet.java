@@ -56,9 +56,16 @@ public class ArticleServlet extends BaseServlet {
 			//加载页面文章的数据
 			ArticleService service = (ArticleService) BeanFactory.getBean("ArticleService");
 			Article article = service.getById(aid);
-			
+
+			//添加点击量，防止刷新重复点击
 			if (article == null)
 				throw new Exception("文章不存在");
+			String token = (String) request.getSession().getAttribute("token");
+			if (token == null || !token.equals(article.getAid())) {
+				request.getSession().setAttribute("token", article.getAid());
+				article.setClick(article.getClick()+1);
+				service.update(article);
+			}
 
 			request.setAttribute("article", article);
 			request.setAttribute("index", 3);

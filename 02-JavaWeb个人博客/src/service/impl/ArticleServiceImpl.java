@@ -33,4 +33,10 @@ public class ArticleServiceImpl implements ArticleService {
 		return dao.getById(aid);
 	}
 
+	@Override
+	public void update(Article article) throws Exception {
+		ArticleDao dao = (ArticleDao) BeanFactory.getBean("ArticleDao");
+		dao.update(article);
+	}
+
 }

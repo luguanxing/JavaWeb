@@ -9,7 +9,10 @@ public interface Constant {
 	int COMMENT_PAGE_COUNT = 6;
 
 	//显示每页文章数
-	int ARTICLE_PAGE_COUNT = 6;
+	int ARTICLE_PAGE_COUNT = 3;
+
+	//显示每页文章数
+	int PROJECT_PAGE_COUNT = 6;
 
 	//评论成功
 	String COMMENT_SUCCESS = "success";

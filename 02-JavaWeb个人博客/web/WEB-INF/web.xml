@@ -79,4 +79,13 @@
 		<url-pattern>/article</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>ProjectServlet</servlet-name>
+		<servlet-class>web.servlet.ProjectServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProjectServlet</servlet-name>
+		<url-pattern>/project</url-pattern>
+	</servlet-mapping>
+
 </web-app>

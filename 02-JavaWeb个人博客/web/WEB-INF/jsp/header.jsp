@@ -47,14 +47,14 @@
 
 							<c:if test="${index == 4}">
 								<li class="dropdown active">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">代码<b class="caret"></b></a>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">项目<b class="caret"></b></a>
 									<ul id="category" class="dropdown-menu">
 									</ul>
 								</li>
 							</c:if>
 							<c:if test="${index != 4}">
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">代码<b class="caret"></b></a>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">项目<b class="caret"></b></a>
 									<ul id="category" class="dropdown-menu">
 									</ul>
 								</li>
@@ -83,7 +83,7 @@
 			{"method" : "getCategoryListJson"},
 			function (data) {
 				$(data).each(function () {
-					$("#category").append("<li><a href='${pageContext.request.contextPath}/project?method=findByPage&pageNumber=1&cid=" + this.cid + "'>" + this.cname + "</a></li>");
+					$("#category").append("<li><a href='${pageContext.request.contextPath}/project?type=" + this.cid + "'>" + this.cname + "</a></li>");
 					$("#category").append("<li class='divider'></li>");
 				});
 			},
