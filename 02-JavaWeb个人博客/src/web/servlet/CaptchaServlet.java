@@ -83,7 +83,6 @@ public class CaptchaServlet extends HttpServlet {
 		g.drawString("" + rands[1], 16, 15);
 		g.drawString("" + rands[2], 31, 18);
 		g.drawString("" + rands[3], 46, 16);
-		System.out.println(rands);
 	}
 
 	private void drawBackground(Graphics g) {

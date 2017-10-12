@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 	<head>
-		<title>代码</title>
+		<title>项目</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<!-- 共同模块 -->
@@ -30,7 +30,7 @@
 						<c:forEach items="${pagebean.data}" var="project" varStatus="vs">
 							<div class=" col-lg-4  col-md-4 col-sm-6   col-xs-12">
 								<div class="myproject myarticle col-lg-10 col-lg-offset-1  col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1  col-xs-12">
-									<h4 class="side" style="border-radius: 5pt 5pt 0 0;"><i class="glyphicon glyphicon-file" aria-hidden="true"></i>${project.title}</h4>
+									<h4 class="side" style="border-radius: 5pt 5pt 0 0;"><i class="glyphicon glyphicon-book" aria-hidden="true"></i>${project.title}</h4>
 									<center>
 										<a target="_blank" href="/project?method=detail&amp;pid=${project.pid}">
 											<img class="img-responsive lot" src="${project.imagepath}" alt="">
