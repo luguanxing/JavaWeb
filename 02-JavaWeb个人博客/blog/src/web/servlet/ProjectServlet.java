@@ -81,7 +81,7 @@ public class ProjectServlet extends BaseServlet {
 
 			request.setAttribute("project", project);
 			request.setAttribute("index", 4);
-			return "WEB-INF/jsp/projectInfo.jsp";
+			return "WEB-INF/jsp/projectDetail.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "获取文章详情失败");

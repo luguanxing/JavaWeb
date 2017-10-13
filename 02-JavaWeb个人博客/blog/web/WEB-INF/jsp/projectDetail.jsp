@@ -26,12 +26,12 @@
 
 				<div class="technology myarticleinfo">
 					
-					<h2 class="tittle" style="border-radius: 5pt 5pt 0 0;">
+					<h2 class="tittle" style="border-radius: 5pt 5pt 0 0; margin-bottom: 0;">
 						<i class="glyphicon glyphicon-file" aria-hidden="true"></i>
 						${project.title}
 					</h2>
 
-					<div class="issues">
+					<div class="issues" style="margin: 0;">
 						<center>
 							<div class="col-md-12 mag-innert-left">
 								<div class="banner-bottom-left-grids">

@@ -46,4 +46,11 @@ public class ProjectDaoImpl implements ProjectDao {
 				p.getDate(), p.getType(), p.getClick(), p.getLink(), p.getPid());
 	}
 
+	@Override
+	public List<Project> findTheLastest(int projectIndexCount) throws Exception {
+		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "SELECT * FROM t_project ORDER BY date DESC LIMIT ?";
+		return queryRunner.query(sql, new BeanListHandler<>(Project.class), projectIndexCount);
+	}
+
 }

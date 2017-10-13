@@ -17,4 +17,7 @@ public interface ProjectDao {
 	Project getById(String pid) throws Exception;
 
 	void update(Project project) throws Exception;
+
+	List<Project> findTheLastest(int projectIndexCount) throws Exception;
+	
 }

@@ -36,26 +36,23 @@
 						<ul class="rslides callbacks callbacks1" id="slider4">
 							<li class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;" id="callbacks1_s0">
 								<div class="banner-info">
-									<h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-									<p>Lorem ipsum dolor sit amet</p>
+									<h3 style="color: white">疾如风，徐如林，侵掠如火，不动如山.</h3>
+									<p>《孙子兵法》</p>
 								</div>
 							</li>
-							<li class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;" id="callbacks1_s1">
+							<li class="" style="display: block; float: none; position: absolute; opacity: 0; z-index: 1; transition: opacity 500ms ease-in-out;" id="callbacks1_s2">
 								<div class="banner-info">
-									<h3>Ut enim ad minima veniam, quis nostrum exercitationem</h3>
-									<p>Lorem ipsum dolor sit amet</p>
+									<h3 style="color: white">强者的独裁便成为最强者</h3>
+									<p>希特勒</p>
 								</div>
 							</li>
-							<li class="callbacks1_on" style="display: block; float: left; position: relative; opacity: 1; z-index: 2; transition: opacity 500ms ease-in-out;" id="callbacks1_s2">
-								<div class="banner-info">
-									<h3>At vero eos et accusamus et iusto odio dignissimos.</h3>
-									<p>Lorem ipsum dolor sit amet</p>
-								</div>
-							</li>
-						</ul><ul class="callbacks_tabs callbacks1_tabs"><li class="callbacks1_s1"><a href="#" class="callbacks1_s1">1</a></li><li class="callbacks1_s2"><a href="#" class="callbacks1_s2">2</a></li><li class="callbacks1_s3 callbacks_here"><a href="#" class="callbacks1_s3">3</a></li></ul>
+						</ul>
+						<ul class="callbacks_tabs callbacks1_tabs">
+							<li class="callbacks1_s1"></li>
+							<li class="callbacks1_s2"></li>
+						</ul>
 					</div>
-					<!--banner-Slider-->
-					<script src="js/responsiveslides.min.js"></script>
+
 					<script>
 						// You can also use "$(window).load(function() {"
 						$(function () {
@@ -63,7 +60,7 @@
 							$("#slider4").responsiveSlides({
 								auto: true,
 								pager: true,
-								nav:false,
+								nav: false,
 								speed: 500,
 								namespace: "callbacks",
 								before: function () {
@@ -79,35 +76,32 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="main-content">
 			<div class="container">
 				<div class="mag-inner">
 					<div style="margin-bottom: 5%;" class="col-md-8 mag-innert-left jghdl">
 						<div class="issues">
-							<h3><a href="#">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-								consectetur, adipisci velit</a></h3>
-							<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-								esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat
-								quo voluptas nulla pariatur autem vel eum iure reprehenderit qui in ea voluptate velit
-								esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat
-								quo voluptas nulla pariatur quis autem vel eum iure reprehenderit qui in ea voluptate velit
-								esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat
-								quo voluptas nulla pariatur autem vel eum iure reprehenderit qui in ea voluptate velit
-								esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat
-								quo voluptas nulla pariatur vel eum iure reprehenderit qui in ea voluptate velit
-								esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat.</p>
+							<iframe width="100%" id="content" frameborder="0" src="/index?method=readIndexContent"></iframe>
 						</div>
 					</div>
 
 					<div style="margin-bottom: 5%;" class="col-md-4 col-sm-6 col-xs-12 mag-inner-right">
 						<div class="connect">
-							<h4 class="side"><i class="glyphicon glyphicon-book" aria-hidden="true"></i>项目代码</h4>
+							<h4 class="side"><i class="glyphicon glyphicon-book" aria-hidden="true"></i>最新项目</h4>
 							<ul class="stay">
-								<li class="c5-element-facebook"><a href="#"><span class="icon"></span><h5>700</h5><span class="text">Followers</span></a></li>
-								<li class="c5-element-twitter"><a href="#"><span class="icon1"></span><h5>201</h5><span class="text">Followers</span></a></li>
-								<li class="c5-element-gg"><a href="#"><span class="icon2"></span><h5>111</h5><span class="text">Followers</span></a></li>
-								<li class="c5-element-dribble"><a href="#"><span class="icon3"></span><h5>99</h5><span class="text">Followers</span></a></li>
+								<c:forEach items="${projects}" var="project" varStatus="vs">
+									<c:if test="${vs.count%5==1}"><li class="c5-element-facebook"></c:if>
+									<c:if test="${vs.count%5==2}"><li class="c5-element-dribble"></c:if>
+									<c:if test="${vs.count%5==3}"><li class="c5-element-gg"></c:if>
+									<c:if test="${vs.count%5==4}"><li class="c5-element-twitter"></c:if>
+										<a href="#">
+											<span class="icon"></span>
+											<h5>${project.date}</h5>
+											<span class="text">${project.title}</span>
+										</a>
+									</li>
+								</c:forEach>
 								<div class="side">
 									<div class="gallery-images">
 										<div class="course_demo1">
@@ -116,18 +110,13 @@
 													<div class="nbs-flexisel-container">
 														<div class="nbs-flexisel-inner">
 															<ul id="flexiselDemo1" class="nbs-flexisel-ul" style="left: -72.3333px;">
-																<li class="nbs-flexisel-item" style="width: 72.3333px;">
-																	<a href="single.html"><img src="/images/trump2.jpg" alt=""></a>
-																</li>
-																<li class="nbs-flexisel-item" style="width: 72.3333px;">
-																	<a href="single.html"><img src="/images/trump.jpg" alt=""></a>
-																</li>
-																<li class="nbs-flexisel-item" style="width: 72.3333px;">
-																	<a href="single.html"><img src="/images/trump2.jpg" alt=""></a>
-																</li>
-																<li class="nbs-flexisel-item" style="width: 72.3333px;">
-																	<a href="single.html"><img src="/images/trump.jpg" alt=""></a>
-																</li>
+																<c:forEach items="${projects}" var="project" varStatus="vs">
+																	<li class="nbs-flexisel-item" style="width: 72.3333px;">
+																		<a target="_blank" href="/project?method=detail&pid=${project.pid}">
+																			<img src="${project.imagepath}" alt="${project.title}">
+																		</a>
+																	</li>
+																</c:forEach>
 															</ul>
 															<div class="nbs-flexisel-nav-left" style="top: -5px;"></div>
 															<div class="nbs-flexisel-nav-right" style="top: -5px;"></div>
@@ -173,17 +162,17 @@
 
 					<div style="margin-bottom: 5%;" class="col-md-4 col-sm-6 col-xs-12 mag-inner-right pull-right">
 						<div class="connect">
-							<h4 class="side"><i class="glyphicon glyphicon-comment" aria-hidden="true"></i>联系方式</h4>
+							<h4 class="side"><i class="glyphicon glyphicon-comment" aria-hidden="true"></i>个人简介</h4>
 							<ul class="stay">
-								<div class="editor-pics">
-									<div class="col-md-3 item-pic">
-										<img src="/images/trump.jpg.jpg" class="img-responsive" alt="">
-									</div>
-									<div class="col-md-9 item-details">
-										<h5 class="inner two"><a href="single.html">Barack Hussein Obama , President Of America.</a></h5>
-										<div class="td-post-date two">Combined with a handful.</div>
-										<div class="td-post-date two">Combined with a handful.</div>
-										<div class="td-post-date two">Combined with a handful.</div>
+								<div class="editor-pics" style="width: 90%; margin-left: 5%">
+									<div class="item-details" style="width: 100%">
+										<center>
+											<div class="glyphicon glyphicon-link">GitHub：<a target="_blank" href="https://github.com/luguanxing">链接</a></div>
+											<br/><br/>
+											<div class="glyphicon glyphicon-bookmark">兴趣：JavaEE、云计算</div>
+											<br/><br/>
+											<div class="glyphicon glyphicon-star">所在地：中国</div>
+										</center>
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -199,4 +188,26 @@
 		<%@include file="footer.jsp" %>
 
 	</body>
+
+	<script>
+
+		function autoFixFrame() {
+			var ifm= document.getElementById("content");
+			var subWeb = document.frames ? document.frames["content"].document : ifm.contentDocument;
+			if(ifm != null && subWeb != null) {
+				ifm.height = subWeb.body.scrollHeight;
+			}
+		}
+
+		window.onload = function () {
+			autoFixFrame();
+		}
+
+		$(window).resize(function () {
+			autoFixFrame();
+		});
+
+	</script>
+	
+	
 </html>

@@ -4,6 +4,9 @@ package constant;
  * Created by Administrator on 2017/10/6.
  */
 public interface Constant {
+	
+	//显示主页项目数
+	int PROJECT_INDEX_COUNT = 5;
 
 	//显示每页评论数
 	int COMMENT_PAGE_COUNT = 6;

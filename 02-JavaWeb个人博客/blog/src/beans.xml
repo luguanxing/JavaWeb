@@ -18,5 +18,8 @@
 
 	<bean id="ProjectDao" class="dao.impl.ProjectDaoImpl"/>
 	<bean id="ProjectService" class="service.impl.ProjectServiceImpl"/>
+
+	<bean id="IndexDao" class="dao.impl.IndexDaoImpl"/>
+	<bean id="IndexService" class="service.impl.IndexServiceImpl"/>
 	
 </beans>

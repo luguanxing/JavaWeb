@@ -36,7 +36,14 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public void update(Project project) throws Exception {
 		ProjectDao dao = (ProjectDao) BeanFactory.getBean("ProjectDao");
+		assert dao != null;
 		dao.update(project);
+	}
+
+	@Override
+	public List<Project> findTheLastest(int projectIndexCount) throws Exception {
+		ProjectDao dao = (ProjectDao) BeanFactory.getBean("ProjectDao");
+		return dao.findTheLastest(projectIndexCount);
 	}
 
 }
