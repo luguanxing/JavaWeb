@@ -33,7 +33,7 @@ public class IndexServlet extends BaseServlet {
 				throw new Exception("查询项目不存在");
 			//设置数据并转发
 			request.setAttribute("projects", projects);
-			return "WEB-INF/jsp/index.jsp";
+			return "/jsp/index.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "获取主页信息失败");

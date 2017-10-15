@@ -23,7 +23,7 @@ public class RoadServlet extends BaseServlet {
 			RoadService service = (RoadService) BeanFactory.getBean("RoadService");
 			Map map = service.getAllByMap();
 			request.setAttribute("map", map);
-			return "WEB-INF/jsp/road.jsp";
+			return "/jsp/road.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "获取路线信息失败");

@@ -49,7 +49,7 @@ public class ProjectServlet extends BaseServlet {
 			//设置数据并转发
 			request.setAttribute("pagebean", bean);
 			request.setAttribute("index", 4);
-			return "WEB-INF/jsp/project.jsp";
+			return "/jsp/project.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "获取项目信息失败");
@@ -81,7 +81,7 @@ public class ProjectServlet extends BaseServlet {
 
 			request.setAttribute("project", project);
 			request.setAttribute("index", 4);
-			return "WEB-INF/jsp/projectDetail.jsp";
+			return "/jsp/projectDetail.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "获取文章详情失败");

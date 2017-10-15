@@ -19,11 +19,13 @@
 		<filter-class>web.filter.AdminFilter</filter-class>
 	</filter>
 	<filter-mapping>
-		<!--保护admin页面和admin接口和富文本编辑接口-->
+		<!--保护admin页面,admin接口,富文本编辑接口,jsp页面-->
 		<filter-name>AdminFilter</filter-name>
 		<url-pattern>/admin</url-pattern>
 		<url-pattern>/admin/*</url-pattern>
 		<url-pattern>/utf8/jsp/*</url-pattern>
+		<url-pattern>/utf8/jsp/*</url-pattern>
+		<url-pattern>/jsp/*</url-pattern>
 	</filter-mapping>
 	
 

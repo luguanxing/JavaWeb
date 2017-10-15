@@ -39,7 +39,7 @@ public class CommentServlet extends BaseServlet {
 			//设置数据并转发
 			request.setAttribute("pagebean", bean);
 			request.setAttribute("index", 5);
-			return "WEB-INF/jsp/comment.jsp";
+			return "/jsp/comment.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("msg", "获取评论信息失败");
@@ -61,7 +61,7 @@ public class CommentServlet extends BaseServlet {
 				request.setAttribute("comment", comment);
 				request.setAttribute("nickname", nickname);
 				index(request, response);
-				return "WEB-INF/jsp/comment.jsp";
+				return "/jsp/comment.jsp";
 			} else {
 				String result = service.checkformat(comment, nickname, inputCaptcha);
 				if (!Constant.COMMENT_SUCCESS.equals(result)) {
@@ -70,7 +70,7 @@ public class CommentServlet extends BaseServlet {
 					request.setAttribute("comment", comment);
 					request.setAttribute("nickname", nickname);
 					index(request, response);
-					return "WEB-INF/jsp/comment.jsp";
+					return "/jsp/comment.jsp";
 				} else {
 					TimeZone.setDefault(TimeZone.getTimeZone("GMT+8"));
 					String date = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
