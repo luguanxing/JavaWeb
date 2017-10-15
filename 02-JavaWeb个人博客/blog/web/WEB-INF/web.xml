@@ -13,6 +13,19 @@
 		<filter-name>EncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<filter>
+		<filter-name>AdminFilter</filter-name>
+		<filter-class>web.filter.AdminFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<!--保护admin页面和admin接口和富文本编辑接口-->
+		<filter-name>AdminFilter</filter-name>
+		<url-pattern>/admin</url-pattern>
+		<url-pattern>/admin/*</url-pattern>
+		<url-pattern>/utf8/jsp/*</url-pattern>
+	</filter-mapping>
+	
 
 	<!--错误配置-->
 	<error-page>
@@ -25,6 +38,7 @@
 	</error-page>
 
 	<!--Servlet配置-->
+	<!--前台servlet-->
 	<servlet>
 		<servlet-name>IndexServlet</servlet-name>
 		<servlet-class>web.servlet.IndexServlet</servlet-class>
@@ -86,6 +100,25 @@
 	<servlet-mapping>
 		<servlet-name>ProjectServlet</servlet-name>
 		<url-pattern>/project</url-pattern>
+	</servlet-mapping>
+
+	<!--后台servlet-->
+	<servlet>
+		<servlet-name>AdminLoginServlet</servlet-name>
+		<servlet-class>web.servlet.AdminLoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminLoginServlet</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AdminServlet</servlet-name>
+		<servlet-class>web.servlet.admin.AdminServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminServlet</servlet-name>
+		<url-pattern>/admin</url-pattern>
 	</servlet-mapping>
 
 </web-app>

@@ -33,7 +33,7 @@
 
 					<div class="issues" style="margin: 0;">
 						<center>
-							<div class="col-md-12 mag-innert-left">
+							<div class="col-md-12 mag-innert-left" style="border: 0; border-bottom: 1px solid #ccc;">
 								<div class="banner-bottom-left-grids">
 									<div class="single-left-grid">
 										<div class="single-bottom">

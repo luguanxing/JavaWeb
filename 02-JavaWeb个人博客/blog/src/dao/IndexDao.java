@@ -8,5 +8,7 @@ import domain.Index;
 public interface IndexDao {
 	
 	Index IndexContent() throws Exception;
+
+	void update(Index index) throws Exception;
 	
 }

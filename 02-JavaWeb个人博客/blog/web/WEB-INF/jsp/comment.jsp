@@ -24,7 +24,7 @@
 		<div class="single" style="padding-bottom: 0">
 			<div class="container">
 				<div class="single-grids">
-					<div class="col-md-12 mag-innert-left">
+					<div class="col-md-12 mag-innert-left" style="border-radius: 5pt;">
 						<div class="post">
 							<center><h3>留言墙</h3></center>
 							<c:forEach items="${pagebean.data}" var="comment">
@@ -69,7 +69,7 @@
 		<div class="single"  style="padding-top: 20px">
 			<div class="container">
 				<div class="single-grids">
-					<div class="col-md-12 mag-innert-left">
+					<div class="col-md-12 mag-innert-left" style="border-radius: 5pt;">
 						<div class="post">
 							<div class="leave">
 								<center>

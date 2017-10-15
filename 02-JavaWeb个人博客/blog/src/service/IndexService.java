@@ -8,5 +8,7 @@ import domain.Index;
 public interface IndexService {
 
 	Index getIndexContent() throws Exception;
+
+	void update(Index index) throws Exception;
 	
 }

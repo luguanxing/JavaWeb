@@ -15,5 +15,11 @@ public class IndexServiceImpl implements IndexService {
 		IndexDao dao = (IndexDao) BeanFactory.getBean("IndexDao");
 		return dao.IndexContent();
 	}
-	
+
+	@Override
+	public void update(Index index) throws Exception {
+		IndexDao dao = (IndexDao) BeanFactory.getBean("IndexDao");
+		dao.update(index);
+	}
+
 }

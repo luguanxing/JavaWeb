@@ -167,11 +167,11 @@
 								<div class="editor-pics" style="width: 90%; margin-left: 5%">
 									<div class="item-details" style="width: 100%">
 										<center>
-											<div class="glyphicon glyphicon-link">GitHub：<a target="_blank" href="https://github.com/luguanxing">链接</a></div>
+											<div style="float: left" class="glyphicon glyphicon-link">GitHub：<a target="_blank" href="https://github.com/luguanxing">链接</a></div>
 											<br/><br/>
-											<div class="glyphicon glyphicon-bookmark">兴趣：JavaEE、云计算</div>
+											<div style="float: left" class="glyphicon glyphicon-bookmark">兴趣：JavaEE、云计算</div>
 											<br/><br/>
-											<div class="glyphicon glyphicon-star">所在地：中国</div>
+											<div style="float: left" class="glyphicon glyphicon-star">所在地：中国</div>
 										</center>
 									</div>
 									<div class="clearfix"></div>
