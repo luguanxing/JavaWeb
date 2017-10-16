@@ -82,7 +82,7 @@
 				<div class="mag-inner">
 					<div style="margin-bottom: 5%;" class="col-md-8 mag-innert-left jghdl">
 						<div class="issues">
-							<iframe width="100%" id="content" frameborder="0" src="/index?method=readIndexContent"></iframe>
+							<iframe scrolling="no" width="100%" id="content" frameborder="0" src="/index?method=readIndexContent"></iframe>
 						</div>
 					</div>
 
@@ -95,7 +95,7 @@
 									<c:if test="${vs.count%5==2}"><li class="c5-element-dribble"></c:if>
 									<c:if test="${vs.count%5==3}"><li class="c5-element-gg"></c:if>
 									<c:if test="${vs.count%5==4}"><li class="c5-element-twitter"></c:if>
-										<a href="#">
+										<a href="/project?method=detail&pid=${project.pid}">
 											<span class="icon"></span>
 											<h5>${project.date}</h5>
 											<span class="text">${project.title}</span>

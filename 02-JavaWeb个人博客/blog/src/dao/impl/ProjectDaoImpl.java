@@ -15,7 +15,14 @@ import java.util.List;
  * Created by Administrator on 2017/10/11.
  */
 public class ProjectDaoImpl implements ProjectDao {
-	
+
+	@Override
+	public List<Project> findByPage(PageBean<Project> pageBean) throws Exception {
+		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "SELECT * FROM t_project ORDER BY date DESC LIMIT ?,?";
+		return queryRunner.query(sql, new BeanListHandler<>(Project.class), pageBean.getStartIndex(), pageBean.getPageSize());
+	}
+
 	@Override
 	public List<Project> findByPage(PageBean<Project> pageBean, String type) throws Exception {
 		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
@@ -40,7 +47,7 @@ public class ProjectDaoImpl implements ProjectDao {
 	@Override
 	public void update(Project p) throws Exception {
 		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
-		String sql = "UPDATE blog.t_project SET title = ? , description = ? , imagepath = ? , DATE = ? ," +
+		String sql = "UPDATE t_project SET title = ? , description = ? , imagepath = ? , DATE = ? ," +
 				" TYPE = ? , click = ? , link = ? WHERE pid = ?";
 		queryRunner.update(sql, p.getTitle(), p.getDescription(), p.getImagepath(),
 				p.getDate(), p.getType(), p.getClick(), p.getLink(), p.getPid());
@@ -51,6 +58,22 @@ public class ProjectDaoImpl implements ProjectDao {
 		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
 		String sql = "SELECT * FROM t_project ORDER BY date DESC LIMIT ?";
 		return queryRunner.query(sql, new BeanListHandler<>(Project.class), projectIndexCount);
+	}
+
+	@Override
+	public void save(Project p) throws Exception {
+		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "INSERT INTO t_project (pid, title, description, imagepath, DATE, TYPE, click, link)" +
+				" VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		queryRunner.update(sql, p.getPid(), p.getTitle(), p.getDescription(), p.getImagepath(),
+				p.getDate(), p.getType(), p.getClick(), p.getLink());
+	}
+
+	@Override
+	public void delete(String pid) throws Exception {
+		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "DELETE FROM blog.t_project WHERE pid = ?";
+		queryRunner.update(sql, pid);
 	}
 
 }

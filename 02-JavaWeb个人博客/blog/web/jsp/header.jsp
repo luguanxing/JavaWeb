@@ -83,7 +83,7 @@
 			{"method" : "getCategoryListJson"},
 			function (data) {
 				$(data).each(function () {
-					$("#category").append("<li><a href='${pageContext.request.contextPath}/project?type=" + this.cid + "'>" + this.cname + "</a></li>");
+					$("#category").append("<li><a href='${pageContext.request.contextPath}/project?type=" + this.cid + "'>" + this.name + "</a></li>");
 					$("#category").append("<li class='divider'></li>");
 				});
 			},

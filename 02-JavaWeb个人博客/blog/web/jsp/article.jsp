@@ -30,14 +30,14 @@
 						
 						<center>
 							<c:forEach items="${pagebean.data}" var="article" varStatus="vs">
-								<div class="col-md-10 col-md-offset-1 about-grid-left myempty" style="opacity: 0">
+								<div class="col-md-10 col-md-offset-1 about-grid-left myempty" style="opacity: 0; height: 470px;">
 									<div class="history">
 										<h2>${article.title}</h2>
 										<div>
 											<p>点击量:<span class="badge badge-success  pull-right" style="color: white">${article.click}</span></p>
 											<p>日期:<span class="badge badge-warning pull-right" style="color: white">${article.date}</span></p>
 										</div>
-										<iframe scrolling="no" width="100%" id="content" frameborder="0" src="/article?method=readContent&aid=${article.aid}">
+										<iframe scrolling="no" height="300px" width="100%" id="content" frameborder="0" src="/article?method=readContent&aid=${article.aid}">
 										</iframe>
 										<div style="margin:3.5% 0; height: 1%">
 											<p style="margin: 0">

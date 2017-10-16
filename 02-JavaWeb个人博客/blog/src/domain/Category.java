@@ -6,7 +6,7 @@ package domain;
 public class Category {
 	
 	String cid;
-	String cname;
+	String name;
 	Integer order;
 
 	public String getCid() {
@@ -17,12 +17,12 @@ public class Category {
 		this.cid = cid;
 	}
 
-	public String getCname() {
-		return cname;
+	public String getName() {
+		return name;
 	}
 
-	public void setCname(String cname) {
-		this.cname = cname;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Integer getOrder() {

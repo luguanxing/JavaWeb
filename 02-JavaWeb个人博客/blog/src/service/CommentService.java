@@ -13,5 +13,7 @@ public interface CommentService {
 	String checkformat(String comment, String nickname, String inputCaptcha) throws Exception;
 
 	void addComment(Comment newcomment) throws Exception;
+
+	void deleteById(String cid) throws Exception;
 	
 }

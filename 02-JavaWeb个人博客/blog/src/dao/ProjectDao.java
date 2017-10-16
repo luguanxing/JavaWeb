@@ -10,6 +10,8 @@ import java.util.List;
  */
 public interface ProjectDao {
 	
+	List<Project> findByPage(PageBean<Project> pageBean) throws Exception;
+	
 	List<Project> findByPage(PageBean<Project> pageBean, String type) throws Exception;
 
 	int getTotalRecord() throws Exception;
@@ -19,5 +21,8 @@ public interface ProjectDao {
 	void update(Project project) throws Exception;
 
 	List<Project> findTheLastest(int projectIndexCount) throws Exception;
-	
+
+	void save(Project project) throws Exception;
+
+	void delete(String pid) throws Exception;
 }

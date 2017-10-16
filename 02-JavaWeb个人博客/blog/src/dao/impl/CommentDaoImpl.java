@@ -33,8 +33,15 @@ public class CommentDaoImpl implements CommentDao {
 	@Override
 	public void addComment(Comment c) throws Exception {
 		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
-		String sql = "INSERT INTO t_comment (nickname, COMMENT, DATE) VALUES (?, ?, ?);";
+		String sql = "INSERT INTO t_comment (nickname, COMMENT, DATE) VALUES (?, ?, ?)";
 		queryRunner.update(sql, c.getNickname(), c.getComment(), c.getDate());
+	}
+
+	@Override
+	public void deleteById(String cid) throws Exception {
+		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "DELETE FROM t_comment WHERE cid = ?";
+		queryRunner.update(sql, cid);
 	}
 
 }

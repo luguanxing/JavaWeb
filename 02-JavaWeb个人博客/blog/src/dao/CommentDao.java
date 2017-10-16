@@ -15,4 +15,7 @@ public interface CommentDao {
 	int getTotalRecord() throws Exception;
 
 	void addComment(Comment newcomment) throws Exception;
+
+	void deleteById(String cid) throws Exception;
+	
 }

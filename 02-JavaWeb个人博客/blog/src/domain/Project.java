@@ -14,6 +14,19 @@ public class Project {
 	Integer click;
 	String link;
 
+	public Project() {};
+	
+	public Project(String pid, String title, String description, String imagepath, String date, String type, Integer click, String link) {
+		this.pid = pid;
+		this.title = title;
+		this.description = description;
+		this.imagepath = imagepath;
+		this.date = date;
+		this.type = type;
+		this.click = click;
+		this.link = link;
+	}
+
 	public String getPid() {
 		return pid;
 	}

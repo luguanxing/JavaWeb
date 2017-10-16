@@ -34,9 +34,21 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
+	public void save(Article article) throws Exception {
+		ArticleDao dao = (ArticleDao) BeanFactory.getBean("ArticleDao");
+		dao.save(article);
+	}
+	
+	@Override
 	public void update(Article article) throws Exception {
 		ArticleDao dao = (ArticleDao) BeanFactory.getBean("ArticleDao");
 		dao.update(article);
+	}
+
+	@Override
+	public void delete(String aid) throws Exception {
+		ArticleDao dao = (ArticleDao) BeanFactory.getBean("ArticleDao");
+		dao.delete(aid);
 	}
 
 }

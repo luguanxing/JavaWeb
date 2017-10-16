@@ -13,6 +13,16 @@ public class RoadItem {
 	Date date;
 	String year;
 
+	public RoadItem() {}
+	
+	public RoadItem(String rid, String title, String content, Date date, String year) {
+		this.rid = rid;
+		this.title = title;
+		this.content = content;
+		this.date = date;
+		this.year = year;
+	}
+
 	public String getRid() {
 		return rid;
 	}

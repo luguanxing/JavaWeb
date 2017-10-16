@@ -88,6 +88,7 @@
 											background="${pageContext.request.contextPath}/admin/images/mis_05b.jpg">
 											用户名： 管理员
 											<font color="blue"><s:property value="#session.existAdminUser.username"/></font>
+											<a style="float: right; color: blue;" href="/exit.jsp">退出</a>
 										</td>
 										<td width="10" align="right"
 											background="${pageContext.request.contextPath}/admin/images/mis_05b.jpg">

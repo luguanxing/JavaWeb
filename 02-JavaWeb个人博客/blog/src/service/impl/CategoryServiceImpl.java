@@ -28,4 +28,28 @@ public class CategoryServiceImpl implements CategoryService {
 		return null;
 	}
 
+	@Override
+	public void save(Category category) throws Exception {
+		CategoryDao dao = (CategoryDao) BeanFactory.getBean("CategoryDao");
+		dao.save(category);
+	}
+
+	@Override
+	public void update(Category category) throws Exception {
+		CategoryDao dao = (CategoryDao) BeanFactory.getBean("CategoryDao");
+		dao.update(category);
+	}
+
+	@Override
+	public void delete(String cid) throws Exception {
+		CategoryDao dao = (CategoryDao) BeanFactory.getBean("CategoryDao");
+		dao.delete(cid);
+	}
+
+	@Override
+	public Category getById(String cid) throws Exception {
+		CategoryDao dao = (CategoryDao) BeanFactory.getBean("CategoryDao");
+		return dao.getById(cid);
+	}
+
 }

@@ -33,4 +33,28 @@ public class RoadServiceImpl implements RoadService {
 		return map;
 	}
 
+	@Override
+	public RoadItem getById(String rid) throws Exception {
+		RoadDao dao = (RoadDao) BeanFactory.getBean("RoadDao");
+		return dao.getById(rid);
+	}
+
+	@Override
+	public void save(RoadItem roadItem) throws Exception {
+		RoadDao dao = (RoadDao) BeanFactory.getBean("RoadDao");
+		dao.save(roadItem);;
+	}
+
+	@Override
+	public void update(RoadItem roadItem) throws Exception {
+		RoadDao dao = (RoadDao) BeanFactory.getBean("RoadDao");
+		dao.update(roadItem);;
+	}
+
+	@Override
+	public void deleteById(String rid) throws Exception {
+		RoadDao dao = (RoadDao) BeanFactory.getBean("RoadDao");
+		dao.deleteById(rid);;
+	}
+
 }

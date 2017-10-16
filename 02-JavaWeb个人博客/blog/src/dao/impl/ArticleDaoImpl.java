@@ -38,10 +38,24 @@ public class ArticleDaoImpl implements ArticleDao {
 	}
 
 	@Override
+	public void save(Article a) throws Exception {
+		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "INSERT INTO t_article (aid, date, click, title, content) VALUES (?, ?, ?, ?, ?)";
+		queryRunner.update(sql, a.getAid(), a.getDate(), a.getClick(), a.getTitle(), a.getContent());
+	}
+	
+	@Override
 	public void update(Article a) throws Exception {
 		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
-		String sql = "UPDATE t_article SET DATE = ?, click = ?, title = ?, content = ? WHERE aid = ?;";
+		String sql = "UPDATE t_article SET DATE = ?, click = ?, title = ?, content = ? WHERE aid = ?";
 		queryRunner.update(sql, a.getDate(), a.getClick(), a.getTitle(), a.getContent(), a.getAid());
+	}
+
+	@Override
+	public void delete(String aid) throws Exception {
+		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "DELETE FROM t_article WHERE aid = ?";
+		queryRunner.update(sql, aid);
 	}
 
 }

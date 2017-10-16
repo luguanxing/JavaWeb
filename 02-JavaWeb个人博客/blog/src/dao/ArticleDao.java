@@ -17,5 +17,8 @@ public interface ArticleDao {
 	Article getById(String aid) throws Exception;
 
 	void update(Article article) throws Exception;
-	
+
+	void save(Article article) throws Exception;
+
+	void delete(String aid) throws Exception;
 }

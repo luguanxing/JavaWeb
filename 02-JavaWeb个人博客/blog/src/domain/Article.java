@@ -11,6 +11,16 @@ public class Article {
 	String title;
 	String content;
 
+	public Article() {}
+	
+	public Article(String aid, String date, Integer click, String title, String content) {
+		this.aid = aid;
+		this.date = date;
+		this.click = click;
+		this.title = title;
+		this.content = content;
+	}
+
 	public String getAid() {
 		return aid;
 	}

@@ -1,5 +1,7 @@
 package dao;
 
+import domain.RoadItem;
+
 import java.util.List;
 
 /**
@@ -8,5 +10,13 @@ import java.util.List;
 public interface RoadDao {
 	
 	List getAll() throws Exception;
+
+	RoadItem getById(String rid) throws Exception;
+
+	void save(RoadItem roadItem) throws Exception;
+
+	void update(RoadItem roadItem) throws Exception;
+	
+	void deleteById(String rid) throws Exception;
 	
 }

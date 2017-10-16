@@ -46,4 +46,10 @@ public class CommentServiceImpl implements CommentService {
 		dao.addComment(newcomment);
 	}
 
+	@Override
+	public void deleteById(String cid) throws Exception {
+		CommentDao dao = (CommentDao) BeanFactory.getBean("CommentDao");
+		dao.deleteById(cid);
+	}
+
 }

@@ -21,5 +21,8 @@
 
 	<bean id="IndexDao" class="dao.impl.IndexDaoImpl"/>
 	<bean id="IndexService" class="service.impl.IndexServiceImpl"/>
+
+	<bean id="AdminDao" class="dao.impl.AdminDaoImpl"/>
+	<bean id="AdminService" class="service.impl.AdminServiceImpl"/>
 	
 </beans>

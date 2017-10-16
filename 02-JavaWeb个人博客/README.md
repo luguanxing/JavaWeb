@@ -99,5 +99,7 @@
 	修改主页内容admin?method=editIndexUI，编辑器内加载当前index内容
 	修改admin?method=editIndex
 	
+案例10-后台路线、文章、项目、评论的管理功能
+	管理功能包括：列表、添加、编辑(数据显示)、删除功能
 	
 ```
