@@ -36,7 +36,7 @@ public class ProjectServiceImpl implements ProjectService {
 		List<Project> list = dao.findByPage(pageBean, type);
 		pageBean.setData(list);
 		//设置总记录数
-		int totalRecord = dao.getTotalRecord();
+		int totalRecord = dao.getTotalRecord(type);
 		pageBean.setTotalRecord(totalRecord);
 		return pageBean;
 	}

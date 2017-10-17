@@ -15,6 +15,8 @@ public interface ProjectDao {
 	List<Project> findByPage(PageBean<Project> pageBean, String type) throws Exception;
 
 	int getTotalRecord() throws Exception;
+	
+	int getTotalRecord(String type) throws Exception;
 
 	Project getById(String pid) throws Exception;
 

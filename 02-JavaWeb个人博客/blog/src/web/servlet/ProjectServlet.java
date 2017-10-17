@@ -38,6 +38,8 @@ public class ProjectServlet extends BaseServlet {
 				//设置默认类型为windows
 				type = "windows";
 			}
+			if (type == null)
+				throw new Exception("查询错误");
 			
 
 			//加载页面项目的数据
@@ -48,6 +50,7 @@ public class ProjectServlet extends BaseServlet {
 				throw new Exception("查询项目页不存在");
 			//设置数据并转发
 			request.setAttribute("pagebean", bean);
+			request.setAttribute("type", type);
 			request.setAttribute("index", 4);
 			return "/jsp/project.jsp";
 		} catch (Exception e) {

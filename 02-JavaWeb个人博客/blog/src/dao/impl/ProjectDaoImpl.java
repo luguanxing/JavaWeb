@@ -38,6 +38,13 @@ public class ProjectDaoImpl implements ProjectDao {
 	}
 
 	@Override
+	public int getTotalRecord(String type) throws Exception {
+		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
+		String sql = "SELECT COUNT(*) FROM t_project WHERE type = ?";
+		return ((Long)queryRunner.query(sql, new ScalarHandler(), type)).intValue();
+	}
+
+	@Override
 	public Project getById(String pid) throws Exception {
 		QueryRunner queryRunner = new QueryRunner(DataSourceUtils.getDataSource());
 		String sql = "SELECT * FROM t_project where pid = ?";

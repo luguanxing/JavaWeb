@@ -58,21 +58,21 @@
 							<li class="disabled"><a href="javascript:void(0)">前一页</a></li>
 						</c:if>
 						<c:if test="${pagebean.pageNumber != 1}">
-							<li><a href="${pageContext.request.contextPath}/project?pageNumber=${pagebean.pageNumber-1}">前一页</a></li>
+							<li><a href="${pageContext.request.contextPath}/project?type=${type}&pageNumber=${pagebean.pageNumber-1}">前一页</a></li>
 						</c:if>
 						<c:forEach begin="1" end="${pagebean.totalPage}" var="n">
 							<c:if test="${pagebean.pageNumber == n}">
 								<li class="active"><a href="javascript:void(0)">${n}</a></li>
 							</c:if>
 							<c:if test="${pagebean.pageNumber != n}">
-								<li><a href="${pageContext.request.contextPath}project?pageNumber=${n}">${n}</a></li>
+								<li><a href="${pageContext.request.contextPath}project?type=${type}&pageNumber=${n}">${n}</a></li>
 							</c:if>
 						</c:forEach>
 						<c:if test="${pagebean.pageNumber == pagebean.totalPage}">
 							<li class="disabled"><a href="javascript:void(0)">后一页</a></li>
 						</c:if>
 						<c:if test="${pagebean.pageNumber != pagebean.totalPage}">
-							<li><a href="${pageContext.request.contextPath}/project?pageNumber=${pagebean.pageNumber+1}">后一页</a></li>
+							<li><a href="${pageContext.request.contextPath}/project?type=${type}&pageNumber=${pagebean.pageNumber+1}">后一页</a></li>
 						</c:if>
 					</ul>
 				</center>
