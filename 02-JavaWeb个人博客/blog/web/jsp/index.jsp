@@ -95,6 +95,7 @@
 									<c:if test="${vs.count%5==2}"><li class="c5-element-dribble"></c:if>
 									<c:if test="${vs.count%5==3}"><li class="c5-element-gg"></c:if>
 									<c:if test="${vs.count%5==4}"><li class="c5-element-twitter"></c:if>
+									<c:if test="${vs.count%5==0}"><li class="c5-element-facebook" style="background:#0064ff"></c:if>
 										<a href="/project?method=detail&pid=${project.pid}">
 											<span class="icon"></span>
 											<h5>${project.date}</h5>
