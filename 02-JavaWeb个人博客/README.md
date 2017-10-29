@@ -14,34 +14,54 @@
 
 
 
-<br><br><br>
+<br><br><br><br><br>
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/1.jpg?raw=true)
-### 前台-展示学习路线
+##### 前台-展示学习路线
 
-<br><br><br>
+<br><br><br><br><br>
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/2.jpg?raw=true)
-### 前台-展示自己的文章
+##### 前台-展示自己的文章
 
-<br><br><br>
+<br><br><br><br><br>
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/3.jpg?raw=true)
-### 前台-打开自己的文章
+##### 前台-打开自己的文章
 
-<br><br><br>
+<br><br><br><br><br>
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/4.jpg?raw=true)
-### 前台-展示自己的分类项目
+##### 前台-展示自己的分类项目
 
-<br><br><br>
+<br><br><br><br><br>
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/5.jpg?raw=true)
-### 前台-打开自己的分类项目
+##### 前台-打开自己的分类项目
 
-
-<br><br><br>
+<br><br><br><br><br>
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/6.jpg?raw=true)
-### 前台-展示自己的博客
+##### 前台-展示自己的博客
 
 
+<br><br><br><br><br>
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/a.jpg?raw=true)
+##### 后台-编辑修改主页内容
 
-<br><br>
+<br><br><br><br><br>
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/b.jpg?raw=true)
+##### 后台-查看路线列表
+
+<br><br><br><br><br>
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/c.jpg?raw=true)
+##### 后台-添加路线列表
+
+<br><br><br><br><br>
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/d.jpg?raw=true)
+##### 后台-查看项目列表
+
+<br><br><br><br><br>
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/e.jpg?raw=true)
+##### 后台-编辑项目(数据回显示)
+
+<br><br><br><br><br>
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/f.jpg?raw=true)
+##### 后台-评论管理
 
 
 ## 开发日志
