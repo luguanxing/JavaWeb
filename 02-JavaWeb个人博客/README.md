@@ -10,8 +10,6 @@
 <br>
 
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/0.jpg?raw=true)
-
-<br><br><br>
 #### 前台-主页展示
 
 
@@ -64,6 +62,7 @@
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/f.jpg?raw=true)
 #### 后台-评论管理
 
+<br><br><br><br><br>
 
 ## 开发日志
 ```
