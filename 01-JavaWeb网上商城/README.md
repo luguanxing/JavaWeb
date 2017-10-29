@@ -30,11 +30,13 @@
   (2) 管理商品功能。管理员可以添加、查询、修改、删除商品。
   (3) 订单管理功能。管理员可以查看管理员和用户订单信息并修改。
 ```
-![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/admincheck.gif?raw=true)
-后台管理<br><br>
 
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/product_list.jpg?raw=true)
 商品管理<br><br>
+
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/admincheck.gif?raw=true)
+后台管理<br><br>
+
 
 <br><br><br><br><br>
 
