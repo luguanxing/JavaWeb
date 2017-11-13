@@ -1,4 +1,4 @@
-package dao;
+package test.service;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,15 +8,22 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import entity.Area;
+import service.AreaService;
+import test.BaseTest;
 
-public class AreaDaoTest extends BaseTest {
+/**
+ * AreaService测试类，简单验证Service配置是否成功
+ * @author LGX
+ *
+ */
+public class AreaServiceTest extends BaseTest {
 
 	@Autowired
-	private AreaDao areaDao;
+	private AreaService areaService;
 	
 	@Test
 	public void testGetAreaList() {
-		List<Area> areaList = areaDao.getAreaList();
+		List<Area> areaList = areaService.getAreaList();
 		System.out.println(areaList);
 		assertEquals(areaList.size(), 2);
 	}
