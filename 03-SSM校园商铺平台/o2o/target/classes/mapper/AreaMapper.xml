@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.AreaDao" >
+
+	<resultMap id="BaseResultMap" type="entity.Area" >
+		<id column="areaId" property="areaid" jdbcType="INTEGER" />
+		<id column="areaName" property="areaname" jdbcType="VARCHAR" />
+		<result column="priority" property="priority" jdbcType="INTEGER" />
+		<result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+		<result column="lastEditTime" property="lastedittime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<select id="getAreaList" resultType="Area">
+		SELECT * FROM t_area ORDER BY priority DESC
+	</select>
+
+</mapper>
