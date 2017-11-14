@@ -7,8 +7,9 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import entity.Area;
-import service.AreaService;
+import com.o2o.entity.Area;
+import com.o2o.service.AreaService;
+
 import test.BaseTest;
 
 /**

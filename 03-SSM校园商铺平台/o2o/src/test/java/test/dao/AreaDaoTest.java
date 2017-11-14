@@ -7,8 +7,9 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import dao.AreaDao;
-import entity.Area;
+import com.o2o.dao.AreaDao;
+import com.o2o.entity.Area;
+
 import test.BaseTest;
 
 /**
