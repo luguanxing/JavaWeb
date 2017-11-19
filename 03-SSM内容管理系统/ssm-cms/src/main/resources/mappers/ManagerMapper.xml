@@ -10,4 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="password" column="password" />
 	</resultMap>
 
+	<select id="getByUsername" parameterType="Map" resultMap="ManagerResult">
+		SELECT * FROM t_manager WHERE username = #{username}
+	</select>
+
 </mapper> 
