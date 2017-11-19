@@ -1,6 +1,0 @@
-2017-11-14 16:54:24.476 [main] DEBUG com.o2o.dao.AreaDao.getAreaList -==>  Preparing: SELECT * FROM t_area ORDER BY priority DESC 
-2017-11-14 16:54:24.522 [main] DEBUG com.o2o.dao.AreaDao.getAreaList -==> Parameters: 
-2017-11-14 16:54:24.549 [main] DEBUG com.o2o.dao.AreaDao.getAreaList -<==      Total: 2
-2017-11-14 16:54:40.498 [main] DEBUG com.o2o.dao.AreaDao.getAreaList -==>  Preparing: SELECT * FROM t_area ORDER BY priority DESC 
-2017-11-14 16:54:40.540 [main] DEBUG com.o2o.dao.AreaDao.getAreaList -==> Parameters: 
-2017-11-14 16:54:40.563 [main] DEBUG com.o2o.dao.AreaDao.getAreaList -<==      Total: 2
