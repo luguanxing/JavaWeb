@@ -32,5 +32,13 @@
 	
 案例2-完成登录验证功能
 	配置realm验证和加密，写dao、service、controller，导入前端页面
+	
+案例3-完成主页前端
+	index.jsp
+	common/
+		header.jsp
+		menu.jsp
+		link.jsp
+		footer.jsp
 
 ```
