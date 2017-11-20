@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cms.dao.ArticleDao">
+
+	<resultMap type="Article" id="ArticleResult">
+		<result property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="publishDate" column="publishDate"/>
+		<result property="content" column="content"/>
+		<result property="summary" column="summary"/>
+		<result property="titleColor" column="titleColor"/>
+		<result property="click" column="click"/>
+		<result property="isRecommend" column="isRecommend"/>
+		<result property="isSlide" column="isSlide"/>
+		<result property="keyWords" column="keyWords"/>
+		<result property="slideImage" column="slideImage"/>
+		<association property="arcType" column="typeId" select="cms.dao.ArcTypeDao.findById"></association>
+	</resultMap>
+		
+	<select id="getNewest"  resultMap="ArticleResult">
+		SELECT * FROM t_article ORDER BY publishDate DESC limit 0,7
+	</select>
+	
+	<select id="getRecommend"  resultMap="ArticleResult">
+		SELECT * FROM t_article WHERE isRecommend=1  ORDER BY publishDate DESC limit 0,7
+	</select>
+	
+	<select id="getSlide"  resultMap="ArticleResult">
+		SELECT * FROM t_article WHERE isSlide=1  ORDER BY publishDate DESC limit 0,5
+	</select>
+	
+</mapper> 

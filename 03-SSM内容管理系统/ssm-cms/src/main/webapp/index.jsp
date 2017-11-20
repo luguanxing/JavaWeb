@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -17,52 +20,33 @@
 		<div class="content">
 			<div class="w960">
 	
-				<div class="left">
-					<DIV style="width: 330px; height: 228px;" class="tuhuo">
-						<A href="" target="_blank"><IMG
-							style="width: 330px; height: 208px;" id="fou_img" src=""></A> <A
-							href="#"> <IMG style="display: none;" class="tu_img"
-							src="${pageContext.request.contextPath}/static/userImages/1.jpg"
-							width="330" height="208" />
-						</A> <A href="#"> <IMG style="display: none;" class="tu_img"
-							src="${pageContext.request.contextPath}/static/userImages/2.jpg"
-							width="330" height="208" />
-						</A> <A href="#"> <IMG style="display: none;" class="tu_img"
-							src="${pageContext.request.contextPath}/static/userImages/3.jpg"
-							width="330" height="208" />
-						</A> <A href="#"> <IMG style="display: none;" class="tu_img"
-							src="${pageContext.request.contextPath}/static/userImages/4.jpg"
-							width="330" height="208" />
-						</A> <A href="#"> <IMG style="display: none;" class="tu_img"
-							src="${pageContext.request.contextPath}/static/userImages/5.jpg"
-							width="330" height="208" />
-						</A>
+			<div class="left">
+				<DIV style="width: 330px; height: 228px;" class="tuhuo">
+					<A href="" target="_blank"><IMG style="width: 330px; height: 208px;" id="fou_img" src=""></A>
+					
+					<c:forEach var="article" items="${slideArticleList }">
+						<A href="${pageContext.request.contextPath}/article/${article.id}.html">
+						 	 <IMG style="display: none;" class="tu_img" src="${pageContext.request.contextPath}/static/userImages/${article.slideImage}" width="330" height="208" />
+						</A> 
+					</c:forEach>	
+					
+					<c:forEach var="article" items="${slideArticleList }">
 						<P style="height: 20px;" class="tc">
-							<A href="#" target="_blank" title="1">1</A>
+							<A href="${pageContext.request.contextPath}/article/${article.id}.html" target="_blank" title="${article.title }">${fn:substring(article.title,0,18) }</A>
 						</P>
-						<P style="height: 20px;" class="tc">
-							<A href="#" target="_blank" title="2">2</A>
-						</P>
-						<P style="height: 20px;" class="tc">
-							<A href="#" target="_blank" title="3">3</A>
-						</P>
-						<P style="height: 20px;" class="tc">
-							<A href="#" target="_blank" title="4">4</A>
-						</P>
-						<P style="height: 20px;" class="tc">
-							<A href="#" target="_blank" title="5">5</A>
-						</P>
-						<UL>
-							<LI class="fouce">1</LI>
-							<LI>2</LI>
-							<LI>3</LI>
-							<LI>4</LI>
-							<LI>5</LI>
-						</UL>
-					</DIV>
-	
-	
-				</div>
+					</c:forEach>
+			
+					<UL>
+						<LI class="fouce">1</LI>
+						<LI>2</LI>
+						<LI>3</LI>
+						<LI>4</LI>
+						<LI>5</LI>
+					</UL>
+				</DIV>
+
+
+			</div>
 	
 				<div class="middle">
 	
@@ -70,32 +54,15 @@
 						<div class="dataHeader">最近更新</div>
 						<div class="datas">
 							<ul>
-	
-								<li><a target="_blank" href="/article/152.html"
-									title="做活动，领取Java爬虫-Java包下载网源码">[01-24]&nbsp;&nbsp;<font
-										color="#FF0000">做活动，领取Java爬虫-Java包下载</font></a></li>
-	
-								<li><a target="_blank" href="/article/86.html"
-									title="做活动，领取百度云搜索引擎V2.0源码">[01-24]&nbsp;&nbsp;<font
-										color="#FF0000">做活动，领取百度云搜索引擎V2.0源码</font></a></li>
-	
-								<li><a target="_blank" href="/article/151.html"
-									title="Tomcat OutOfMemoryError PermGen space 的解决办法">[01-03]&nbsp;&nbsp;<font
-										color="">Tomcat OutOfMemoryEr</font></a></li>
-	
-								<li><a target="_blank" href="/article/150.html"
-									title="广告联盟推荐-搜狗联盟">[12-18]&nbsp;&nbsp;<font color="">广告联盟推荐-搜狗联盟</font></a></li>
-	
-								<li><a target="_blank" href="/article/149.html"
-									title="广告联盟推荐-谷歌联盟">[12-18]&nbsp;&nbsp;<font color="#FF0000">广告联盟推荐-谷歌联盟</font></a></li>
-	
-								<li><a target="_blank" href="/article/148.html"
-									title="广告联盟推荐-百度联盟">[12-18]&nbsp;&nbsp;<font color="#FF0000">广告联盟推荐-百度联盟</font></a></li>
-	
-								<li><a target="_blank" href="/article/147.html"
-									title="http content-type常见文件格式类型">[12-04]&nbsp;&nbsp;<font
-										color="">http content-type常见文</font></a></li>
-	
+	                           <c:forEach var="article" items="${newestArticleList }">
+		                           	<li>
+			                           	<a target="_blank" href="${pageContext.request.contextPath}/article/${article.id}.html" title="${article.title }">
+											[<fmt:formatDate value="${article.publishDate }" pattern="MM-dd"/>]
+											&nbsp;&nbsp;
+											<font color="${article.titleColor }">${fn:substring(article.title,0,20) }</font>
+										</a>
+									</li>
+	                           </c:forEach>
 							</ul>
 						</div>
 					</div>
@@ -108,27 +75,13 @@
 						<div class="datas">
 							<ul>
 	
-								<li><a target="_blank" href="/article/152.html"
-									title="做活动，领取Java爬虫-Java包下载网源码"><font color="#FF0000">做活动，领取Java爬虫-Jav</font></a></li>
-	
-								<li><a target="_blank" href="/article/86.html"
-									title="做活动，领取百度云搜索引擎V2.0源码"><font color="#FF0000">做活动，领取百度云搜索引擎V2.</font></a></li>
-	
-								<li><a target="_blank" href="/article/73.html" title="关于我们"><font
-										color="#FF0000">关于我们</font></a></li>
-	
-								<li><a target="_blank" href="/article/77.html"
-									title="如何发布Web项目到互联网"><font color="#FF0000">如何发布Web项目到互联网</font></a></li>
-	
-								<li><a target="_blank" href="/article/74.html"
-									title="广告联盟推荐-七七联盟"><font color="#FF0000">广告联盟推荐-七七联盟</font></a></li>
-	
-								<li><a target="_blank" href="/article/68.html"
-									title="Java HelloWorld实现及Java运行原理介绍"><font color="#FF0000">Java
-											HelloWorld实</font></a></li>
-	
-								<li><a target="_blank" href="/article/67.html"
-									title="Java运行环境搭建之Jdk配置"><font color="#FF0000">Java运行环境搭建之Jdk配置</font></a></li>
+	                            <c:forEach var="article" items="${recommendArticleList }">
+		                           	<li>
+		                           		<a target="_blank" href="${pageContext.request.contextPath}/article/${article.id}.html" title="${article.title }">
+		                           			<font color="${article.titleColor }">${fn:substring(article.title,0,16) }</font>
+		                           		</a>
+									</li>
+	                           </c:forEach>
 	
 							</ul>
 						</div>

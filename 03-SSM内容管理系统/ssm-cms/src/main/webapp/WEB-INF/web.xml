@@ -18,6 +18,9 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	<listener>
+		<listener-class>cms.service.impl.InitComponet</listener-class>
+	</listener>
 	
     <!-- Spring配置文件 -->
 	<context-param>
