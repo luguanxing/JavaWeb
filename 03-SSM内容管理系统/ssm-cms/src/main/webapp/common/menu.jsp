@@ -6,7 +6,7 @@
 <div class="menu">
 	<div class="w960 m960">
 		<ul>
-			<li class="first"><a href="${pageContext.request.contextPath}/" >首页</a></li>
+			<li class="first"><a href="/" >首页</a></li>
 			
 				<c:forEach items="${arcTypeList }" var="arcType">
 					<li>
