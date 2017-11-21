@@ -30,4 +30,39 @@ public interface ArticleService {
 	 */
 	public List<Article> getSlide();
 	
+	/**
+	 * 根据帖子类别查找最新8条数据
+	 * @param typeId
+	 * @return
+	 */
+	public List<Article> getIndex(Integer typeId);
+	
+	/**
+	 * 通过id查询帖子
+	 * @param id
+	 * @return
+	 */
+	public Article getById(Integer id);
+	
+	/**
+	 * 获取上一个帖子
+	 * @param id
+	 * @return
+	 */
+	public Article getLastArticle(Integer id);
+	
+	/**
+	 * 获取下一个帖子
+	 * @param id
+	 * @return
+	 */
+	public Article getNextArticle(Integer id);
+	
+	/**
+	 * 更新帖子
+	 * @param article
+	 * @return
+	 */
+	public Integer update(Article article);
+	
 }

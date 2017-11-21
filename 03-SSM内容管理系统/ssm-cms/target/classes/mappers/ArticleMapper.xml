@@ -31,4 +31,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM t_article WHERE isSlide=1  ORDER BY publishDate DESC limit 0,5
 	</select>
 	
+	<select id="getIndex"  resultMap="ArticleResult" parameterType="Integer">
+		SELECT * FROM t_article WHERE typeId=#{typeId}  ORDER BY publishDate DESC limit 0,8
+	</select>
+	
+	<select id="getById"  resultMap="ArticleResult" parameterType="Integer">
+		SELECT * FROM t_article WHERE id=#{id} limit 1
+	</select>
+	
+	<select id="getLastArticle"  resultMap="ArticleResult" parameterType="Integer">
+		SELECT * FROM t_article WHERE id &lt; #{id} ORDER BY id DESC LIMIT 1
+	</select>
+	
+	<select id="getNextArticle"  resultMap="ArticleResult" parameterType="Integer">
+		SELECT * FROM t_article WHERE id &gt; #{id} ORDER BY id ASC LIMIT 1
+	</select>
+	
+	<update id="update" parameterType="Article">
+		UPDATE t_article
+			<set>
+				<if test="click != 0">
+					click = #{click}
+				</if>
+			</set>
+		WHERE id=#{id}
+	</update>
+	
 </mapper> 

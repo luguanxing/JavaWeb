@@ -1,5 +1,6 @@
 package cms.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -61,12 +62,21 @@ public class InitComponet implements ApplicationContextAware, ServletContextList
 		List<Article> newestArticleList = articleService.getNewest();
 		List<Article> recommendArticleList = articleService.getRecommend();
 		List<Article> slideArticleList = articleService.getSlide();
+		List<List<Article>> subArticleLists = new ArrayList();
+		if (arcTypeList != null && !arcTypeList.isEmpty()) {
+			for (int i = 0; i < arcTypeList.size(); i++) {
+				Integer typeId = arcTypeList.get(i).getId();
+				List<Article> subArticleList = articleService.getIndex(typeId);
+				subArticleLists.add(subArticleList);
+			}
+		}
 		
 		application.setAttribute("linkList", linkList);
 		application.setAttribute("arcTypeList", arcTypeList);
 		application.setAttribute("newestArticleList", newestArticleList);
 		application.setAttribute("recommendArticleList", recommendArticleList);
 		application.setAttribute("slideArticleList", slideArticleList);
+		application.setAttribute("subArticleLists", subArticleLists);
 	}
 	
 }
