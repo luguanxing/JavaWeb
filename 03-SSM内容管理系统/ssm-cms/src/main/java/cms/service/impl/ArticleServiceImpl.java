@@ -1,6 +1,7 @@
 package cms.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,6 +60,16 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	public Integer update(Article article) {
 		return articleDao.update(article);
+	}
+
+	@Override
+	public List<Article> list(Map<String, Object> map) {
+		return articleDao.list(map);
+	}
+
+	@Override
+	public Long getTotal(Map<String, Object> map) {
+		return articleDao.getTotal(map);
 	}
 
 }

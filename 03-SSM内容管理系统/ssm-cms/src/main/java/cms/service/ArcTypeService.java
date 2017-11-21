@@ -19,4 +19,11 @@ public interface ArcTypeService {
 	 */
 	public List<ArcType> list(Map<String, Object> map);
 	
+	/**
+	 * 根据id查询帖子 类别
+	 * @param id
+	 * @return
+	 */
+	public ArcType findById(Integer id);
+	
 }

@@ -67,4 +67,18 @@ public interface ArticleDao {
 	 */
 	public Integer update(Article article);
 	
+	/**
+	 * 根据分页条件查询帖子
+	 * @param map
+	 * @return
+	 */
+	public List<Article> list(Map<String, Object> map);
+	
+	/**
+	 * 获取总记录数
+	 * @param map
+	 * @return
+	 */
+	public Long getTotal(Map<String, Object> map);
+	
 }

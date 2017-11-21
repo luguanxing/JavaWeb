@@ -386,3 +386,27 @@ zoom: 1;
 .article_lastAndNextPage a{
 	text-decoration: none;
 }
+
+.article_type_list ul li a{
+	font-size: large !important;
+}
+
+.article_type_list ul li{
+	margin-top: 10px !important;
+}
+
+.article_type_list ul li span{
+	font-size: large !important;
+}
+
+.upAndDownPage{
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.upAndDownPage a{
+	text-decoration: none;
+	color: black;
+	font-size: 15px;
+}

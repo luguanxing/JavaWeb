@@ -9,69 +9,35 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>${article.title }_CMS内容管理系统</title>
 		<META NAME="Author" CONTENT="Luguanxing">
-		<meta name="keywords" content="${article.keyWords }" />
-		<meta name="description" content="${article.summary }" />
+		<meta name="keywords" content="${arcType.keywords }" />
+		<meta name="description" content="${arcType.description }" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/cms.css">
 		<script src="${pageContext.request.contextPath}/static/js/jQuery.js"></script>
 	</head>
 	<body>
 		<jsp:include page="/common/header.jsp"></jsp:include>
 		<jsp:include page="/common/menu.jsp"></jsp:include>
-	
+
 		<div class="content">
 			<div class="w960">
 				<div class="pLeft">
 					<div class="data_list">
 						<div class="dataHeader navi">${navCode }</div>
-						<div class="article_title"><h2><strong>${article.title }</strong></h2></div>
-						<div class="share">
-							<div class="bshare-custom">
-								<a title="分享到QQ空间" class="bshare-qzone"></a>
-								<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
-								<a title="分享到人人网" class="bshare-renren"></a>
-								<a title="分享到腾讯微博" class="bshare-qqmb"></a>
-								<a title="分享到网易微博" class="bshare-neteasemb"></a>
-								<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
-								<span class="BSHARE_COUNT bshare-share-count">0</span>
-							</div>
-							<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
-							<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
-						</div>	
-						<div class="article_info">
-							发布时间：『<fmt:formatDate value="${article.publishDate }" pattern="yyyy-MM-dd HH:mm" />』&nbsp;&nbsp;
-							&nbsp;&nbsp;帖子类别：『${article.arcType.typeName}』&nbsp;&nbsp;阅读次数：${article.click}
-						</div>
-						<div class="article_summary">
-							${article.summary }
-						</div>
-						
-						<div class="article_content">
-							${article.content }
-						</div>
-						<div class="article_keyWord">
-							<font><strong>关键字：</strong></font>
-							<c:choose>
-								<c:when test="${keyWords==null }">
-									&nbsp;&nbsp;无
-								</c:when>
-								<c:otherwise>
-									<c:forEach var="keyWord" items="${keyWords }">
-									  &nbsp;&nbsp;
-									  <a target="_blank">${keyWord }</a>
-									  &nbsp;&nbsp;
+							<div class="datas article_type_list">
+								<ul>
+									<c:forEach var="article" items="${articleList }">
+										<li>
+											<a target="_blank" href="${pageContext.request.contextPath}/article/${article.id }.html" title="${article.title }">[<fmt:formatDate	value="${article.publishDate }" pattern="MM-dd" />]&nbsp;&nbsp;<font color="${article.titleColor }">${fn:substring(article.title,0,20) }</font></a>
+										</li>		
 									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-						</div>
-						
-						<div class="article_lastAndNextPage">
+								</ul>
+							</div>
+						<div class="upAndDownPage">
 							${pageCode }
-						</div>	
-						
+						</div>
 					</div>
 				</div>
-	
-
+				
 				<div class="pRight">
 					<div class="data_list">
 						<div class="dataHeader">站长推荐</div>
@@ -87,7 +53,6 @@
 							</ul>
 						</div>
 					</div>
-					
 					<div class="data_list" style="margin-top: 10px;">
 						<div class="dataHeader">最近更新</div>
 						<div class="datas">
@@ -102,10 +67,9 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
-	
+
 		<jsp:include page="/common/footer.jsp"></jsp:include>
 	</body>
 </html>
