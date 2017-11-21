@@ -45,5 +45,13 @@
 	class InitComponet implements ApplicationContextAware, ServletContextListener
 	内部static ApplicationContext applicationContext用于管理bean等
 	refreshSystem(ServletContext application)用于操作applicationContext创建使用service读数据并存储到servlet的application中
+	
+案例5-完成主页、文章、文章类别及其标题和分页的显示
+	在application缓存的数据直接在jsp页面中用jstl可获取
+	使用HtmlUtils拼接字符串,拼接时传入contextPath表示项目路径
+	传入map参数进Dao,在XML文件中使用<if test=“”>拼接分页条件
+	rest风格开发:@RequestMapping("/{id}"),配合springmvc拦截器拦截*.html和*.do
+	mybatis.xml中大于小于号 < > 使用转义字符 &lt; &gt;
+	controller中加入try并使用HttpServletResponse重定向保持稳定
 
 ```
