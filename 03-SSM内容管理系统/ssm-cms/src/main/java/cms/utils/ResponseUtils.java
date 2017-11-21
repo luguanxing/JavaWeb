@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Administrator
  *
  */
-public class ResponseUtil {
+public class ResponseUtils {
 
 	public static void write(HttpServletResponse response, Object object) throws Exception {
 		response.setContentType("text/html;charset=UTF-8");

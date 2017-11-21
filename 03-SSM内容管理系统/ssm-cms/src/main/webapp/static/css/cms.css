@@ -305,3 +305,84 @@ zoom: 1;
 	float:left;
 	padding-left: 15px;
 }
+
+.content .pLeft{
+	width: 700px;
+	float: left;
+}
+
+.content .pRight{
+	width: 250px;
+	float: right;
+}
+
+.article_title{
+	margin-top:20px;
+	text-align: center;
+}
+
+.article_content{
+    font-size:14px;
+	padding:10px;
+	margin-top:20px;
+	padding-bottom: 30px;
+}
+
+
+.navi{
+	font-weight: normal !important;
+	background-color: #F3F3F3;
+}
+
+.navi a{
+	text-decoration: none;
+	color: black;
+}
+
+.share{
+	padding-left: 270px;
+	padding-bottom: 5px;
+	padding-top: 0px
+}
+
+.article_info{
+	text-align: center;
+}
+
+.article_summary{
+	width: 90%;
+    padding: 8px 16px;
+    line-height: 24px;
+    background: #f5fcee;
+    border: 1px solid #DCDDDD;
+    font-size: 14px;
+    color: #706A6A;
+    margin: 8px auto 0 auto;
+}
+
+.article_keyWord{
+	margin-top:20px;
+	padding-bottom: 30px;
+	padding-left: 30px;
+}
+
+.article_keyWord a{
+	text-decoration: none;
+	color: black;
+	font-size: 15px;
+	font-style: italic;
+}
+
+.article_lastAndNextPage{
+	border-top:1px dotted black;
+	padding: 10px;
+}
+
+.article_lastAndNextPage p{
+	font-size: 14px;
+	margin: 5px;
+}
+
+.article_lastAndNextPage a{
+	text-decoration: none;
+}

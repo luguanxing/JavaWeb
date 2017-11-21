@@ -41,4 +41,24 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleDao.getIndex(typeId);
 	}
 
+	@Override
+	public Article getById(Integer id) {
+		return articleDao.getById(id);
+	}
+
+	@Override
+	public Article getLastArticle(Integer id) {
+		return articleDao.getLastArticle(id);
+	}
+
+	@Override
+	public Article getNextArticle(Integer id) {
+		return articleDao.getNextArticle(id);
+	}
+
+	@Override
+	public Integer update(Article article) {
+		return articleDao.update(article);
+	}
+
 }
