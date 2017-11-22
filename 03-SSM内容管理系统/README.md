@@ -53,5 +53,12 @@
 	rest风格开发:@RequestMapping("/{id}"),配合springmvc拦截器拦截*.html和*.do
 	mybatis.xml中大于小于号 < > 使用转义字符 &lt; &gt;
 	controller中加入try并使用HttpServletResponse重定向保持稳定
+	
+案例6-完成后台写文章功能
+	所有的"xxPrefix"写项目名(本项目写的是"/ssm-cms")
+	所有的"xxPathFormat"图片存储的位置(本项目写的是"/static/uploadImages/{yyyy}{mm}{dd}/{time}{rand:6}")
+	读取时/从ROOT目录开始(不带项目名所以要手动加)
+	存储时/表示从项目路径开始(所以直接指定项目下的存储位置)
+	删除index.html防止尝试上传
 
 ```
