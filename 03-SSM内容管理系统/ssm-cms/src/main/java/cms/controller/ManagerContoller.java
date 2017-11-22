@@ -1,5 +1,6 @@
 package cms.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
@@ -29,7 +30,7 @@ public class ManagerContoller {
 	
 	@RequestMapping(value="/login", produces="application/json;charset=utf-8")
 	@ResponseBody
-	public String login(Manager manager, HttpServletResponse response) throws Exception {
+	public String login(Manager manager, HttpServletResponse response, HttpServletRequest request) throws Exception {
 		Subject subject = SecurityUtils.getSubject();
 		UsernamePasswordToken token = new UsernamePasswordToken(manager.getUsername(), Md5Utils.md5(manager.getPassword(), Md5Utils.SALT));
 		JSONObject json = new JSONObject();
@@ -37,7 +38,7 @@ public class ManagerContoller {
 			subject.login(token);
 			if (subject.isAuthenticated()) {
 				//认证成功设置session
-				SecurityUtils.getSubject().getSession().setAttribute("currentUser", manager);
+				request.getSession().setAttribute("currentUser", manager);
 			}
 			json.put("success", true);
 		} catch (Exception e) {

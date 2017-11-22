@@ -79,4 +79,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 	
+	<insert id="add" parameterType="Article">
+		INSERT INTO t_article
+			(title, publishDate, summary, content, titleColor, click, isRecommend, isSlide, slideImage, typeId, keyWords)
+		VALUES
+			(#{title},#{publishDate},#{summary},#{content},#{titleColor},#{click},#{isRecommend},#{isSlide},#{slideImage},#{arcType.id},#{keyWords})
+	</insert>
+	
 </mapper> 

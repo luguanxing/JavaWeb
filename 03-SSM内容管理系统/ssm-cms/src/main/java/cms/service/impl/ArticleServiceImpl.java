@@ -72,4 +72,9 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleDao.getTotal(map);
 	}
 
+	@Override
+	public Integer add(Article article) {
+		return articleDao.add(article);
+	}
+
 }

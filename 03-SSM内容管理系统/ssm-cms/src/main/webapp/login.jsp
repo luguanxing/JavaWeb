@@ -34,7 +34,7 @@
 					},
 					function(result) {
 						if (result.success) {
-							alert("登录成功");
+							window.location.href="${pageContext.request.contextPath}/admin/main.jsp"
 						} else {
 							alert(result.errMsg);
 						}

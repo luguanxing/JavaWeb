@@ -19,7 +19,7 @@ import cms.utils.HtmlUtils;
 import cms.utils.StringUtils;
 
 /**
- * 帖子Controller层
+ * 文章Controller层
  * @author LGX
  *
  */
