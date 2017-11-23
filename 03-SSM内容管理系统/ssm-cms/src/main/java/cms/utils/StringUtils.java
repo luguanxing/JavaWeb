@@ -34,4 +34,15 @@ public class StringUtils {
 		return list;
 	}
 	
+	/**
+	 * 封装SQL模糊查询的LIKE语句
+	 * @param str
+	 */
+	public static String formatLike(String str) {
+		if (isNotEmpty(str)) {
+			return "%" + str + "%";
+		}
+		return null;
+	}
+	
 }

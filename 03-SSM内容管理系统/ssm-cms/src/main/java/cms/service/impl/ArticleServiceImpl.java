@@ -77,4 +77,9 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleDao.add(article);
 	}
 
+	@Override
+	public Integer delete(Integer id) {
+		return articleDao.delete(id);
+	}
+
 }

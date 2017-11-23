@@ -88,4 +88,11 @@ public interface ArticleService {
 	 */
 	public Integer add(Article article);
 	
+	/**
+	 * 删除文章
+	 * @param id
+	 * @return
+	 */
+	public Integer delete(Integer id);
+	
 }
