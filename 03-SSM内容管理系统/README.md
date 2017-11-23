@@ -3,10 +3,12 @@
 ## 需求分析
 
 ```
-使用SSM实现一个网站CMS内容管理系统
+使用SSM+Shiro+EasyUI实现一个网站CMS内容管理系统
+前台首页包括文章分类和文章，文章分类下包含文章，文章使用富文本，并可以展示幻灯片
+前台管理使用Shiro身份验证，可以增删改查文章、文章分类、友情链接
 
 ```
-<br/><br/><br/>
+<br/><br/>
 		
 ## 前台展示
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/03-SSM%E5%86%85%E5%AE%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/pictures/01.jpg?raw=true)
