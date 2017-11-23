@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,7 +85,7 @@ public class ArticleAdminController {
 	 */
 	@RequestMapping(value="/list", produces="application/json;charset=utf-8")
 	@ResponseBody
-	public String list(Article searchArticle, @RequestParam(value="page", defaultValue="1") int page, @RequestParam(value="rows", defaultValue="10") int pageSize, HttpServletResponse response) {
+	public String list(Article searchArticle, @RequestParam(value="page", defaultValue="1") int page, @RequestParam(value="rows", defaultValue="10") int pageSize) {
 		PageBean pageBean = new PageBean(page, pageSize);
 		Map<String, Object> map = new HashMap();
 		map.put("title", StringUtils.formatLike(searchArticle.getTitle()));

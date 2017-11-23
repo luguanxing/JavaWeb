@@ -16,4 +16,11 @@ public interface ManagerDao {
 	 */
 	public Manager getByUsername(String username);
 	
+	/**
+	 * 更新管理员信息
+	 * @param manager
+	 * @return
+	 */
+	public Integer update(Manager manager);
+	
 }

@@ -22,5 +22,10 @@ public class ManagerServiceImpl implements ManagerService {
 	public Manager getByUsername(String username) {
 		return managerDao.getByUsername(username);
 	}
+
+	@Override
+	public Integer update(Manager manager) {
+		return managerDao.update(manager);
+	}
 	
 }

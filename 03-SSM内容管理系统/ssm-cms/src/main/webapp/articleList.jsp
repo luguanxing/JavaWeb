@@ -7,7 +7,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>${article.title }_CMS内容管理系统</title>
+		<title>${arcType.typeName }</title>
 		<META NAME="Author" CONTENT="Luguanxing">
 		<meta name="keywords" content="${arcType.keywords }" />
 		<meta name="description" content="${arcType.description }" />
