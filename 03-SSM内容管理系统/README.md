@@ -60,5 +60,11 @@
 	读取时/从ROOT目录开始(不带项目名所以要手动加)
 	存储时/表示从项目路径开始(所以直接指定项目下的存储位置)
 	删除index.html防止尝试上传
+	
+	
+案例7-后台管理
+	easyui分页:前端固定了取分页的参数,后端list方法如下:
+	list(@RequestParam(value="page", defaultValue="1") int page, @RequestParam(value="rows", defaultValue="10") int pageSize)
+	返回中文:@RequestMapping(value="/list", produces="application/json;charset=utf-8
 
 ```
