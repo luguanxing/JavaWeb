@@ -26,4 +26,32 @@ public interface ArcTypeService {
 	 */
 	public ArcType findById(Integer id);
 	
+	/**
+	 * 获取总记录数
+	 * @param map
+	 * @return
+	 */
+	public Long getTotal(Map<String, Object> map);
+	
+	/**
+	 * 添加文章类别
+	 * @param arcType
+	 * @return
+	 */
+	public Integer add(ArcType arcType);
+	
+	/**
+	 * 修改文章类别
+	 * @param arcType
+	 * @return
+	 */
+	public Integer update(ArcType arcType);
+	
+	/**
+	 * 删除文章类别
+	 * @param arcType
+	 * @return
+	 */
+	public Integer delete(Integer id);
+	
 }
