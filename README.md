@@ -24,12 +24,24 @@
 后台功能:可以增删改查有关数据
 ```
 <br><br><br>
-![img](https://github.com/luguanxing/JavaWeb-Apps/raw/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/0.jpg?raw=true)
-<br><br><br>
 ![img](https://github.com/luguanxing/JavaWeb-Apps/raw/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/4.jpg?raw=true)
 <br><br><br>
 ![img](https://github.com/luguanxing/JavaWeb-Apps/raw/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/6.jpg?raw=true)
 <br><br><br>
 ![img](https://github.com/luguanxing/JavaWeb-Apps/raw/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/e.jpg?raw=true)
 
+<br><br><br><br><br><br>
 
+## 03-SSM内容管理系统
+```
+使用SSM+Shiro+EasyUI实现一个网站CMS内容管理系统
+前台首页包括文章分类和文章，文章分类下包含文章，文章使用富文本，并可以展示幻灯片
+前台管理使用Shiro身份验证，可以增删改查文章、文章分类、友情链接
+```
+<br><br><br>
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/03-SSM%E5%86%85%E5%AE%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/pictures/01.jpg?raw=true)
+<br/><br/>
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/03-SSM%E5%86%85%E5%AE%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/pictures/03.jpg?raw=true)
+<br/><br/>
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/03-SSM%E5%86%85%E5%AE%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/pictures/05.jpg?raw=true)
+<br/><br/>
