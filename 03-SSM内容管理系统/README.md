@@ -23,7 +23,6 @@
 <br/><br/>
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/03-SSM%E5%86%85%E5%AE%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/pictures/06.jpg?raw=true)
 <br/><br/>
-![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/03-SSM%E5%86%85%E5%AE%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/pictures/07.jpg?raw=true)
 <br/><br/><br/><br/><br/><br/>
 
 ## 开发日志
@@ -82,7 +81,9 @@
 	
 案例7-后台管理
 	easyui分页:前端固定了取分页的参数,后端list方法如下:
-	list(@RequestParam(value="page", defaultValue="1") int page, @RequestParam(value="rows", defaultValue="10") int pageSize)
+	list(	@RequestParam(value="page", defaultValue="1") int page, 
+		@RequestParam(value="rows", defaultValue="10") int pageSize
+	)
 	返回中文:@RequestMapping(value="/list", produces="application/json;charset=utf-8
 
 ```
