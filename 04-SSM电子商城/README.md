@@ -19,15 +19,51 @@
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/04-SSM%E7%94%B5%E5%AD%90%E5%95%86%E5%9F%8E/pictures/jiagou.jpg?raw=true)
 <br/><br/><br/>
 
-# maven框架
+# 开发流程
 ```
-e3-parent：父工程，打包方式pom，管理jar包的版本号。项目中所有工程都应该继承父工程。
-  |--e3-common：通用的工具类通用的pojo。打包方式jar
-  |--e3-manager：服务层工程。聚合工程。Pom工程
-    |--e3-manager-dao：打包方式jar
-    |--e3-manager-pojo：打包方式jar
-    |--e3-manager-interface：打包方式jar
-    |--e3-manager-service：打包方式：jar
-    |--e3-manager-web：表现层工程。打包方式war
+day01-搭建基本框架和SSM
+(1)搭建框架
+  |--e3-parent：父工程，打包方式pom，管理jar包的版本号。项目中所有工程都应该继承父工程。
+      |--e3-common：通用的工具类通用的pojo。打包方式jar
+      |--e3-manager：服务层工程。聚合工程。Pom工程
+        |--e3-manager-dao：打包方式jar
+        |--e3-manager-pojo：打包方式jar
+        |--e3-manager-interface：打包方式jar
+        |--e3-manager-service：打包方式：jar
+        |--e3-manager-web：表现层工程。打包方式war
+(2)搭建SSM环境框架，使用逆向工程生成mapper
+
+
+
+day02-拆分工程
+(1)修改架构
+e3-manager作为服务层
+提出e3-manager-web作为表现层，改名为e3-web
+|--e3-parent：父工程，打包方式pom，管理jar包的版本号。项目中所有工程都应该继承父工程。
+		|--e3-common：打包方式jar
+		|--e3-manager：打包方式war
+			|--e3-manager-dao：打包方式jar
+			|--e3-manager-pojo：打包方式jar
+			|--e3-manager-interface：打包方式jar
+			|--e3-manager-service：打包方式：war
+		|--e3-web：打包方式war
+(2)搭建中间环境zookeeper和服务提供容器dubbo
+  dubbo中间件实现远程调用,即e3-manager(8080)提供服务给e3-web(8081)调用
+  dubbo主机192.168.253.133:2181
+  xml约束http://code.alibabatech.com/schema/dubbo/dubbo.xsd改为
+  https://raw.githubusercontent.com/alibaba/dubbo/master/dubbo-config/
+  dubbo-config-spring/src/main/resources/META-INF/dubbo.xsd
+(3)测试工程改造效果
+  加log4j可以解决启动tomcat卡住问题并找到原因:
+    注意：centos需要关闭防火墙。
+    systemctl stop firewalld.service #停止firewall
+    systemctl disable firewalld.service #禁止firewall开机启动
+    关闭防火墙
+    service iptables stop
+    永久关闭修改配置开机不启动防火墙：
+    chkconfig iptables off
+  要实现序列化接口才能远程传递对象
+
+
 
 ```
