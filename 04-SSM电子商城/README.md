@@ -24,13 +24,13 @@
 day01-搭建基本框架和SSM
 (1)搭建框架
   |--e3-parent：父工程，打包方式pom，管理jar包的版本号。项目中所有工程都应该继承父工程。
-      |--e3-common：通用的工具类通用的pojo。打包方式jar
-      |--e3-manager：服务层工程。聚合工程。Pom工程
-        |--e3-manager-dao：打包方式jar
-        |--e3-manager-pojo：打包方式jar
-        |--e3-manager-interface：打包方式jar
-        |--e3-manager-service：打包方式：jar
-        |--e3-manager-web：表现层工程。打包方式war
+	  |--e3-common：通用的工具类通用的pojo。打包方式jar
+	  |--e3-manager：服务层工程。聚合工程。Pom工程
+		|--e3-manager-dao：打包方式jar
+		|--e3-manager-pojo：打包方式jar
+		|--e3-manager-interface：打包方式jar
+		|--e3-manager-service：打包方式：jar
+		|--e3-manager-web：表现层工程。打包方式war
 (2)搭建SSM环境框架，使用逆向工程生成mapper
 
 
@@ -55,15 +55,23 @@ e3-manager作为服务层
   dubbo-config-spring/src/main/resources/META-INF/dubbo.xsd
 (3)测试工程改造效果
   加log4j可以解决启动tomcat卡住问题并找到原因:
-    注意：centos需要关闭防火墙。
-    systemctl stop firewalld.service #停止firewall
-    systemctl disable firewalld.service #禁止firewall开机启动
-    关闭防火墙
-    service iptables stop
-    永久关闭修改配置开机不启动防火墙：
-    chkconfig iptables off
+	注意：centos需要关闭防火墙。
+	systemctl stop firewalld.service #停止firewall
+	systemctl disable firewalld.service #禁止firewall开机启动
+	关闭防火墙
+	service iptables stop
+	永久关闭修改配置开机不启动防火墙：
+	chkconfig iptables off
   要实现序列化接口才能远程传递对象
-
-
+(4)debug设置和dubbo监控
+	eclipse要调试需要设置debug-config添加源码后才可调试
+	dubbo-admin-2.5.4.war不支持jdk1.8，要改成dubbo-admin-2.5.7
+(5)显示商品列表
+	easyui查列表附带参数page和rows，应返回json格式数据，包含total和该页的rows
+	逆向工程生成的mapper不带分页功能，需要插件PageHelper(基于拦截器修改mybatis的sql语句)
+		使用PageHelper-fix需要添加导入的pom工程并安装
+		PageInfo能包含分页信息(总记录数、总页数、当前页码、前后页、是否开头末尾等)
+		xxxMapper.selectByExample(example)能包含该页的数据
+	e3-web依赖引入pagehelper解决没有Page类警告信息
 
 ```
