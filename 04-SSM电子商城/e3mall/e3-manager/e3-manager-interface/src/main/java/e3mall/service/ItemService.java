@@ -1,9 +1,12 @@
 package e3mall.service;
 
+import e3mall.common.pojo.EasyUIDataGridResult;
 import e3mall.pojo.TbItem;
 
 public interface ItemService {
 
-	TbItem getByItemId(long itemId);
+	TbItem getItemById(long itemId);
+	
+	EasyUIDataGridResult getItemList(int page, int rows);
 	
 }
