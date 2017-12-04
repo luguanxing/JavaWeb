@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mail.dao.ScheduleDao">
+
+	<resultMap type="Schedule" id="ScheduleResult">
+		<result property="id" column="id"/>
+		<result property="sourceid" column="sourceid"/>
+		<result property="targetid" column="targetid"/>
+		<result property="intervaltime" column="intervaltime"/>
+		<result property="lastsendtime" column="lastsendtime"/>
+		<result property="description" column="description"/>
+		<result property="sendcontent" column="sendcontent"/>
+	</resultMap>
+		
+	<select id="list" parameterType="Map" resultMap="ScheduleResult">
+		SELECT * FROM t_schedule ORDER BY id ASC
+		<if test="start!=null and size!=null">
+			limit #{start}, #{size}
+		</if>
+	</select>
+	
+	<select id="findById" parameterType="Integer" resultMap="ScheduleResult">
+		SELECT * FROM t_schedule WHERE id=#{id}
+	</select>
+	
+	<select id="getTotal" parameterType="Map" resultType="Long">
+		SELECT count(*) FROM t_schedule
+	</select>
+	
+	<insert id="add" parameterType="Schedule">
+		INSERT INTO t_schedule
+			(sourceid, targetid, intervaltime, lastsendtime, description, sendcontent)
+		VALUES
+			(#{sourceid},#{targetid},#{intervaltime},#{lastsendtime},#{description},#{sendcontent})
+	</insert>
+	
+	<update id="update" parameterType="Schedule">
+		UPDATE t_schedule
+			<set>
+				<if test="sourceid!=null and sourceid!='' ">
+					sourceid=#{sourceid},
+				</if>
+				<if test="targetid!=null and targetid!='' ">
+					targetid=#{targetid},
+				</if>
+				<if test="intervaltime!=null and intervaltime!='' ">
+					intervaltime=#{intervaltime},
+				</if>
+				<if test="lastsendtime!=null and lastsendtime!='' ">
+					lastsendtime=#{lastsendtime},
+				</if>
+				<if test="description!=null and description!='' ">
+					description=#{description},
+				</if>
+				<if test="sendcontent!=null and sendcontent!='' ">
+					sendcontent=#{sendcontent},
+				</if>		
+			</set>
+		WHERE id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM t_schedule WHERE id=#{id}
+	</delete>
+	
+	<update id="deleteTime">
+		UPDATE t_schedule SET lastsendtime = NULL
+	</update>
+	
+</mapper> 
