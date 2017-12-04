@@ -16,23 +16,22 @@
 <br/><br/><br/>
 
 # 架构
-![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/04-SSM%E7%94%B5%E5%AD%90%E5%95%86%E5%9F%8E/pictures/jiagou.jpg?raw=true)
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/05-%E5%A4%A7%E5%9E%8B%E5%88%86%E5%B8%83%E5%BC%8F%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/pictures/jiagou.jpg?raw=true)
 <br/><br/><br/>
 
 # 开发流程
 ```
 day01-搭建基本框架和SSM
 (1)搭建框架
-  |--e3-parent：父工程，打包方式pom，管理jar包的版本号。项目中所有工程都应该继承父工程。
-	  |--e3-common：通用的工具类通用的pojo。打包方式jar
-	  |--e3-manager：服务层工程。聚合工程。Pom工程
+	|--e3-parent：父工程，打包方式pom，管理jar包的版本号。项目中所有工程都应该继承父工程。
+		|--e3-common：通用的工具类通用的pojo。打包方式jar
+		|--e3-manager：服务层工程。聚合工程。Pom工程
 		|--e3-manager-dao：打包方式jar
 		|--e3-manager-pojo：打包方式jar
 		|--e3-manager-interface：打包方式jar
 		|--e3-manager-service：打包方式：jar
 		|--e3-manager-web：表现层工程。打包方式war
 (2)搭建SSM环境框架，使用逆向工程生成mapper
-
 
 
 day02-拆分工程
@@ -48,13 +47,22 @@ e3-manager作为服务层
 			|--e3-manager-service：打包方式：war
 		|--e3-web：打包方式war
 (2)搭建中间环境zookeeper和服务提供容器dubbo
-  dubbo中间件实现远程调用,即e3-manager(8080)提供服务给e3-web(8081)调用
-  dubbo主机192.168.253.133:2181
-  xml约束http://code.alibabatech.com/schema/dubbo/dubbo.xsd改为
-  https://raw.githubusercontent.com/alibaba/dubbo/master/dubbo-config/
-  dubbo-config-spring/src/main/resources/META-INF/dubbo.xsd
+	dubbo中间件实现远程调用,即e3-manager(8080)提供服务给e3-web(8081)调用
+	dubbo主机192.168.253.133:2181
+	xml约束http://code.alibabatech.com/schema/dubbo/dubbo.xsd改为
+	https://raw.githubusercontent.com/alibaba/dubbo/master/dubbo-config/
+	dubbo-config-spring/src/main/resources/META-INF/dubbo.xsd
+	<!-- 在e3-manager-service的applicationContext-dao.xml使用dubbo发布服务 -->
+	<dubbo:application name="e3-manager" />
+	<dubbo:registry protocol="zookeeper" address="192.168.253.133:2181" />
+	<dubbo:protocol name="dubbo" port="20880" />
+	<dubbo:service interface="e3mall.service.ItemService" ref="itemServiceImpl" timeout="600000"/>
+	<!-- 在e3-web的springmvc.xml引用dubbo服务 -->
+	<dubbo:application name="e3-web"/>
+	<dubbo:registry protocol="zookeeper" address="192.168.253.133:2181"/>	
+	<dubbo:reference interface="e3mall.service.ItemService" id="itemService" />
 (3)测试工程改造效果
-  加log4j可以解决启动tomcat卡住问题并找到原因:
+	加log4j可以解决启动tomcat卡住问题并找到原因:
 	注意：centos需要关闭防火墙。
 	systemctl stop firewalld.service #停止firewall
 	systemctl disable firewalld.service #禁止firewall开机启动
@@ -62,7 +70,7 @@ e3-manager作为服务层
 	service iptables stop
 	永久关闭修改配置开机不启动防火墙：
 	chkconfig iptables off
-  要实现序列化接口才能远程传递对象
+	要实现序列化接口才能远程传递对象
 (4)debug设置和dubbo监控
 	eclipse要调试需要设置debug-config添加源码后才可调试
 	dubbo-admin-2.5.4.war不支持jdk1.8，要改成dubbo-admin-2.5.7
@@ -73,5 +81,23 @@ e3-manager作为服务层
 		PageInfo能包含分页信息(总记录数、总页数、当前页码、前后页、是否开头末尾等)
 		xxxMapper.selectByExample(example)能包含该页的数据
 	e3-web依赖引入pagehelper解决没有Page类警告信息
+
+
+day03-商品添加功能
+(1)商品类别选择
+	初始化tree请求的url：
+		/item/cat/list
+	参数：
+		初始化tree时只需要把第一级节点展示，子节点异步加载(点开才加载)。
+		long id：父节点id
+		text：文字
+		state：如果节点下有子节点“closed”，如果没有子节点“open”
+		返回值：json。数据格式
+		[{    
+			"id": 1,    
+			"text": "Node 1",    
+			"state": "closed"
+		},...] 
+	后端建立通用类EasyUITreeNode并且返回列表
 
 ```
