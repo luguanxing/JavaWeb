@@ -48,6 +48,33 @@ e3-manager作为服务层
 		|--e3-web：打包方式war
 (2)搭建中间环境zookeeper和服务提供容器dubbo
 	dubbo中间件实现远程调用,即e3-manager(8080)提供服务给e3-web(8081)调用
+	day01-搭建基本框架和SSM
+(1)搭建框架
+	|--e3-parent：父工程，打包方式pom，管理jar包的版本号。项目中所有工程都应该继承父工程。
+		|--e3-common：通用的工具类通用的pojo。打包方式jar
+		|--e3-manager：服务层工程。聚合工程。Pom工程
+		|--e3-manager-dao：打包方式jar
+		|--e3-manager-pojo：打包方式jar
+		|--e3-manager-interface：打包方式jar
+		|--e3-manager-service：打包方式：jar
+		|--e3-manager-web：表现层工程。打包方式war
+(2)搭建SSM环境框架，使用逆向工程生成mapper
+
+
+day02-拆分工程
+(1)修改架构
+e3-manager作为服务层
+提出e3-manager-web作为表现层，改名为e3-web
+|--e3-parent：父工程，打包方式pom，管理jar包的版本号。项目中所有工程都应该继承父工程。
+		|--e3-common：打包方式jar
+		|--e3-manager：打包方式war
+			|--e3-manager-dao：打包方式jar
+			|--e3-manager-pojo：打包方式jar
+			|--e3-manager-interface：打包方式jar
+			|--e3-manager-service：打包方式：war
+		|--e3-web：打包方式war
+(2)搭建中间环境zookeeper和服务提供容器dubbo
+	dubbo中间件实现远程调用,即e3-manager(8080)提供服务给e3-web(8081)调用
 	dubbo主机192.168.253.133:2181
 	xml约束http://code.alibabatech.com/schema/dubbo/dubbo.xsd改为
 	https://raw.githubusercontent.com/alibaba/dubbo/master/dubbo-config/
@@ -83,7 +110,7 @@ e3-manager作为服务层
 	e3-web依赖引入pagehelper解决没有Page类警告信息
 
 
-day03-商品添加功能
+day03-商品分类和nginx
 (1)商品类别选择
 	初始化tree请求的url：
 		/item/cat/list
@@ -99,5 +126,30 @@ day03-商品添加功能
 			"state": "closed"
 		},...] 
 	后端建立通用类EasyUITreeNode并且返回列表
+(2)分布式
+	解决集群/分布式图片存储位置不通用问题
+	安装nginx服务器:192.168.253.134
+		nginx输出目录:/usr/local/ngingx
+		配置不同端口:改conf/nginx里面server配置
+		(本地改host后访问域名对应nginx服务器的ip)
+		配置域名: nginx根据ip+输入的域名反向代理转发到不同的webapp和虚拟主机,还可以实现负载均衡
+		本地请求->(已改host将sina.com对应192.168.253.134):
+			Request URL:http://www.sina.com/
+			Request Method:GET
+			Status Code:200 OK
+			Remote Address:192.168.253.134:80
+			Referrer Policy:no-referrer-when-downgrade
+		响应->(根据请求中的www.sina.com转发到tomcat并且负载均衡):
+			upstream sina {
+			  server localhost:8081;
+			  server localhost:8082 weight=2;
+			}
+			server {
+				listen       80;
+				server_name  www.sina.com;
+				location / {
+					proxy_pass http://sina;
+				}
+			}
 
 ```
