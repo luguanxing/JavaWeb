@@ -144,5 +144,5 @@ day04-图片上传FastDFS、富文本编辑器、商品添加功能
 				利用http+nginx访问192.168.25.133/group1/M00/00/00/wKgZhVopX86AfjmVAAAjLcz8y9M768.jpg
 	2.图片上传兼容性问题:
 		使用text/plain最好,application/json不好,最好用JsonUtils转换返回String不需再转换直接是text/plain
-
+		返回中文@RequestMapping(value="/upload", produces=MediaType.TEXT_PLAIN_VALUE+";charset=utf-8")
 ```
