@@ -1,3 +1,4 @@
 e3mall\controller\ItemCatController.class
-e3mall\controller\ItemController.class
+e3mall\controller\PictureController.class
 e3mall\controller\PageController.class
+e3mall\controller\ItemController.class
