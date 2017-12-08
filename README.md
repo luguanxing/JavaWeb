@@ -13,7 +13,6 @@
 <br><br><br>
 ![img](https://github.com/luguanxing/JavaWeb-Apps/raw/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/order.jpg?raw=true)
 <br><br><br>
-![img](https://github.com/luguanxing/JavaWeb-Apps/raw/master/01-JavaWeb%E7%BD%91%E4%B8%8A%E5%95%86%E5%9F%8E/pictures/product_list.jpg?raw=true)
 
 <br><br><br><br><br><br>
 
@@ -25,8 +24,6 @@
 ```
 <br><br><br>
 ![img](https://github.com/luguanxing/JavaWeb-Apps/raw/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/4.jpg?raw=true)
-<br><br><br>
-![img](https://github.com/luguanxing/JavaWeb-Apps/raw/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/6.jpg?raw=true)
 <br><br><br>
 ![img](https://github.com/luguanxing/JavaWeb-Apps/raw/master/02-JavaWeb%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/e.jpg?raw=true)
 
@@ -42,6 +39,21 @@
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/03-SSM%E5%86%85%E5%AE%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/pictures/01.jpg?raw=true)
 <br/><br/>
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/03-SSM%E5%86%85%E5%AE%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/pictures/03.jpg?raw=true)
+
+<br><br><br><br><br><br>
+
+## 04-SSM邮件发送系统
+```
+使用SSM+Shiro+EasyUI实现一个邮件发送系统
+能够手动发送邮件
+能够增删改查邮件源
+能够增删改查发送目标
+能够根据计划自动发送邮件
+能够增删改查计划
+```
+<br><br><br>
+![img](https://github.com/luguanxing/JavaWeb-Apps/raw/master/04-SSM%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81%E7%B3%BB%E7%BB%9F/pictures/1.jpg?raw=true)
 <br/><br/>
-![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/03-SSM%E5%86%85%E5%AE%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/pictures/05.jpg?raw=true)
-<br/><br/>
+
+
+
