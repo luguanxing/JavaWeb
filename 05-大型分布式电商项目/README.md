@@ -61,6 +61,7 @@ day02-拆分工程
 		<dubbo:application name="e3-web"/>
 		<dubbo:registry protocol="zookeeper" address="192.168.253.133:2181"/>	
 		<dubbo:reference interface="e3mall.service.ItemService" id="itemService" />
+		启动方式:在bin目录下./zkServer.sh start
 	(3)测试工程改造效果
 		加log4j可以解决启动tomcat卡住问题并找到原因:
 		注意：centos需要关闭防火墙。
@@ -74,6 +75,7 @@ day02-拆分工程
 	(4)debug设置和dubbo监控
 		eclipse要调试需要设置debug-config添加源码后才可调试
 		dubbo-admin-2.5.4.war不支持jdk1.8，要改成dubbo-admin-2.5.7
+		启动方式:在tomcat上run即可
 	(5)显示商品列表
 		easyui查列表附带参数page和rows，应返回json格式数据，包含total和该页的rows
 		逆向工程生成的mapper不带分页功能，需要插件PageHelper(基于拦截器修改mybatis的sql语句)
@@ -124,6 +126,7 @@ day03-商品分类和nginx
 						proxy_pass http://sina;
 					}
 				}
+		启动方式:在sbin目录下./nginx 更新方式:./nginx -s -reload
 
 day04-图片上传FastDFS、富文本编辑器、商品添加功能
 	1.FastDFS能在分布式环境下解决图片存储问题
@@ -145,4 +148,8 @@ day04-图片上传FastDFS、富文本编辑器、商品添加功能
 	2.图片上传兼容性问题:
 		使用text/plain最好,application/json不好,最好用JsonUtils转换返回String不需再转换直接是text/plain
 		返回中文@RequestMapping(value="/upload", produces=MediaType.TEXT_PLAIN_VALUE+";charset=utf-8")
+	3.商品添加功能
+		返回结果新建pojo表示状态
+		使用KindEditor富文本
+		Controller接收pojo对象和String，交给service封装完善后插入数据库，注意dubbo如果会尝试3次
 ```
