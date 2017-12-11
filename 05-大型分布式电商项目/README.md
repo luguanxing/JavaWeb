@@ -152,4 +152,30 @@ day04-图片上传FastDFS、富文本编辑器、商品添加功能
 		返回结果新建pojo表示状态
 		使用KindEditor富文本
 		Controller接收pojo对象和String，交给service封装完善后插入数据库，注意dubbo如果会尝试3次
+		
+day05-完成前台展示
+	原来e3-web改为e3-web-manager
+	新建工程e3-web-portal
+	|--e3-parent
+			|--e3-common
+			|--e3-manager (8080,可不用tomcat)
+				|--e3-manager-dao
+				|--e3-manager-pojo
+				|--e3-manager-interface
+				|--e3-manager-service
+			|--e3-content (8083,可不用tomcat)
+				|--e3-content-interface
+				|--e3-content-service
+				|--e3-manager-dao
+				|--e3-manager-pojo
+			|--e3-web-manager (8081)
+			|--e3-web-portal (8082)
+	只发布服务的e3-manager和e3-content只使用spring容器，用tomcat作用不大只是方便聚合和部署
+		new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
+		System.in.read();
+		这样运行了spring容器和跑tomcat是一样的
+	内容分类管理:
+		添加分类节点,添加内容，均返回E3Result
+	内容管理:
+		withBLOBs带大文本数据
 ```
