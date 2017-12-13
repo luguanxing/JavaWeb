@@ -178,4 +178,32 @@ day05-完成前台展示
 		添加分类节点,添加内容，均返回E3Result
 	内容管理:
 		withBLOBs带大文本数据
+		
+day06-redis
+	新建虚拟机安装redis 192.168.25.130
+	编译安装启动
+	复制安装目录下的redis.config到运行bin目录下改为daemonize yes运行时再带上config名字参数即可
+	搭建redis集群:
+		将数据按crc算法计算后哈希分布给按多台服务器(可有主备),所有服务器总共有16384个槽
+		至少要3台服务器(不带备份机)存数据以便机群进行投票容错
+		伪分布式:
+			在一台机上配置6台redis,修改配置文件启动redis,安装ruby
+			M: 422ab3b2ed93cabcab1ebac630f9a90d6728b857 192.168.25.130:7001
+			   slots:0-5460 (5461 slots) master
+			M: 058aa8f7a9e2d5161f8a516206b3db19283d37c4 192.168.25.130:7002
+			   slots:5461-10922 (5462 slots) master
+			M: 2ed7ba0ce228bf720029017747ebef44269f285f 192.168.25.130:7003
+			   slots:10923-16383 (5461 slots) master
+			S: f6eb70f5d705df41b05d4f5dc8a1c482c08b1f40 192.168.25.130:7004
+			   replicates 422ab3b2ed93cabcab1ebac630f9a90d6728b857
+			S: 781a2e4d70b39a309d673433a16d400b457c1cbb 192.168.25.130:7005
+			   replicates 058aa8f7a9e2d5161f8a516206b3db19283d37c4
+			S: 9e4d8ffc4b34182086ee26630f17313ca3e6cb8f 192.168.25.130:7006
+			   replicates 2ed7ba0ce228bf720029017747ebef44269f285f
+			测试
+			[root@localhost redis-cluster]# redis01/redis-cli -p 7002 -c
+			127.0.0.1:7002> set a 123
+			-> Redirected to slot [15495] located at 192.168.25.130:7003
+
+		
 ```
