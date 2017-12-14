@@ -205,6 +205,7 @@ day06-redis
 			127.0.0.1:7002> set a 123
 			-> Redirected to slot [15495] located at 192.168.25.130:7003
 		jedis连接单机版和集群版
+			jedis连接时注意关防火墙
 			用策略模式提取接口解耦
 			接口JedisClient
 			实现类JedisClientPool(单机)、JedisClientCluster(集群)
