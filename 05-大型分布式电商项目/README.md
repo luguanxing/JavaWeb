@@ -204,6 +204,22 @@ day06-redis
 			[root@localhost redis-cluster]# redis01/redis-cli -p 7002 -c
 			127.0.0.1:7002> set a 123
 			-> Redirected to slot [15495] located at 192.168.25.130:7003
-
-		
+		jedis连接单机版和集群版
+			用策略模式提取接口解耦
+			接口JedisClient
+			实现类JedisClientPool(单机)、JedisClientCluster(集群)
+			注意在applicationContext-redis中一般只配置一个实现类的bean,以便使用get(JedisClient.class)
+				就不需要写@resource(name=实现类id)了，即在xml中单机版和集群版不能共存，使用单机版时注释
+				集群版的配置。使用集群版，把单机版注释。
+		缓存一般放在service,这样不同的表现层都能调用
+			(1)查询
+				if (有缓存) {
+					用缓存响应数据
+				} else {
+					查询数据库响应数据
+					添加到缓存
+				}
+				为了防止数据key冲突,一般使用hashtable,里面hkey为id,hval将数据为string
+			(2)缓存同步
+				增删改更新时不一定要写缓存,还可以删缓存,下次再读就有缓存了,注意要精准删除不要删整个表
 ```
