@@ -67,10 +67,8 @@ day02-拆分工程
 		注意：centos需要关闭防火墙。
 		systemctl stop firewalld.service #停止firewall
 		systemctl disable firewalld.service #禁止firewall开机启动
-		关闭防火墙
-		service iptables stop
-		永久关闭修改配置开机不启动防火墙：
-		chkconfig iptables off
+		service iptables stop #关闭防火墙	
+		chkconfig iptables off #永久关闭修改配置开机不启动防火墙
 		要实现序列化接口才能远程传递对象
 	(4)debug设置和dubbo监控
 		eclipse要调试需要设置debug-config添加源码后才可调试
@@ -223,4 +221,11 @@ day06-redis
 				为了防止数据key冲突,一般使用hashtable,里面hkey为id,hval将数据为string
 			(2)缓存同步
 				增删改更新时不一定要写缓存,还可以删缓存,下次再读就有缓存了,注意要精准删除不要删整个表
+		
+day07-solr
+	新建虚拟机安装solr 192.168.25.131
+	关防火墙后测试连接
+	启动后先定义域、配置中文分词器
+
+
 ```
