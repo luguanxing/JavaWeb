@@ -264,4 +264,7 @@
 		</pluginManagement>
 	</build>
 
+	<modules>
+		<module>e3-search-interface</module>
+	</modules>
 </project>

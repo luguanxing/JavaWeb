@@ -16,6 +16,7 @@
 			<artifactId>e3-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<!-- 只依赖接口,实现由SOA架构远程调用完成 -->
 		<dependency>
 			<groupId>com.luguanxing</groupId>
 			<artifactId>e3-manager-interface</artifactId>
@@ -24,6 +25,11 @@
 		<dependency>
 			<groupId>com.luguanxing</groupId>
 			<artifactId>e3-content-interface</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.luguanxing</groupId>
+			<artifactId>e3-search-interface</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>

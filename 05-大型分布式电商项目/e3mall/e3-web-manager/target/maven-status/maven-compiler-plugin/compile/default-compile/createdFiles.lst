@@ -1,6 +1,7 @@
 e3mall\controller\ItemCatController.class
 e3mall\controller\ContentCatController.class
 e3mall\controller\PictureController.class
+e3mall\controller\SearchItemController.class
 e3mall\controller\PageController.class
 e3mall\controller\ContentController.class
 e3mall\controller\ItemController.class
