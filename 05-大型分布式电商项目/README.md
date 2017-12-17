@@ -46,6 +46,7 @@ day02-拆分工程
 				|--e3-manager-interface：打包方式jar
 				|--e3-manager-service：打包方式：war
 			|--e3-web：打包方式war
+				|--e3-manager-interface
 	(2)搭建中间环境zookeeper和服务提供容器dubbo
 		dubbo中间件实现远程调用,即e3-manager(8080)提供服务给e3-web(8081)调用
 		dubbo主机192.168.253.133:2181
@@ -152,8 +153,10 @@ day04-图片上传FastDFS、富文本编辑器、商品添加功能
 		Controller接收pojo对象和String，交给service封装完善后插入数据库，注意dubbo如果会尝试3次
 		
 day05-完成前台展示
-	原来e3-web改为e3-web-manager
-	新建工程e3-web-portal
+	原来e3-web改为e3-web-manager，作为前台管理
+	新建工程e3-web-portal，作为前台展示
+	新建工程e3-content，作为内容服务
+	修改工程e3-manager，作为商品服务
 	|--e3-parent
 			|--e3-common
 			|--e3-manager (8080,可不用tomcat)
@@ -167,7 +170,10 @@ day05-完成前台展示
 				|--e3-manager-dao
 				|--e3-manager-pojo
 			|--e3-web-manager (8081)
+				|--e3-content-interface
+				|--e3-manager-interface
 			|--e3-web-portal (8082)
+				|--e3-content-interface
 	只发布服务的e3-manager和e3-content只使用spring容器，用tomcat作用不大只是方便聚合和部署
 		new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
 		System.in.read();
@@ -224,8 +230,43 @@ day06-redis
 		
 day07-solr
 	新建虚拟机安装solr 192.168.25.131
+	|--e3-parent
+			|--e3-common
+			|--e3-manager (8080,可不用tomcat)
+				|--e3-manager-dao
+				|--e3-manager-pojo
+				|--e3-manager-interface
+				|--e3-manager-service
+			|--e3-content (8083,可不用tomcat)
+				|--e3-content-interface
+				|--e3-content-service
+				|--e3-manager-dao
+				|--e3-manager-pojo
+			|--e3-search (8084,可不用tomcat)
+				|--e3-search-interface
+				|--e3-search-service
+				|--e3-manager-dao
+				|--e3-manager-pojo
+			|--e3-web-manager (8081)
+				|--e3-content-interface
+				|--e3-manager-interface
+			|--e3-web-portal (8082)
+				|--e3-content-interface
+			|--e3-web-search (8085)
+				|--e3-search-interface
 	关防火墙后测试连接
-	启动后先定义域、配置中文分词器
-
-
+	启动后配置中文分词器、配置业务域
+		1.添加jar包到solr目录下
+		2.复制几个配置文件到WEB-INF/classes下
+		3.改solrhome/collection1/conf/schema.xml的配置
+			(1)添加ik分词器对应的filedType
+			(2)添加业务系统Field，并使用分词的filedType和其它基本类型的filedType
+	新建工程e3-search，作为搜索服务
+		1.dao查询:手写接口和对应的mapper.xml配置，而sql语句进行关联查询选出搜索的部分
+		2.service写入索引:使用solrj
+		3.注意当接口和实现类分开时要在pom中配置resources否则会出现
+			org.apache.ibatis.binding.BindingException: Invalid bound statement (not found)
+			但配置后会改变默认源文件目录,所以src/main/java和src/main/resources都要写上
+	使用solrj完成dao,service,controller
+		显示图片时分割url取第一张图片
 ```
