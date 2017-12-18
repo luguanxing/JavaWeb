@@ -269,4 +269,27 @@ day07-solr
 			但配置后会改变默认源文件目录,所以src/main/java和src/main/resources都要写上
 	使用solrj完成dao,service,controller
 		显示图片时分割url取第一张图片
-```
+		
+day08-SlorCloud
+	搭建solr集群解决tomcat多并发
+		zookeeper集群:
+			(1)创建solr-cloud/solr01,solr02,solr03
+			(2)创建data文件夹
+			(3)改/conf下的zoo.cfg
+				1.设置data目录
+				2.配置节点和内部通讯端口和投票端口
+					server.1=192.168.25.131:2881:3881
+					server.2=192.168.25.131:2882:3882
+					server.3=192.168.25.131:2883:3883
+				3.写批处理运行查看状态follower,leader
+		solr集群:
+			(1)创建solr-cloud/tomcat01,tomcat02,tomcat03,tomcat04并分别在里面装入solr应用和对应库
+			(2)创建solr-cloud/solrhome01,solrhome02,solrhome03,solrhome04
+			(3)修改tomcat01-04对应的端口和里边solr应用的solrhome
+			(4)修改solrhome01-04里边的solr.xml的IP和运行solr的tomcat端口号
+			(5)修改tomcat01-04/bin里的catalina.sh来关联solr集群和zookeeper集群
+			(6)上传solrhome01/collection1/conf里的配置文件到zookeeper来统一管理配置文件
+					使用solr客户端/example/scripts/cloud-scripts/zkcli.sh
+			(7)写批处理运行tomcat01-04
+		进入192.168.25.131:8080/solr在页面上配置云,输入url管理
+```	
