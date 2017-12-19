@@ -292,4 +292,17 @@ day08-SlorCloud
 					使用solr客户端/example/scripts/cloud-scripts/zkcli.sh
 			(7)写批处理运行tomcat01-04
 		进入192.168.25.131:8080/solr在页面上配置云,输入url管理
+	solrj管理集群:
+		创建一个集群的连接,应该使用CloudSolrServer,但需要初始化参数zookeeper地址列表
+		设置一个defaultCollection属性(即逻辑结构图上的collection)
+		之后操作和solrj一致
+	中间件:
+		商品添加后要同步索引，如何解决?
+			(1)直接添加业务逻辑:耦合严重,业务拆分不明确
+			(2)调用服务:仍有耦合,且启动有先后顺序要求
+			(3)消息队列:解决耦合问题
+		新建虚拟机安装activemq 192.168.25.132
+			注意centos7使用较新的activemq5.15.2能成功
+		
+		
 ```	
