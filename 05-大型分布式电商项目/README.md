@@ -75,6 +75,7 @@ day02-拆分工程
 		eclipse要调试需要设置debug-config添加源码后才可调试
 		dubbo-admin-2.5.4.war不支持jdk1.8，要改成dubbo-admin-2.5.7
 		启动方式:在tomcat上run即可
+		帐号密码均为root
 	(5)显示商品列表
 		easyui查列表附带参数page和rows，应返回json格式数据，包含total和该页的rows
 		逆向工程生成的mapper不带分页功能，需要插件PageHelper(基于拦截器修改mybatis的sql语句)
@@ -303,6 +304,20 @@ day08-SlorCloud
 			(3)消息队列:解决耦合问题
 		新建虚拟机安装activemq 192.168.25.132
 			注意centos7使用较新的activemq5.15.2能成功
-		
-		
+			帐号密码均为admin
+		消息格式:TextMessage等
+		消息形式:
+			点对点模式(消息不处理会留在服务端)
+			发布/订阅模式(发完就完了,不关心有没有处理,消息不留在服务端->但也可设置subscribers保存)
+	全局异常处理器:
+		异常方向:dao->service->controller
+		实现HandlerExceptionResolver处理全局异常
+		在springmvc.xml(applicationContext.xml)中配置处理器
+	写日志:
+		理论上slf4j通用性更好,实际上大部分情况还是用log4j
+		使用log4j写日志步骤
+			(1)private static final Logger logger = LoggerFactory.getLogger(当前类.class);
+			(2)处理器可显示logger.error("系统发生异常", ex);
+			(3)log4j.properties配置输出
+
 ```	

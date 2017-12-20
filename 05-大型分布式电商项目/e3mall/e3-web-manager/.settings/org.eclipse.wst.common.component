@@ -26,6 +26,6 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/e3-manager-web/target/classes"/>
-        <property name="context-root" value="e3-web"/>
+        <property name="context-root" value="e3-web-manager"/>
     </wb-module>
 </project-modules>
