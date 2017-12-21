@@ -320,4 +320,15 @@ day08-SlorCloud
 			(2)处理器可显示logger.error("系统发生异常", ex);
 			(3)log4j.properties配置输出
 
+day09-ActiveMq整合Spring,同步索引,详情页面
+	ActiveMq整合Spring:
+		e3-content-service:
+			(1)添加依赖
+			(2)在applicationContext-activemq.xml配置生产者
+			(3)初始化jmsTemplate发送消息,可自定发送的消息形式
+		e3-search-service:
+			(1)添加依赖
+			(2)在applicationContext-activemq.xml配置消费者
+			(3)容器初始化后自动接收消息
+	
 ```	
