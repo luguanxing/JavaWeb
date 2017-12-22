@@ -48,21 +48,23 @@ day02-拆分工程
 			|--e3-web：打包方式war
 				|--e3-manager-interface
 	(2)搭建中间环境zookeeper和服务提供容器dubbo
-		dubbo中间件实现远程调用,即e3-manager(8080)提供服务给e3-web(8081)调用
-		dubbo主机192.168.253.133:2181
-		xml约束http://code.alibabatech.com/schema/dubbo/dubbo.xsd改为
-		https://raw.githubusercontent.com/alibaba/dubbo/master/dubbo-config/
-		dubbo-config-spring/src/main/resources/META-INF/dubbo.xsd
-		<!-- 在e3-manager-service的applicationContext-dao.xml使用dubbo发布服务 -->
-		<dubbo:application name="e3-manager" />
-		<dubbo:registry protocol="zookeeper" address="192.168.253.133:2181" />
-		<dubbo:protocol name="dubbo" port="20880" />
-		<dubbo:service interface="e3mall.service.ItemService" ref="itemServiceImpl" timeout="600000"/>
-		<!-- 在e3-web的springmvc.xml引用dubbo服务 -->
-		<dubbo:application name="e3-web"/>
-		<dubbo:registry protocol="zookeeper" address="192.168.253.133:2181"/>	
-		<dubbo:reference interface="e3mall.service.ItemService" id="itemService" />
-		启动方式:在bin目录下./zkServer.sh start
+		1.dubbo中间件实现远程调用,即e3-manager(8080)提供服务给e3-web(8081)调用
+		2.dubbo主机192.168.253.133:2181
+		3.xml约束http://code.alibabatech.com/schema/dubbo/dubbo.xsd改为
+			https://raw.githubusercontent.com/alibaba/dubbo/master/dubbo-config/
+		4.发布服务:
+			dubbo-config-spring/src/main/resources/META-INF/dubbo.xsd
+			<!-- 在e3-manager-service的applicationContext-dao.xml使用dubbo发布服务 -->
+			<dubbo:application name="e3-manager" />
+			<dubbo:registry protocol="zookeeper" address="192.168.253.133:2181" />
+			<dubbo:protocol name="dubbo" port="20880" />
+			<dubbo:service interface="e3mall.service.ItemService" ref="itemServiceImpl" timeout="600000"/>
+		5.引用服务:
+			<!-- 在e3-web的springmvc.xml引用dubbo服务 -->
+			<dubbo:application name="e3-web"/>
+			<dubbo:registry protocol="zookeeper" address="192.168.253.133:2181"/>	
+			<dubbo:reference interface="e3mall.service.ItemService" id="itemService" />
+		6.启动方式:在bin目录下./zkServer.sh start
 	(3)测试工程改造效果
 		加log4j可以解决启动tomcat卡住问题并找到原因:
 		注意：centos需要关闭防火墙。
