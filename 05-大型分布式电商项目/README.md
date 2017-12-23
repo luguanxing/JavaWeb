@@ -332,5 +332,10 @@ day09-ActiveMq整合Spring,同步索引,详情页面
 			(1)添加依赖
 			(2)在applicationContext-activemq.xml配置消费者
 			(3)容器初始化后自动接收消息
+	业务逻辑:
+		管理模块添加商品后发送id,搜索模块再查出同步
+		使用topic不用queue因为可以给多个消费者(索引、缓存等)接收
+		内部匿名类使用外部局部变量最好加final
+		消息传递可能比事务提交还快,可以手动sleep或者等事务完成后在controller完成
 	
 ```	

@@ -61,7 +61,7 @@ public class ActiveMqTest {
 		//4.创建session对象,参数分别为是否开启事务(一般不开,开启时第二个参数无意义),应答模式(自动应答和手动应答,一般用自动应答)
 		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 		//5.使用session创建destination,有queue和topic两种形式
-		Queue queue = session.createQueue("test-queue");
+		Queue queue = session.createQueue("spring-queue");
 		//6.使用session创建consumer
 		MessageConsumer consumer = session.createConsumer(queue);
 		//7.打印消息
