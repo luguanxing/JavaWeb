@@ -3,7 +3,10 @@ package e3mall.freemarker;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
@@ -29,10 +32,10 @@ public class FreeMarkerTest {
 		Configuration configuration = new Configuration(Configuration.getVersion());
 		configuration.setDirectoryForTemplateLoading(new File("C:/Users/Administrator/workspace_e3mall/e3-web-item/src/main/webapp/WEB-INF/ftl"));
 		configuration.setDefaultEncoding("utf-8");
-		Template template = configuration.getTemplate("hello.ftl");
+		Template template = configuration.getTemplate("include.ftl");
 		Map model = new HashMap<>();
 		model.put("hello", "hello freemarker!");
-		Writer out = new FileWriter(new File("D:/temp/hello.txt"));
+		Writer out = new FileWriter(new File("D:/temp/test/include.html"));
 		template.process(model, out);
 		out.close();
 	}

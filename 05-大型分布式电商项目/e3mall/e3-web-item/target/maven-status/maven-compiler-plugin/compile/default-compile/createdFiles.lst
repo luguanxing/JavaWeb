@@ -1,2 +1,4 @@
+e3mall\item\message\HtmlGenListener.class
 e3mall\item\controller\ItemController.class
 e3mall\item\pojo\Item.class
+e3mall\item\controller\HtmlGenTestController.class

@@ -350,7 +350,7 @@ day09-ActiveMq整合Spring,同步索引,详情页面
 				有时需要缓存同步时只需删掉缓存下次即自动更新
 	使用freemarker网页静态化:
 		freemarker模板引擎类似NodeJs的Jade,都是静态页面,只需要将里面model内容填空
-		使用步骤:
+		使用步骤:(view+model)
 			1.创建模板文件
 			2.创建configuration对象
 			3.设置保存目录和编码格式(一般UTF-8)
@@ -371,5 +371,46 @@ day09-ActiveMq整合Spring,同步索引,详情页面
 			) t
 		)
 		先用min(id)选除没有重复的数据,在把其它的删除
+			
+day10-网页静态化
+	使用freemarker网页静态化:
+		使用语法:
+			(1)访问pojo属性和el表达式类似
+			(2)列表<#list stuList as stu>
+			(3)序号${stu_index}
+			(4)判断
+				<#if stu_index % 2 == 0>
+				<#else>
+				</#if>
+			(5)日期:
+				普通格式${date?datetime} ${date?date ${date?time}
+				自定义格式${date?string("yyyy/MM/DD HH:mm:ss")}
+			(6)空值:
+				空值默认显示:${var!"i am null"}
+				判断空值:
+					<#if var??>
+					<#else>
+					</#if>
+			(7)include包含页面:
+				<#include "hello.ftl">
+		整合spring:
+			添加依赖
+			配置springmvc.xml
+		生成静态页面:
+			生成静态页面的时机：商品添加后，生成静态页面。可以使用Activemq，订阅topic（商品添加）
+			输出文件的名称：商品id+“.html”
+			输出文件的路径：工程外部的任意目录。
+			网页访问：使用nginx访问网页。在此方案下tomcat只有一个作用就是生成静态页面。
+			工程部署：可以把e3-item-web部署到多个服务器上。
+		流程总结:
+			e3-manager添加商品 -> 发布topic -> tomcat容器接收并生成静态页面 -> 之后由nginx访问静态资源
+			可以添加备份机监听topic并且nginx负载均衡实现高可用
+			发布topic还可以同步静态页面的修改等
+	ActiveMq同步静态页面:
+		配置listener,业务逻辑是生成静态页面
+		<load-on-startup>1</load-on-startup>启动时监听
+		注意html输出目录要先创建好否则报错
+		使用nginx配置到freemarker输出目录，注意nginx客户端不能有中文,再把css/js/images等文件也复制过去
+		搜索点击item时修改跳转链接去掉localhost:8086端口就变成去localhost:80静态页面
 			
 ```	

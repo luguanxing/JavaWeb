@@ -6,6 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>${item.title } - 宜立方商城</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script>
         var _SF_CFG = {
 	    www_url:'http://www.e3mall.cn',
