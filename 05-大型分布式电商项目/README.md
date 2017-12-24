@@ -323,6 +323,7 @@ day08-SlorCloud
 			(3)log4j.properties配置输出
 
 day09-ActiveMq整合Spring,同步索引,详情页面
+	使用的centos虚拟机较多应按ctrl+alt+f2切换成dos命令行界面以便节省资源
 	ActiveMq整合Spring:
 		e3-content-service:
 			(1)添加依赖
@@ -337,5 +338,38 @@ day09-ActiveMq整合Spring,同步索引,详情页面
 		使用topic不用queue因为可以给多个消费者(索引、缓存等)接收
 		内部匿名类使用外部局部变量最好加final
 		消息传递可能比事务提交还快,可以手动sleep或者等事务完成后在controller完成
-	
+	详情页面:
+		新建工程e3-web-iten，作为详情页面
+			1.新建Item继承TbItem用于分解图片字符串,只在该工程用不用放到common不涉及网络传输
+			2.详情页面在e3-manager-service加缓存以便其它模块调用
+			3.不应该把所有商品详情都放进缓存,而是将最热点的商品留在缓存中(可按排名或设置过期时间)
+				由于不能设置redis中hash的key的过期时间,所以不能放在hash中
+				只能放在string中,但归类时要加上前缀
+				ITEM_INFO:123456:BASE
+				ITEM_INFO:123456:DESC
+				有时需要缓存同步时只需删掉缓存下次即自动更新
+	使用freemarker网页静态化:
+		freemarker模板引擎类似NodeJs的Jade,都是静态页面,只需要将里面model内容填空
+		使用步骤:
+			1.创建模板文件
+			2.创建configuration对象
+			3.设置保存目录和编码格式(一般UTF-8)
+			4.加载模板文件,创建模板对象
+			5.创建数据集model,可以是pojo或map(推荐使用map)
+			6.创建writer对象,指定输出文件路径和文件名
+			7.生成静态页面
+			8.关闭流
+	删除数据库中重复记录:
+		DELETE FROM t_test
+		WHERE id
+		NOT IN (
+			SELECT id
+			FROM (
+				SELECT MIN(id), id /*, a, COUNT(a)*/
+				FROM t_test
+				GROUP BY a
+			) t
+		)
+		先用min(id)选除没有重复的数据,在把其它的删除
+			
 ```	
