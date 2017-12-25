@@ -46,7 +46,6 @@ day02-拆分工程
 				|--e3-manager-interface：打包方式jar
 				|--e3-manager-service：打包方式：war
 			|--e3-web：打包方式war
-				|--e3-manager-interface
 	(2)搭建中间环境zookeeper和服务提供容器dubbo
 		1.dubbo中间件实现远程调用,即e3-manager(8080)提供服务给e3-web(8081)调用
 		2.dubbo主机192.168.253.133:2181
@@ -173,10 +172,7 @@ day05-完成前台展示
 				|--e3-manager-dao
 				|--e3-manager-pojo
 			|--e3-web-manager (8081)
-				|--e3-content-interface
-				|--e3-manager-interface
 			|--e3-web-portal (8082)
-				|--e3-content-interface
 	只发布服务的e3-manager和e3-content只使用spring容器，用tomcat作用不大只是方便聚合和部署
 		new ClassPathXmlApplicationContext("classpath:spring/applicationContext-*.xml");
 		System.in.read();
@@ -251,12 +247,8 @@ day07-solr
 				|--e3-manager-dao
 				|--e3-manager-pojo
 			|--e3-web-manager (8081)
-				|--e3-content-interface
-				|--e3-manager-interface
 			|--e3-web-portal (8082)
-				|--e3-content-interface
 			|--e3-web-search (8085)
-				|--e3-search-interface
 	关防火墙后测试连接
 	启动后配置中文分词器、配置业务域
 		1.添加jar包到solr目录下
@@ -412,5 +404,11 @@ day10-网页静态化
 		注意html输出目录要先创建好否则报错
 		使用nginx配置到freemarker输出目录，注意nginx客户端不能有中文,再把css/js/images等文件也复制过去
 		搜索点击item时修改跳转链接去掉localhost:8086端口就变成去localhost:80静态页面
-			
+	单点登录sso(Single Sign on)系统:
+		用redis服务器(含key-value特性、过时特性)解决session共享问题
+		分布式事务:
+			使用Mq手动应答(不成功消息不被消费)保证数据的一致性
+		搭建工程:
+			在e3-web-sso中springmvc拦截/应配置资源映射
+	
 ```	
