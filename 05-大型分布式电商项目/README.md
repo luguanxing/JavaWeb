@@ -410,5 +410,66 @@ day10-网页静态化
 			使用Mq手动应答(不成功消息不被消费)保证数据的一致性
 		搭建工程:
 			在e3-web-sso中springmvc拦截/应配置资源映射
-	
+			
+day11-sso注册和登录,token,Ajax跨域请求(jsonp)
+	修改工程
+	|--e3-parent
+			|--e3-common
+			|--e3-manager (8080,可不用tomcat)
+				|--e3-manager-dao
+				|--e3-manager-pojo
+				|--e3-manager-interface
+				|--e3-manager-service
+			|--e3-content (8083,可不用tomcat)
+				|--e3-content-interface
+				|--e3-content-service
+				|--e3-manager-dao
+				|--e3-manager-pojo
+			|--e3-search (8084,可不用tomcat)
+				|--e3-search-interface
+				|--e3-search-service
+				|--e3-manager-dao
+				|--e3-manager-pojo
+			|--e3-sso (8087,可不用tomcat)
+				|--e3-sso-interface
+				|--e3-sso-service
+			|--e3-web-manager (8081)
+			|--e3-web-portal (8082)
+			|--e3-web-search (8085)
+			|--e3-web-item (8086)
+			|--e3-web-sso (8088)
+	数据有效性校验:
+		请求的url：/user/check/{param}/{type}
+		参数：从url中取参数1、String param（要校验的数据）2、Integer type（校验的数据类型）
+		响应的数据：json数据。e3Result，封装的数据校验的结果true：成功false：失败。
+	用户注册:
+		前端ajax检测有效性
+		后端还要再检测一遍，插入数据库
+	用户登录:
+		判断用户名密码是否正确,不正确返回失败
+		手动模仿session,要有key-value形式而且能区分
+			key由uuid生成token作为sessionid, value对应用户信息(不写入密码)
+			设置过期时间,存入redis
+			token写入cookie(表现层),返回登录成功
+		判断登录状态
+			从cookie取token
+			查询token(key)
+			重置session过期时间
+		存在仿造cookie问题 => 可采用cas架构
+		cookie设置域名以便跨二级域名
+	从token显示用户信息:
+		在controller取token显示用户信息不好,因为换到不同页面都要做重复处理
+		应使用ajax访问表现层,再调用dubbo调用service
+			请求的url：/user/token/{token}
+			参数：String token需要从url中取。
+			返回值：json数据。使用e3Result包装Tbuser对象。
+		ajax跨域问题:
+			不能用ajax访问另一个域名IP或端口访问数据
+			No 'Access-Control-Allow-Origin' header is present on the requested resource.
+		jsonp解决ajax跨域问题:
+			利用可以跨域加载js文件,请求时带上回调参数,服务器拼装执行回调函数和数据的js代码再返回客户端执行
+			注意返回contentType为json,使用produces=MediaType.APPLICATION_JSON_UTF8_VALUE
+		spring4.1以后也可使用mappingJacksonValue自动包装
+		
+			
 ```	
