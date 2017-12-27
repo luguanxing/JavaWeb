@@ -411,7 +411,8 @@ day10-网页静态化
 		搭建工程:
 			在e3-web-sso中springmvc拦截/应配置资源映射
 			
-day11-sso注册和登录,token,Ajax跨域请求(jsonp)
+day11-sso注册和单点登录,token,Ajax跨域请求(jsonp)
+	单点登录:在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统
 	修改工程
 	|--e3-parent
 			|--e3-common
@@ -450,7 +451,7 @@ day11-sso注册和登录,token,Ajax跨域请求(jsonp)
 		手动模仿session,要有key-value形式而且能区分
 			key由uuid生成token作为sessionid, value对应用户信息(不写入密码)
 			设置过期时间,存入redis
-			token写入cookie(表现层),返回登录成功
+			token写入cookie(表现层实现),返回登录成功
 		判断登录状态
 			从cookie取token
 			查询token(key)
@@ -470,6 +471,50 @@ day11-sso注册和登录,token,Ajax跨域请求(jsonp)
 			利用可以跨域加载js文件,请求时带上回调参数,服务器拼装执行回调函数和数据的js代码再返回客户端执行
 			注意返回contentType为json,使用produces=MediaType.APPLICATION_JSON_UTF8_VALUE
 		spring4.1以后也可使用mappingJacksonValue自动包装
-		
+	
+day12-购物车实现
+	新建购物车工程
+	|--e3-parent
+			|--e3-common
+			|--e3-manager (8080,可不用tomcat)
+				|--e3-manager-dao
+				|--e3-manager-pojo
+				|--e3-manager-interface
+				|--e3-manager-service
+			|--e3-content (8083,可不用tomcat)
+				|--e3-content-interface
+				|--e3-content-service
+				|--e3-manager-dao
+				|--e3-manager-pojo
+			|--e3-search (8084,可不用tomcat)
+				|--e3-search-interface
+				|--e3-search-service
+				|--e3-manager-dao
+				|--e3-manager-pojo
+			|--e3-sso (8087,可不用tomcat)
+				|--e3-sso-interface
+				|--e3-sso-service
+			|--e3-cart (8089,可不用tomcat)
+				|--e3-cart-interface
+				|--e3-cart-service
+			|--e3-web-manager (8081)
+			|--e3-web-portal (8082)
+			|--e3-web-search (8085)
+			|--e3-web-item (8086)
+			|--e3-web-sso (8088)
+			|--e3-web-cart (8090)
+	购物车实现:
+		不登录也可以加购物车(用户体验好),数据放入cookie(不占用服务端资源,但容量有限,不能同步)
+		购物车实现增删改查
+			请求的url：/cart/方法/{itemId}
+			参数：商品id 商品数量
+			业务逻辑：
+			1、从cookie中查询商品列表。
+			2、判断商品在商品列表中是否存在。
+			3、如果存在，商品数量修改。
+			4、不存在，根据商品id查询商品信息，得TbItem对象(内部属性定义有改动)。
+			5、把商品修改到购车列表。
+			6、把购车商品列表写入cookie。
+
 			
 ```	
