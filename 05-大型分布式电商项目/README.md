@@ -38,7 +38,7 @@ day02-拆分工程
 	(1)修改架构
 	e3-manager作为服务层
 	提出e3-manager-web作为表现层，改名为e3-web
-	|--e3-parent：父工程，打包方式pom，管理jar包的版本号。项目中所有工程都应该继承父工程。
+		|--e3-parent：父工程，打包方式pom，管理jar包的版本号。项目中所有工程都应该继承父工程。
 			|--e3-common：打包方式jar
 			|--e3-manager：打包方式war
 				|--e3-manager-dao：打包方式jar
@@ -159,7 +159,7 @@ day05-完成前台展示
 	新建工程e3-web-portal，作为前台展示
 	新建工程e3-content，作为内容服务
 	修改工程e3-manager，作为商品服务
-	|--e3-parent
+		|--e3-parent
 			|--e3-common
 			|--e3-manager (8080,可不用tomcat)
 				|--e3-manager-dao
@@ -229,7 +229,7 @@ day06-redis
 		
 day07-solr
 	新建虚拟机安装solr 192.168.25.131
-	|--e3-parent
+		|--e3-parent
 			|--e3-common
 			|--e3-manager (8080,可不用tomcat)
 				|--e3-manager-dao
@@ -414,7 +414,7 @@ day10-网页静态化
 day11-sso注册和单点登录,token,Ajax跨域请求(jsonp)
 	单点登录:在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统
 	修改工程
-	|--e3-parent
+		|--e3-parent
 			|--e3-common
 			|--e3-manager (8080,可不用tomcat)
 				|--e3-manager-dao
@@ -474,7 +474,7 @@ day11-sso注册和单点登录,token,Ajax跨域请求(jsonp)
 	
 day12-购物车实现
 	新建购物车工程
-	|--e3-parent
+		|--e3-parent
 			|--e3-common
 			|--e3-manager (8080,可不用tomcat)
 				|--e3-manager-dao
@@ -515,6 +515,17 @@ day12-购物车实现
 			4、不存在，根据商品id查询商品信息，得TbItem对象(内部属性定义有改动)。
 			5、把商品修改到购车列表。
 			6、把购车商品列表写入cookie。
-
-			
+		ajax请求响应返回406说明少了jackson包(添加依赖)或者请求了html方式(拦截action)
+		登录后购物车则放到redis中(key为用户id,value为购物车的hash表(id-json)能减少操作次数)
+	判断用户登录并将购物车到redis进行同步更新操作:
+		拦截器实现判断登录(登不登录都放行可用购物车)
+			从cookie中取token。
+			没有token，需要跳转到登录页面。
+			有token。调用sso系统的服务，根据token查询用户信息。
+			如果查不到用户信息。用户登录已经过期。需要跳转到登录页面。
+			查询到用户信息。放行。
+		拦截器检查到用户信息则在request中设置user
+		controller再从request取user判断是否登录和是谁登录,并调用redis相关serivce提供服务
+		controller把cookie和redis中购物车合并,再删cookie购物车
+	
 ```	

@@ -1,3 +1,0 @@
-0:0:0:0:0:0:0:1 - - [26/Dec/2017:22:10:17 +0800] "GET /page/login HTTP/1.1" 404 971 http-bio-8080-exec-1 43
-0:0:0:0:0:0:0:1 - - [26/Dec/2017:22:10:18 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8080-exec-2 2
-0:0:0:0:0:0:0:1 - - [26/Dec/2017:22:10:47 +0800] "GET /page/login HTTP/1.1" 404 971 http-bio-8080-exec-4 2
