@@ -527,5 +527,45 @@ day12-购物车实现
 		拦截器检查到用户信息则在request中设置user
 		controller再从request取user判断是否登录和是谁登录,并调用redis相关serivce提供服务
 		controller把cookie和redis中购物车合并,再删cookie购物车
-	
+		
+day13-订单系统
+	新建订单工程
+		|--e3-parent
+			|--e3-common
+			|--e3-manager (8080,可不用tomcat)
+				|--e3-manager-dao
+				|--e3-manager-pojo
+				|--e3-manager-interface
+				|--e3-manager-service
+			|--e3-content (8083,可不用tomcat)
+				|--e3-content-interface
+				|--e3-content-service
+				|--e3-manager-dao
+				|--e3-manager-pojo
+			|--e3-search (8084,可不用tomcat)
+				|--e3-search-interface
+				|--e3-search-service
+				|--e3-manager-dao
+				|--e3-manager-pojo
+			|--e3-sso (8087,可不用tomcat)
+				|--e3-sso-interface
+				|--e3-sso-service
+			|--e3-cart (8089,可不用tomcat)
+				|--e3-cart-interface
+				|--e3-cart-service
+			|--e3-order (8091,可不用tomcat)
+				|--e3-order-interface
+				|--e3-order-service
+			|--e3-web-manager (8081)
+			|--e3-web-portal (8082)
+			|--e3-web-search (8085)
+			|--e3-web-item (8086)
+			|--e3-web-sso (8088)
+			|--e3-web-cart (8090)
+			|--e3-web-order (8092)
+	订单确认页面分析:
+		必须要求登录,未登录跳到订单确认页面
+		登录时先合并购物车,以redis数据为准
+		确认页面选择地址和支付方式并加载购物车
+		
 ```	
