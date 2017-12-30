@@ -565,7 +565,39 @@ day13-订单系统
 			|--e3-web-order (8092)
 	订单确认页面分析:
 		必须要求登录,未登录跳到订单确认页面
-		登录时先合并购物车,以redis数据为准
+		登录时先合并购物车,然后以redis数据为准
 		确认页面选择地址和支付方式并加载购物车
+		拦截器:
+		取token判断是否存在  不登录或过期重定向  登录了存用户信息到request并且合并购物车放行
+	订单提交:
+		id用数字保证可读性、不能重复,可用redis自增生成
+		用继承方式扩展TbOrder的pojo属性,放到interface中以便表现层和服务层共用
+		提交后删除redis购物车
+		service不应该捕获异常以便外部事务判断回滚
+	数据库分片:
+		为了解决数据量大的问题(上亿级别)
+		垂直分配:数据库的表分到不同数据库
+		水平分片:同一张表分到不同数据库
+	MyCat结构:
+		数据库schema->逻辑表table->数据节点-主机
+		安装mycat:
+			装mysql,要配置大小写不敏感lower_case_table_names=1
+			关防火墙
+			客户端远程连接
+				mysql -u root -p
+				use mysql;
+				update user set host = '%' where user = 'root';
+				FLUSH PRIVILEGES;
+		启动:./mycat start
+		垂直分片:
+			找一台主机配置Mycat，以后通过该主机使用mysql语句就会自动分片到其它数据库
+			1.配置schema.xml节点和主机
+			2.配置server.xml中的服务器
+				配置后可以用工具客户端直接连mycat查看逻辑数据库和逻辑表,但端口为8066
+				分片了sql语句列名要写全
+			测试:
+				在mycat上新建表和插入数据(不要使用sqlyog用navicat)
+				当根据不同分配规则时会分片到不同数据库
+				当分片规则超出预期后提示要新增节点才能存储
 		
 ```	
