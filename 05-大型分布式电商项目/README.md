@@ -597,7 +597,45 @@ day13-订单系统
 				分片了sql语句列名要写全
 			测试:
 				在mycat上新建表和插入数据(不要使用sqlyog用navicat)
-				当根据不同分配规则时会分片到不同数据库
+				当根据不同分配规则时会分片到不同数据库(简单分片按id每500万一个数据库)
 				当分片规则超出预期后提示要新增节点才能存储
+				
+day14-读写分离、部署、总结
+	使用mycat实现数据库读写分离:主(写)->从(读)
+		主从同步:
+			(1)要求：
+				主从数据库版本一致
+				主从数据库名一致
+				主数据库开启二进制日志,主从服务器server_id唯一
+			(2)配置:
+				主服务器:
+					1.改my.cnf(重启mysqld)
+					2.创建用户供从服务器访问
+				从服务器:
+					1.改my.cnf(重启mysqld)
+					2.配置从服务器
+					3.开启slave,检查状态确认Slave_IO_Running和Slave_SQL_Running为YES
+				测试:
+					注意插入前在my.cnf中补上sql_mode='NO_ENGINE_SUBSTITUTION'
+					要求从数据库中有表,因为直接执行主数据库的语句
+					主服务器插入数据从数据库也会同步插入相同数据
+		读写分离:
+			在schemal.xml中配置读服务器
+	项目部署:
+		购买域名
+		部署表现层到子域名,服务层一般不暴露
+		tomcat热部署(一键发布):
+			热部署:tomcat管理app,要先配置tomcat-user.xml用户有权限manager-gui,manager-script
+			使用maven的tomcat插件实现热部署
+			tomcat7:deploy
+			tomcat7:redeploy
+			部署的path路径是“/”会把系统部署到webapps/ROOT目录下。
+		部署内容:
+			服务层修改pom和数据库
+			表现层修改前端localhost
+			每个工程运行在某个tomcat上，修改tomcat的端口号。
+		域名:
+			测试时改host访问
+			在实际域名中用nginx根据url分配到不同url或端口
 		
 ```	
