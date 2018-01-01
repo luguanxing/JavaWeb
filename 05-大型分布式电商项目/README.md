@@ -637,5 +637,48 @@ day14-读写分离、部署、总结
 		域名:
 			测试时改host访问
 			在实际域名中用nginx根据url分配到不同url或端口
-		
+	总结:
+		13个项目要部署(除了parent和common):
+		|--e3-parent
+			|--e3-common
+			|--e3-manager (8080,可不用tomcat)
+				|--e3-manager-dao
+				|--e3-manager-pojo
+				|--e3-manager-interface
+				|--e3-manager-service
+			|--e3-content (8083,可不用tomcat)
+				|--e3-content-interface
+				|--e3-content-service
+				|--e3-manager-dao
+				|--e3-manager-pojo
+			|--e3-search (8084,可不用tomcat)
+				|--e3-search-interface
+				|--e3-search-service
+				|--e3-manager-dao
+				|--e3-manager-pojo
+			|--e3-sso (8087,可不用tomcat)
+				|--e3-sso-interface
+				|--e3-sso-service
+			|--e3-cart (8089,可不用tomcat)
+				|--e3-cart-interface
+				|--e3-cart-service
+			|--e3-order (8091,可不用tomcat)
+				|--e3-order-interface
+				|--e3-order-service
+			|--e3-web-manager (8081)
+			|--e3-web-portal (8082)
+			|--e3-web-search (8085)
+			|--e3-web-item (8086)
+			|--e3-web-sso (8088)
+			|--e3-web-cart (8090)
+			|--e3-web-order (8092)
+	其它服务器:
+		zookeeper
+		dubbo
+		nginx
+		fastDFS
+		redis
+		solr
+		activemq
+			
 ```	
