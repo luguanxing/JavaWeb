@@ -55,5 +55,15 @@
 ![img](https://github.com/luguanxing/JavaWeb-Apps/raw/master/04-SSM%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81%E7%B3%BB%E7%BB%9F/pictures/1.jpg?raw=true)
 <br/><br/>
 
+<br><br><br><br><br><br>
+
+## 05-分布式电商项目
+```
+使用分布式架构搭建电子商城
+```
+<br><br><br>
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/05-%E5%A4%A7%E5%9E%8B%E5%88%86%E5%B8%83%E5%BC%8F%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/pictures/jiagou.jpg?raw=true)
+<br/><br/>
+
 
 
