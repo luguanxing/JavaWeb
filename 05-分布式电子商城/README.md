@@ -57,7 +57,8 @@ day02-拆分工程
 			<dubbo:application name="e3-manager" />
 			<dubbo:registry protocol="zookeeper" address="192.168.253.133:2181" />
 			<dubbo:protocol name="dubbo" port="20880" />
-			<dubbo:service interface="e3mall.service.ItemService" ref="itemServiceImpl" timeout="600000"/>
+			<dubbo:service interface="e3mall.service.ItemService"
+				ref="itemServiceImpl" timeout="600000"/>
 		5.引用服务:
 			<!-- 在e3-web的springmvc.xml引用dubbo服务 -->
 			<dubbo:application name="e3-web"/>
@@ -145,7 +146,7 @@ day04-图片上传FastDFS、富文本编辑器、商品添加功能
 			使用FastDFS:
 				添加fastdfs的maven工程并安装到本地仓库
 				使用api上传,上传后返回url回显数据
-				用http+nginx访问192.168.25.133/group1/M00/00/00/wKgZhVopX86AfjmVAAAjLcz8y9M768.jpg
+				用http+nginx访问192.168.25.133/group1/M00/00/00/30位字符.jpg
 	2.图片上传兼容性问题:
 		使用text/plain最好,application/json不好,最好用JsonUtils转换返回String不需再转换直接是text/plain
 		返回中文@RequestMapping(value="/upload", produces=MediaType.TEXT_PLAIN_VALUE+";charset=utf-8")
