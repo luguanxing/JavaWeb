@@ -1,5 +1,7 @@
 package blog.service;
 
+import blog.entity.Blogger;
+
 /**
  * 博主Service
  * @author Administrator
@@ -7,4 +9,6 @@ package blog.service;
  */
 public interface BloggerService {
 
+	public Blogger getByUsername(String username);
+	
 }
