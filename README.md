@@ -68,7 +68,7 @@
 单点登录系统：为多个系统之间提供用户登录凭证以及查询登录用户的信息。
 ```
 <br><br><br>
-![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/05-%E5%88%86%E5%B8%83%E5%BC%8F%E7%94%B5%E5%AD%90%E5%95%86%E5%9F%8E/pictures/jiagou.jpg?raw=true)
+![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/06-%E5%88%86%E5%B8%83%E5%BC%8F%E7%94%B5%E5%AD%90%E5%95%86%E5%9F%8E/pictures/jiagou.jpg?raw=true)
 <br/><br/>
 
 <br><br><br><br><br><br>
