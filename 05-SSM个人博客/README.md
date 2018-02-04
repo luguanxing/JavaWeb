@@ -1,46 +1,46 @@
-#SSM���˲��ͣ�����, redis, solr��
+# SSM个人博客（极简, redis, solr）
 
-###������־
+### 开发日志
 
 ```
-day01-���Ŀ��ܡ���ɵ�¼�����롢�ǰ̨
-	�SSM���
-	ʵ����ʹ��mybatis���򹤳�����
-	ʹ��shiro��ɵ�¼��֤
-	�ǰ̨ҳ��͵�����ʽ
+day01-搭建项目框架、完成登录功能想、搭建前台
+	搭建SSM框架
+	实体类使用mybatis逆向工程生成
+	使用shiro完成登录认证
+	搭建前台页面和调整格式
 	
-day02-���ӻ��棬����ʵ����
-	��ɲ��͡�������Ϣ���������ӡ�����������ݿ������Լ���ȡ����ʾ
-	����redis����һ���ֻ������ݷ�������(blogger��blogtype��links��priorityblogs)
-	��redis���ϣ����ȴ�redis��ȡ����(��Service�и�)����������ݿ�ȡ�ٷ��뻺��
-	ע��ÿ���������Ӷ�Ҫ��finally���ͷ�����jedis.close();��������ڴ�й©->ҳ�濨������Ӧ
+day02-添加缓存，完善实体类
+	完成博客、博主信息、友情连接、博客类别数据库表设计以及读取和显示
+	测试redis，将一部分缓存数据放入其中(blogger、blogtype、links、priorityblogs)
+	将redis整合，优先从redis中取数据(在Service中改)，否则从数据库取再放入缓存
+	注意每次申请连接都要在finally中释放连接jedis.close();否则出现内存泄漏->页面卡死不响应
 	
-day03-���Ʋ�����ʾ
-	��ҳ���ʹ��bootstrap-paginator
-	ʹ��mybatis�������ķ�ҳ���mybatis-pagehelper
+day03-完善博客显示
+	分页插件使用bootstrap-paginator
+	使用mybatis生成器的分页插件mybatis-pagehelper
 	
-day04-��ɲ������
-	�����������Է�ҳ��ʽ��ʾ������µ����в���
-	rest���/{typeId}/{page}
-	������ͷ�ҳ������(��׳��)
+day04-完成博客类别
+	点击博客类别，以分页方式显示该类别下的所有博客
+	rest风格/{typeId}/{page}
+	检查类别和分页的完善(健壮性)
 	
-day05-������ʾ����ҳ��顢����ǽ
-	���һƪ�����ܹ���ʾ��������ҳ�������
-	��ҳ��ʾ�����û�������
-	�ܹ��������Բ��ڼ���ӵ�����ǽ��
+day05-博客显示、网页简介、留言墙
+	点击一篇博客能够显示出来、网页简介类似
+	分页显示所有用户的留言
+	能够评论留言并在检查后加到留言墙上
 
-day06-��������
-	�solr������
-		1.war����/usr/local/solr/��tomcat��webappĿ¼��
-		2.��ѹ��ɾ��war��
-		3.��������jar��(/example/lib/ext��)��webapp/WEB-INF/lib��
-		4.��solrhome�ŵ�/usr/local/solr/solrhome��
-			(ע����ʱ/usr/local/solr��tomcat��solrhome�����ļ���)
-		5.�޸������ļ�webapp/WEB-INF/web.xml->ɾ��ע�ͣ�����<env-entry>·��
-		6.����FieldType��ҵ���򣬷ִ���
-			(1)��IKAnalyzer2012FF_u1.jar�ŵ�webapp/WEB-INF/lib��
-			(2)�����ķִ�������չ�ʵ�������ļ��ŵ�webapp/WEB-INF/classes��(û��Ŀ¼�򴴽�)
-			(3)��solrhome\collection1\conf\schemal.xml������fieldType��ʹ��fieldType��ҵ����(id���ö���)
+day06-搜索功能
+	搭建solr服务器
+		1.war包放/usr/local/solr/到tomcat的webapp目录下
+		2.解压并删除war包
+		3.拷贝几个jar包(/example/lib/ext内)到webapp/WEB-INF/lib下
+		4.把solrhome放到/usr/local/solr/solrhome中
+			(注意这时/usr/local/solr有tomcat和solrhome两个文件夹)
+		5.修改配置文件webapp/WEB-INF/web.xml->删除注释，配置<env-entry>路径
+		6.配置FieldType，业务域，分词器
+			(1)将IKAnalyzer2012FF_u1.jar放到webapp/WEB-INF/lib下
+			(2)将中文分词器的扩展词典和配置文件放到webapp/WEB-INF/classes下(没有目录则创建)
+			(3)往solrhome\collection1\conf\schemal.xml中添加fieldType和使用fieldType的业务域(id不用定义)
 				<!-- IKAnalyzer-->
 				<fieldType name="text_ik" class="solr.TextField">
 				  <analyzer class="org.wltea.analyzer.lucene.IKAnalyzer"/>
@@ -56,14 +56,31 @@ day06-��������
 				<copyField source="blog_title" dest="blog_keyword"/>
 				<copyField source="blog_summary" dest="blog_keyword"/>
 				<copyField source="blog_content" dest="blog_keyword"/>
-		7.����tomcat��ʹ��solrj��������
-	ʹ��solrj��������(������)
-	��������͸�������
+		7.重启tomcat，使用solrj导入数据
+	使用solrj导入数据(测试类)
+	完成搜索和高亮功能
 
-day07-��ɺ�̨����ҳ��
-	��ɺ�̨����ģ��
-	ʹ�ø��ı��༭��ueditor
-	���blogger�޸Ĺ��ܣ�ע��ÿ�θ��¶�Ҫͬ������(ɾ������)
+day07-完成后台基本页面
+	完成后台基本模块搭建
+	搭建后台页面转发controller，用于博主信息和博客内容修改回显数据
+	使用富文本编辑器ueditor
+	完成博主信息管理的增删改查(需要数据回显，记得删除缓存)
+	完成密码修改功能
+	
+day08-完成后台基本功能
+	博客类别管理(增删改查),删除时先检查有没有该typeId的类别，有则不能删除
+	（注意在finally中关闭资源前先判断资源是否为null，否则有些return结果不能返回）
+	评论管理(删查)
+	友情链接管理(增删改查)
+	评论前台使用JSTL过滤HTML标签，后台JS使用<XMP>
+	easyui自定义formatter显示时间
 
+day09-完成后台博客修改，补充修改内容
+	注意增删改查博客要除了要同步redis缓存，还要同步solr索引
+	添加博客后要配置mybatis使之返回主键id
+	 <insert ... keyProperty="id" keyColumn="ID" useGeneratedKeys="true">
+	更新博客需要带WithBLOBS
+	在spring-mvc.xml和log4j.properties中配置全局异常处理，能够输出异常并且跳转，实现HandlerExceptionResolver
+	完成数据一键导入索引
 	
 ```
