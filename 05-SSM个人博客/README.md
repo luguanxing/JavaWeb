@@ -31,11 +31,11 @@ day05-博客显示、网页简介、留言墙
 
 day06-搜索功能
 	搭建solr服务器
-		1.war包放/usr/local/solr/到tomcat的webapp目录下
+		1.war包放/usr/solr/到tomcat的webapp目录下
 		2.解压并删除war包
 		3.拷贝几个jar包(/example/lib/ext内)到webapp/WEB-INF/lib下
-		4.把solrhome放到/usr/local/solr/solrhome中
-			(注意这时/usr/local/solr有tomcat和solrhome两个文件夹)
+		4.把solrhome放到/usr/solr/solrhome中
+			(注意这时/usr/solr有tomcat和solrhome两个文件夹)
 		5.修改配置文件webapp/WEB-INF/web.xml->删除注释，配置<env-entry>路径
 		6.配置FieldType，业务域，分词器
 			(1)将IKAnalyzer2012FF_u1.jar放到webapp/WEB-INF/lib下
@@ -83,4 +83,7 @@ day09-完成后台博客修改，补充修改内容
 	在spring-mvc.xml和log4j.properties中配置全局异常处理，能够输出异常并且跳转，实现HandlerExceptionResolver
 	完成数据一键导入索引
 	
+day10-服务器部署
+	部署到服务器上，需要依次安装java，mysql，redis，solr和web应用
+
 ```
