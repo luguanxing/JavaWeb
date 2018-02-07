@@ -1,0 +1,3 @@
+<script src="${pageContext.request.contextPath}/static/boke/js/modernizr.js"></script>
+<script src="${pageContext.request.contextPath}/static/boke/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/boke/js/bootstrap.min.js"></script>

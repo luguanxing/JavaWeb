@@ -1,0 +1,3 @@
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/boke/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/boke/css/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/boke/css/style.css" id="theme-styles">
