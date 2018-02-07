@@ -31,10 +31,10 @@ day05-博客显示、网页简介、留言墙
 
 day06-搜索功能
 	搭建solr服务器
-		1.war包放/usr/solr/到tomcat的webapp目录下
+		1.war(dist目录下)包放/usr/solr/到tomcat的webapp目录下
 		2.解压并删除war包
 		3.拷贝几个jar包(/example/lib/ext内)到webapp/WEB-INF/lib下
-		4.把solrhome放到/usr/solr/solrhome中
+		4.把solrhome(/example/lib/solr文件夹)放到/usr/solr/solrhome中
 			(注意这时/usr/solr有tomcat和solrhome两个文件夹)
 		5.修改配置文件webapp/WEB-INF/web.xml->删除注释，配置<env-entry>路径
 		6.配置FieldType，业务域，分词器
