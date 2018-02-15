@@ -59,11 +59,9 @@
 
 ## 05-SSM个人博客
 ```
-
 使用j2ee+redis+solr开发一个博客，力求简介、高效
 前台能按时间、类别展示博客、搜索博客并且留言
 后台能增删改查博客的信息
-
 ```
 
 ![img](https://github.com/luguanxing/JavaWeb-Apps/blob/master/05-SSM%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/pictures/1.jpg?raw=true)
