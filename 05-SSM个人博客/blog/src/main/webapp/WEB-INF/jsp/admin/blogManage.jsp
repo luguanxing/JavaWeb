@@ -59,6 +59,10 @@
 				});
 			}
 			
+			function refreshBlog() {
+				$("#dg").datagrid("reload");
+			}
+			
 			function blogtypeFormatter (value, row, index) {
 				<c:forEach items="${blogtypes}" var="blogtype" >
 					if ("${blogtype.id}" == value)
@@ -112,6 +116,7 @@
 		</table>
 		<div id="tb">
 			<div>
+				<a href="javascript:refreshBlog()" class="easyui-linkbutton" iconCls="icon-reload" plain="true">刷新</a>
 				<a href="javascript:openBlogModifyTab()" class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a>
 			    <a href="javascript:deleteBlog()" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
 			</div>

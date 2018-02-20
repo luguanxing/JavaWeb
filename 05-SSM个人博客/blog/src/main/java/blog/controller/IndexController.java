@@ -77,7 +77,7 @@ public class IndexController {
 		mav.addObject("priorityBlogs", priorityBlogs);
 		mav.addObject("blogs", blogs);
 		mav.addObject("indexTitle", "最新博客");
-		mav.addObject("htmlTitle", "主页");
+		mav.addObject("htmlTitle", "博客主页");
 		mav.addObject("pageUrl", "index");
 		mav.addObject("currentPage", pageNum);
 		mav.addObject("totalPages", totalPages);
