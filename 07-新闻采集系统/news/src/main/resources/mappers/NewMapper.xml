@@ -9,6 +9,7 @@
     <result column="publishDateAndSrc" property="publishDateAndSrc" jdbcType="VARCHAR" />
     <result column="crawlerDate" property="crawlerDate" jdbcType="TIMESTAMP" />
     <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="commentCount" property="commentCount" jdbcType="INTEGER" />
     <result column="state" property="state" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -70,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, title, content, contentText, publishDateAndSrc, crawlerDate, url, state
+    id, title, content, contentText, publishDateAndSrc, crawlerDate, url, commentCount, 
+    state
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="news.entity.NewExample" >
     select
@@ -108,10 +110,10 @@
     </selectKey>
     insert into new (title, content, contentText, 
       publishDateAndSrc, crawlerDate, url, 
-      state)
+      commentCount, state)
     values (#{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{contentText,jdbcType=VARCHAR}, 
       #{publishDateAndSrc,jdbcType=VARCHAR}, #{crawlerDate,jdbcType=TIMESTAMP}, #{url,jdbcType=VARCHAR}, 
-      #{state,jdbcType=INTEGER})
+      #{commentCount,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="news.entity.New" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -137,6 +139,9 @@
       <if test="url != null" >
         url,
       </if>
+      <if test="commentCount != null" >
+        commentCount,
+      </if>
       <if test="state != null" >
         state,
       </if>
@@ -159,6 +164,9 @@
       </if>
       <if test="url != null" >
         #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="commentCount != null" >
+        #{commentCount,jdbcType=INTEGER},
       </if>
       <if test="state != null" >
         #{state,jdbcType=INTEGER},
@@ -195,6 +203,9 @@
       <if test="record.url != null" >
         url = #{record.url,jdbcType=VARCHAR},
       </if>
+      <if test="record.commentCount != null" >
+        commentCount = #{record.commentCount,jdbcType=INTEGER},
+      </if>
       <if test="record.state != null" >
         state = #{record.state,jdbcType=INTEGER},
       </if>
@@ -212,6 +223,7 @@
       publishDateAndSrc = #{record.publishDateAndSrc,jdbcType=VARCHAR},
       crawlerDate = #{record.crawlerDate,jdbcType=TIMESTAMP},
       url = #{record.url,jdbcType=VARCHAR},
+      commentCount = #{record.commentCount,jdbcType=INTEGER},
       state = #{record.state,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -238,6 +250,9 @@
       <if test="url != null" >
         url = #{url,jdbcType=VARCHAR},
       </if>
+      <if test="commentCount != null" >
+        commentCount = #{commentCount,jdbcType=INTEGER},
+      </if>
       <if test="state != null" >
         state = #{state,jdbcType=INTEGER},
       </if>
@@ -252,6 +267,7 @@
       publishDateAndSrc = #{publishDateAndSrc,jdbcType=VARCHAR},
       crawlerDate = #{crawlerDate,jdbcType=TIMESTAMP},
       url = #{url,jdbcType=VARCHAR},
+      commentCount = #{commentCount,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

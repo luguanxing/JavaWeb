@@ -1,6 +1,7 @@
 package news.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class New {
     private Integer id;
@@ -17,8 +18,12 @@ public class New {
 
     private String url;
 
+    private Integer commentCount;
+
     private Integer state;
 
+    private List<String> imageList;
+    
     public Integer getId() {
         return id;
     }
@@ -75,6 +80,14 @@ public class New {
         this.url = url == null ? null : url.trim();
     }
 
+    public Integer getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
+    }
+
     public Integer getState() {
         return state;
     }
@@ -82,4 +95,20 @@ public class New {
     public void setState(Integer state) {
         this.state = state;
     }
+
+	public List<String> getImageList() {
+		return imageList;
+	}
+
+	public void setImageList(List<String> imageList) {
+		this.imageList = imageList;
+	}
+
+	@Override
+	public String toString() {
+		return "New [id=" + id + ", title=" + title + ", contentText=" + contentText + ", publishDateAndSrc="
+				+ publishDateAndSrc + ", crawlerDate=" + crawlerDate + ", url=" + url + ", commentCount=" + commentCount
+				+ ", state=" + state + ", imageList=" + imageList + "]";
+	}
+    
 }

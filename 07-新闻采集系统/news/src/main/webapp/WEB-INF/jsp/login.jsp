@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>博客系统</title>
+		<title>新闻系统</title>
 		<script src="${pageContext.request.contextPath}/static/news/js/jquery.min.js"></script>
 		<STYLE>
 		body{

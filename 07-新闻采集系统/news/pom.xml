@@ -282,6 +282,26 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- 添加commons io支持 -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
+		
+		<!-- 能加载JS脚本的爬虫 -->
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>2.26</version>
+		</dependency>
+		
+		<!-- 定时器 -->
+		<dependency>
+		    <groupId>org.quartz-scheduler</groupId>
+		    <artifactId>quartz</artifactId>
+		    <version>2.3.0</version>
+		</dependency>
 	</dependencies>
 
 

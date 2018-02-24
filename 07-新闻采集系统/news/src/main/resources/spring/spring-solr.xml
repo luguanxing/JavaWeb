@@ -10,7 +10,7 @@
 
 	<!-- 单机版SolrSever -->
 	<bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
-		<constructor-arg index="0" value="http://127.0.0.1:8079/solr/collection1" />
+		<constructor-arg index="0" value="http://127.0.0.1:8079/solr/collection2" />
 	</bean>
 	
 </beans>
