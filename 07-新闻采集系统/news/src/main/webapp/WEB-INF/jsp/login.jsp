@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -200,7 +201,7 @@
 				<DIV style="margin-top: 20px; height: 50px; line-height: 50px; border-top-color: rgb(231, 231, 231); border-top-width: 1px; border-top-style: solid;">
 					<P style="margin: 0px 35px 20px 45px;">
 					<SPAN style="float: left;">
-						博客后台管理系统
+						新闻后台管理系统
 					</SPAN> 
 					<span><font color="red" id="error">${errorInfo }</font></span>
 			        <SPAN style="float: right;"> 

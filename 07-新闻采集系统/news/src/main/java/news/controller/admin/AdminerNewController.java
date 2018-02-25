@@ -27,7 +27,7 @@ public class AdminerNewController {
 	@ResponseBody
 	public String list(@RequestParam(value="page", defaultValue="1") int page, @RequestParam(value="rows", defaultValue="10") int pageSize) {
 		PageBean pageBean = new PageBean(page, pageSize);
-		List<New> news = newService.getNews(page, pageSize);
+		List<New> news = newService.getNewsByCrawlerDate(page, pageSize);
 		Integer total = newService.getNewsCount();
 		JSONObject json = new JSONObject();
 		JSONArray jsonArray = JSONArray.fromObject(news);

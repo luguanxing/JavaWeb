@@ -37,54 +37,59 @@ public class CrawlerServiceImpl implements CrawlerService {
 
 	//从主页获取所有新闻的链接+评论数(直接从网页难以获取AJAX)
 	@Override
-	public List<String> getNewsUrlsAndComments() {
+	public List<New> getNewsUrlsAndComments() {
 		String indexHtml = CrawlerUtils.httpGetAndWait(NEWS_URL, "热门新闻排行", 2000);
 		if (indexHtml == null || indexHtml.isEmpty())
 			return null;
 		logger.info("================");
-		logger.info("开始解析跟帖榜");
-		List<String> urlsAndComments = new ArrayList();
+		logger.info("开始解析主页");
+		List<New> news = new ArrayList();
 		Document document = Jsoup.parse(indexHtml);
-		Elements elements_urls = document.select(".area-half").get(3)	//新闻跟帖榜
+		Elements elements_urls = document.select(".area-half").get(3)	//新闻主页
 				.select(".tabContents").first()	//今日跟帖排行
 				.select("a");	//新闻链接
-		Elements elements_comments = document.select(".area-half").get(3)	//新闻跟帖榜
+		Elements elements_comments = document.select(".area-half").get(3)	//新闻主页
 				.select(".tabContents").first()	//今日跟帖排行
 				.select(".cBlue");	//评论数
 		Integer index = 0;
 		for (Element element_link : elements_urls) {
-			String href = element_link.attr("href");
-			String comment = "0";
+			New newObj = new New();
+			String url = element_link.attr("href");
+			String commentText = "0";
 			try {
-				comment = elements_comments.get(index).text();
+				commentText = elements_comments.get(index).text();
 			} catch (Exception e) {
-				logger.error("获取跟帖数量失败");
-				e.printStackTrace();
+				logger.warn("获取跟帖数量失败", e);
+				System.out.println("获取跟帖数量失败");
 			}
-			urlsAndComments.add(href+":"+comment);
+			Integer commentCount = 0;
+			try {
+				commentCount = Integer.parseInt(commentText);
+			} catch (Exception e) {
+				logger.warn("解析跟帖数量失败", e);
+				System.out.println("解析跟帖数量失败");
+			}
+			newObj.setUrl(url);
+			newObj.setCommentCount(commentCount);
+			news.add(newObj);
 			index++;
 		}
-		logger.info("结束解析跟帖榜");
+		logger.info("结束解析主页");
 		logger.info("================");
-		return urlsAndComments;
+		return news;
 	}
 
-	//从某条新闻链接获取新闻数据并封装成New
+	//从新闻链接获取新闻数据并填充返回
 	@Override
-	public New getNewFromUrlAndComment(String urlAndComment) {
-		//先从urlAndComment拆分出url和comment
-		int commentIndex = urlAndComment.lastIndexOf(":");
-		String url = urlAndComment.substring(0, commentIndex);
-		String commentText =  urlAndComment.substring(commentIndex + 1, urlAndComment.length());
+	public New getNewFromUrlAndComment(New newObj) {
 		//获取新闻主体页面
-		String newHtml = CrawlerUtils.httpGet(url, "新闻");
+		String newHtml = CrawlerUtils.httpGet(newObj.getUrl(), "新闻");
 		if (newHtml == null || newHtml.isEmpty())
 			return null;
 		//解析新闻主体页面
 		logger.info("========================");
 		logger.info("开始解析新闻");
 		try {
-			New newObj = new New();
 			Document document = Jsoup.parse(newHtml);
 			String title = document.select("#epContentLeft h1").first().text();
 			String publishDateAndSrc = document.select(".post_time_source").first().text();
@@ -98,25 +103,16 @@ public class CrawlerServiceImpl implements CrawlerService {
 				href = href.split("\\?")[0];
 				imageList.add(href);
 			}
-			Integer commentCount = 0;
-			try {
-				commentCount = Integer.parseInt(commentText);
-			} catch (Exception e) {
-				logger.error("解析跟帖数量失败");
-				e.printStackTrace();
-			}
 			newObj.setTitle(title);
-			newObj.setUrl(url);
 			newObj.setPublishDateAndSrc(publishDateAndSrc);
 			newObj.setCrawlerDate(new Date());
 			newObj.setContentText(contentText);
 			newObj.setContent(content);
 			newObj.setImageList(imageList);
-			newObj.setCommentCount(commentCount);
 			return newObj;
 		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error("解析新闻出错", e);
+			logger.warn("解析新闻出错", e);
+			System.out.println("解析新闻出错");
 			return null;
 		} finally {
 			logger.info("结束解析新闻");
@@ -130,15 +126,6 @@ public class CrawlerServiceImpl implements CrawlerService {
 		//不排除新闻被和谐
 		if (newObj == null)
 			return;
-		
-		//若链接已在缓存或数据库中则更新状态并返回，否则添加
-		Integer id = newService.getNewIdByUrl(newObj.getUrl());
-		if (id != null) {
-			newObj.setId(id);
-			newService.updateNew(newObj);
-			logger.warn("新闻已存在进行更新");
-			return;
-		}
 
 		//先保存图片,并且替换名字
 		List<String> imageList = newObj.getImageList();
@@ -146,6 +133,16 @@ public class CrawlerServiceImpl implements CrawlerService {
 			String localImgName = CrawlerUtils.downloadImage(imgUrl, FileRootPath, WebRootPath);
 			String newContent = newObj.getContent().replaceAll(imgUrl, localImgName);
 			newObj.setContent(newContent);
+		}
+		
+		//若链接已在缓存或数据库中则更新状态并返回，否则添加
+		Integer id = newService.getNewIdByUrl(newObj.getUrl());
+		if (id != null) {
+			newObj.setId(id);
+			//注意更新时也要替换ContentText内的图片，这也是为什么这段在下面的原因(靠，那缓存好像起不到什么作用了，反正都会写数据库)
+			newService.updateNew(newObj);
+			logger.warn("新闻已存在进行更新");
+			return;
 		}
 		
 		//后存到数据库获取主键

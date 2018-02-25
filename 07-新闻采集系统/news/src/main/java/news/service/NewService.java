@@ -10,9 +10,17 @@ public interface NewService {
 	
 	Integer getNewsCount();
 	
-	List<New> getNews(Integer pageNum, Integer pageSize);
+	List<New> getNewsByCrawlerDate(Integer pageNum, Integer pageSize);
+	
+	List<New> getNewsByPublishDateAndSrc(Integer pageNum, Integer pageSize);
+	
+	List<New> getNewsByCommentCount(Integer pageNum, Integer pageSize);
 	
 	List<New> getHotNews(Integer pageNum, Integer pageSize);
+	
+//	List<New> getSearchNews(String keyword, Integer startRow, Integer pageSize);
+//	
+//	Integer getSearchNewsCount(String keyword);
 	
 	Integer getNewIdByUrl(String url);
 	

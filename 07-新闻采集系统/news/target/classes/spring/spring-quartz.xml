@@ -17,7 +17,7 @@
     </bean>
 
     <!-- 业务对象，放进service.iml中以便spring容器加载 -->
-    <bean id="testJobTask" class="news.service.impl.MyTimer" />
+    <bean id="testJobTask" class="news.service.impl.MyTimingCrawler" />
 
     <!-- 调度业务 -->
     <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -26,10 +26,11 @@
     </bean>
 
     <!-- 增加调用的触发器，触发时间 -->
-    <!-- 实际爬取时间:0 0 2,5,8,11,14,17,20,23 * * ? *即每天2,5,8,11,14,17,20,23点爬一次 --> 
+    <!-- 爬取时间:0 0 2,5,8,11,14,17,20,23 * * ? *即每天2,5,8,11,14,17,20,23点爬一次 --> 
+    <!-- 爬取时间:0 0 0/1 * * ? *即每小时爬一次 --> 
     <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
         <property name="jobDetail" ref="jobDetail" />
-        <property name="cronExpression" value="0/20 * * * * ? *" />
+        <property name="cronExpression" value="0 0 0/1 * * ? *" />
     </bean>
 
     <!-- 设置调度 -->

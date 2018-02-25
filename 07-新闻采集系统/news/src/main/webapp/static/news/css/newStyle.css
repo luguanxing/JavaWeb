@@ -1,0 +1,33 @@
+.new_title {
+    font-size: 28px;
+    letter-spacing: -1px;
+    margin:0;
+}
+
+.time_src {
+    margin-top: 20px;
+    font: 12px/1 Arial, "Sim sun";
+    color: #888;
+}
+
+.newContent img {
+	width:100%;
+}
+
+.newContent p {
+    font: 16px/28px "Microsoft Yahei";
+    margin: 28px 0px 0px;
+}
+
+.newContent .icon {
+	width: 13px;
+    height: 12px;
+}
+
+.newContent .ep-source {
+    float: right;
+    _display: inline;
+    font-size: 12px;
+    line-height: 13px;
+    padding: 6px 0;
+}

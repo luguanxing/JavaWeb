@@ -5,14 +5,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import news.entity.Adminer;
-import news.service.AdminerService;
 import news.utils.Md5Utils;
 
 /**
@@ -24,9 +21,6 @@ import news.utils.Md5Utils;
 @RequestMapping("/adminer")
 public class AdminerController {
 
-	@Autowired
-	private AdminerService AdminerService;
-	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(String captcha, Adminer Adminer, HttpServletRequest request) {
 		//管理员登录后台

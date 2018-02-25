@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>博客后台管理界面</title>
+		<title>新闻后台管理界面</title>
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/jquery-easyui-1.3.3/themes/default/easyui.css">
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/static/jquery-easyui-1.3.3/themes/icon.css">
 		<script type="text/javascript" src="${pageContext.request.contextPath}/static/jquery-easyui-1.3.3/jquery.min.js"></script>
@@ -38,6 +38,10 @@
 				$("#dlg2").dialog("open").dialog("setTitle","导入数据到索引或缓存");
 			}
 			
+			function openCrawlerDialog() {
+				$("#dlg3").dialog("open").dialog("setTitle","手动触发爬取");
+			}
+			
 			function importSolr() {
 				url="${pageContext.request.contextPath}/admin/importSolr.do";
 			    $.ajax({
@@ -65,6 +69,22 @@
 			        		$("#dlg2").dialog("close");
 			        	} else {
 			        		$.messager.alert("系统提示","导入缓存失败");
+			        	}
+			    	}
+			    });
+			}
+			
+			function crawlByHand() {
+				url="${pageContext.request.contextPath}/admin/crawler.do";
+			    $.ajax({
+			    	url:url,
+			    	success:function(result) {
+			    		var result=eval('('+result+')');
+			        	if (result.success) {
+			        		$.messager.alert("系统提示","手动爬取完成");
+			        		$("#dlg3").dialog("close");
+			        	} else {
+			        		$.messager.alert("系统提示","手动爬取失败");
 			        	}
 			    	}
 			    });
@@ -109,8 +129,12 @@
 				resetValue();
 			}
 			
-			function close(){
+			function close2(){
 				$("#dlg2").dialog("close");
+			}
+			
+			function close3(){
+				$("#dlg3").dialog("close");
 			}
 			
 			function logout(){
@@ -128,7 +152,7 @@
 			<table style="padding: 5px" width="100%">
 				<tr>
 					<td width="50%">
-						<div align="left" style="padding-top: 10px"><font size="6">博客后台管理界面</font></div>
+						<div align="left" style="padding-top: 10px"><font size="6">新闻后台管理界面</font></div>
 					</td>
 					<td valign="bottom" align="right" width="50%">
 						<font size="3">&nbsp;&nbsp;<strong>欢迎：</strong>${currentUser.username }</font>
@@ -148,6 +172,7 @@
 				<a href="javascript:openTab('新闻管理','manageNew.html','icon-tzlb')" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-tzlb'" style="width: 150px;">新闻管理</a>
 				<a href="javascript:openPasswordModifyDialog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-modifyPassword'" style="width: 150px;">修改密码</a>
 				<a href="javascript:openImportDataDialog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-reload'" style="width: 150px;">同步索引或缓存</a>
+				<a href="javascript:openCrawlerDialog()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-back'" style="width: 150px;">手动执行爬取</a>
 				<a href="javascript:logout()" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-exit'" style="width: 150px;">安全退出</a>
 			</div>  
 		</div>
@@ -199,8 +224,15 @@
 		<div id="dlg-buttons2">
 			<a href="javascript:importSolr()" class="easyui-linkbutton" iconCls="icon-save">导入索引</a>
 			<a href="javascript:importRedis()" class="easyui-linkbutton" iconCls="icon-save">导入缓存</a>
-			<a href="javascript:close()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+			<a href="javascript:close2()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
 		</div>
 		
+		<div id="dlg3" class="easyui-dialog" style="width: 345px;height: 150px;padding: 10px 20px" closed="true" buttons="#dlg-buttons3">
+			是否手动执行一次爬取任务(大概30秒)?
+		</div>
+		<div id="dlg-buttons3">
+			<a href="javascript:crawlByHand()" class="easyui-linkbutton" iconCls="icon-save">执行</a>
+			<a href="javascript:close3()" class="easyui-linkbutton" iconCls="icon-cancel">关闭</a>
+		</div>
 	</body>
 </html>

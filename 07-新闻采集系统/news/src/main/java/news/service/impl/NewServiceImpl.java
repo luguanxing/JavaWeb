@@ -1,5 +1,7 @@
 package news.service.impl;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -146,12 +148,34 @@ public class NewServiceImpl implements NewService {
 	}
 
 	@Override
-	public List<New> getNews(Integer pageNum, Integer pageSize) {
+	public List<New> getNewsByCrawlerDate(Integer pageNum, Integer pageSize) {
+		//设置分页信息
+		PageHelper.startPage(pageNum, pageSize);
+		//执行查询
+		NewExample example = new NewExample();
+		example.setOrderByClause("crawlerDate DESC");
+		List<New> news = newDao.selectByExample(example);
+		return news;
+	}
+	
+	@Override
+	public List<New> getNewsByPublishDateAndSrc(Integer pageNum, Integer pageSize) {
 		//设置分页信息
 		PageHelper.startPage(pageNum, pageSize);
 		//执行查询
 		NewExample example = new NewExample();
 		example.setOrderByClause("publishDateAndSrc DESC");
+		List<New> news = newDao.selectByExample(example);
+		return news;
+	}
+	
+	@Override
+	public List<New> getNewsByCommentCount(Integer pageNum, Integer pageSize) {
+		//设置分页信息
+		PageHelper.startPage(pageNum, pageSize);
+		//执行查询
+		NewExample example = new NewExample();
+		example.setOrderByClause("commentCount DESC");
 		List<New> news = newDao.selectByExample(example);
 		return news;
 	}

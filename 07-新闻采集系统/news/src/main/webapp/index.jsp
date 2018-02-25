@@ -7,6 +7,9 @@
 		<title>新闻主页</title>
 	</head>
 	<body>
-		<h1>新闻主页</h1>
+		<script type="text/javascript">
+			//跳转主页URL
+		    window.location.href="${pageContext.request.contextPath}/index.html";
+		</script>
 	</body>
 </html>

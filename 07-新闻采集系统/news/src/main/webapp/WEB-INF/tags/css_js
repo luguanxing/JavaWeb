@@ -1,0 +1,34 @@
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta content="telephone=no" name="format-detection" />
+		<script>
+			var uAgent = window.navigator.userAgent,
+				isIphone = uAgent.match(/iphone/i),
+				is2345 = uAgent.match(/Mb2345/i),
+				isSogou = uAgent.match(/sogoumobilebrowser/ig),
+				isLiebao = uAgent.match(/liebaofast/i),
+				doc = document.documentElement,
+				width =  doc.clientWidth,
+				height = doc.clientHeight,
+				dpr = 1, fontSize = 50;
+			function getDF(){
+				if (window.devicePixelRatio) {
+					dpr = window.devicePixelRatio;
+				} else {
+					dpr = isIphone ? width > 818 ? 3 : width > 480 ? 2 : 1 : 1;
+				}
+				if(width > height){
+					width = height;
+				}
+				fontSize = width > 1080 ? 144 : width / 6.4;
+				fontSize = fontSize > 32 ? fontSize : 32;
+				doc.setAttribute('data-dpr', dpr);
+				doc.style.fontSize = fontSize + 'px';
+			}
+			getDF();
+			if(is2345 || isSogou || isLiebao){
+				setTimeout(getDF,500)
+			}
+		</script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/news/css/style.css">
+		<script>var __$nodeid=345075;</script>
