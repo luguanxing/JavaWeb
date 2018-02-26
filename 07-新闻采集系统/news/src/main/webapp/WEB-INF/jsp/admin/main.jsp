@@ -228,7 +228,7 @@
 		</div>
 		
 		<div id="dlg3" class="easyui-dialog" style="width: 345px;height: 150px;padding: 10px 20px" closed="true" buttons="#dlg-buttons3">
-			是否手动执行一次爬取任务(大概30秒)?
+			是否手动执行一次爬取任务(最慢要30秒以上)?
 		</div>
 		<div id="dlg-buttons3">
 			<a href="javascript:crawlByHand()" class="easyui-linkbutton" iconCls="icon-save">执行</a>

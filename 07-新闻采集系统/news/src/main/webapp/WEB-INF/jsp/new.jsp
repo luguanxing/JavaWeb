@@ -16,12 +16,13 @@
 			<h1 class="new_title">${newObj.title}</h1>
 			<div class="m-meta">
 				<time class="time_src">${newObj.publishDateAndSrc}</time>
-				<span class="tag" style="float:right">${newObj.commentCount}条评论</span>
+				<span class="tag" style="float:right; margin-top: 3%;">${newObj.commentCount}条评论</span>
 			</div>
 			<div class="m-meta">
 				<time class="time_src">
 					抓取网页时间 : 
 					<fmt:formatDate value="${newObj.crawlerDate}" type="date" pattern="yyyy年MM月dd日  HH:mm:ss"/>
+					<a target="_blank" style="color:#4883e1" href="${newObj.url}">查看源网页</a>
 				</time>
 			</div>
 			<div class="newContent">

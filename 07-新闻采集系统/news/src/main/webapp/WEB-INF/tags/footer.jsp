@@ -13,11 +13,11 @@
 					<div class="icon lazyloaded icon-1" style="background-image: url('${pageContext.request.contextPath}/static/news/img/life_4.png')"></div>
 					<h3>热门排行</h3>
 				</div></a>
-				<a href="#"><div class="itm">
+				<a href="${pageContext.request.contextPath}/"><div class="itm">
 					<div class="icon lazyloaded icon-1" style="background-image: url('${pageContext.request.contextPath}/static/news/img/life_1.png')"></div>
 					<h3>搜索新闻</h3>
 				</div></a>
-				<a href="#"><div class="itm">
+				<a href="/blog/article/67.html"><div class="itm">
 					<div class="icon lazyloaded icon-1" style="background-image: url('${pageContext.request.contextPath}/static/news/img/life_6.png')"></div>
 					<h3>关于本站</h3>
 				</div></a>

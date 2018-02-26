@@ -18,7 +18,7 @@ import news.service.NewService;
 
 @Controller
 @RequestMapping("/admin/new")
-public class AdminerNewController {
+public class AdminNewController {
 
 	@Autowired
 	private NewService newService;
@@ -27,7 +27,7 @@ public class AdminerNewController {
 	@ResponseBody
 	public String list(@RequestParam(value="page", defaultValue="1") int page, @RequestParam(value="rows", defaultValue="10") int pageSize) {
 		PageBean pageBean = new PageBean(page, pageSize);
-		List<New> news = newService.getNewsByCrawlerDate(page, pageSize);
+		List<New> news = newService.getNewsByPublishDateAndSrc(page, pageSize);
 		Integer total = newService.getNewsCount();
 		JSONObject json = new JSONObject();
 		JSONArray jsonArray = JSONArray.fromObject(news);
@@ -38,23 +38,24 @@ public class AdminerNewController {
 	
 	@RequestMapping(value="/update")
 	@ResponseBody
-	public String update(New newObj, String releaseDateInput) {
+	public String update(New newObj, String crawlerDateInput) {
 		//需要做一些属性的转换
-		Date releaseDate = new Date();
+		Date crawlerDate = new Date();
 		try {
 			//新增时获取的日期格式带秒
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			releaseDate = sdf.parse(releaseDateInput);	
+			crawlerDate = sdf.parse(crawlerDateInput);	
 		} catch (Exception e) {
 			try {
 				//修改时easyui控件获取的日期格式不带秒
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-				releaseDate = sdf.parse(releaseDateInput);	
+				crawlerDate = sdf.parse(crawlerDateInput);	
 			} catch (Exception ex) {
 				ex.printStackTrace();
 			}
 			e.printStackTrace();
 		}
+		newObj.setCrawlerDate(crawlerDate);
 		Boolean result = newService.updateNew(newObj);
 		JSONObject json = new JSONObject();
 		if (result) {

@@ -19,16 +19,17 @@
 	<body>
 		<div class="w3layouts-bg">
 		
-			<h1 class="header-w3ls">页面不存在</h1>
+			<h1 class="header-w3ls">网络错误</h1>
 			
 			<div class="agileits-content">
-				<h2><span>404</span></h2>
+				<h2><span>错误</span></h2>
 			</div>
 			
 			<div class="w3layouts-right">
 				<div class="w3ls-text">
-					<h3>404</h3>
-					<h4 class="w3-agileits2">访问页面不存在</h4>
+					<h3>出错啦!</h3>
+					<h4 class="w3-agileits2">访问页面时出错了</h4>
+					<p>错误信息已记录</p>
 					<p class="copyright">
 						<a href="${pageContext.request.contextPath}/index.html">返回主页</a>
 					</p>

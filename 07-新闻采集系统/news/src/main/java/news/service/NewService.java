@@ -18,9 +18,9 @@ public interface NewService {
 	
 	List<New> getHotNews(Integer pageNum, Integer pageSize);
 	
-//	List<New> getSearchNews(String keyword, Integer startRow, Integer pageSize);
-//	
-//	Integer getSearchNewsCount(String keyword);
+	List<New> getSearchNews(String keyword, Integer startRow, Integer pageSize);
+	
+	Integer getSearchNewsCount(String keyword);
 	
 	Integer getNewIdByUrl(String url);
 	

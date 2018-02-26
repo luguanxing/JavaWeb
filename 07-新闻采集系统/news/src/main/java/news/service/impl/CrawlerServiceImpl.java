@@ -126,28 +126,34 @@ public class CrawlerServiceImpl implements CrawlerService {
 		//不排除新闻被和谐
 		if (newObj == null)
 			return;
+		
+		//若链接已在缓存或数据库中则更新状态并返回，否则添加
+		Integer id = newService.getNewIdByUrl(newObj.getUrl());
+		if (id != null) {
+			New newOldObj = newService.getNewById(id);
+			//判断两个Integer不能直接==
+			if (newOldObj.getCommentCount() == newObj.getCommentCount().intValue())
+				return;		//如果评论数字一样说明比较新，不更新
+		}
 
-		//先保存图片,并且替换名字
+		//先保存图片,并且替换名字(这部较慢，能避免就避免)
 		List<String> imageList = newObj.getImageList();
 		for (String imgUrl : imageList) {
 			String localImgName = CrawlerUtils.downloadImage(imgUrl, FileRootPath, WebRootPath);
 			String newContent = newObj.getContent().replaceAll(imgUrl, localImgName);
 			newObj.setContent(newContent);
 		}
-		
-		//若链接已在缓存或数据库中则更新状态并返回，否则添加
-		Integer id = newService.getNewIdByUrl(newObj.getUrl());
-		if (id != null) {
+
+		if (id != null) {	//更新数据库
 			newObj.setId(id);
 			//注意更新时也要替换ContentText内的图片，这也是为什么这段在下面的原因(靠，那缓存好像起不到什么作用了，反正都会写数据库)
 			newService.updateNew(newObj);
 			logger.warn("新闻已存在进行更新");
 			return;
+		} else {	//这个是添加到数据库
+			newService.addNew(newObj);
+			logger.warn("新闻保存成功");
 		}
-		
-		//后存到数据库获取主键
-		newService.addNew(newObj);
-		logger.warn("新闻保存成功");
 	}
 
 }

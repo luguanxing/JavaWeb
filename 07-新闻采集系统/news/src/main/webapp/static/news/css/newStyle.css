@@ -11,7 +11,7 @@
 }
 
 .newContent img {
-	width:100%;
+	width:100% !important;
 }
 
 .newContent p {
@@ -20,8 +20,8 @@
 }
 
 .newContent .icon {
-	width: 13px;
-    height: 12px;
+	width: 13px !important;
+    height: 12px !important;
 }
 
 .newContent .ep-source {

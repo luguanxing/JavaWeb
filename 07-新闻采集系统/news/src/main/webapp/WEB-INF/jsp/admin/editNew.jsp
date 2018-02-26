@@ -29,6 +29,7 @@
 			}
 			
 			function submitData(){
+				var editor=UE.getEditor('editor').getContent();
 				$("#content").val(editor);
 				$("#fm").submit();
 			}
@@ -67,15 +68,23 @@
 						<td><input value="<c:out value="${newObj.title}"/>" type="text" id="title" name="title" style="width: 400px"/></td>
 					</tr>
 					<tr>
+						<td width="80px">新闻链接：</td>
+						<td><input value="${newObj.url}" type="text" id="url" name="url" style="width: 300px"/></td>
+					</tr>
+					<tr>
 						<td valign="top">新闻摘要：</td>
 						<td>
-							<textarea rows="3" cols="60" id="summary" name="summary">${newObj.contentText}</textarea>
+							<textarea rows="3" cols="60" id="contentText" name="contentText">${newObj.contentText}</textarea>
 						</td>
+					</tr>
+					<tr>
+						<td width="80px">新闻评论数：</td>
+						<td><input value="${newObj.commentCount}" type="number" id="commentCount" name="commentCount" style="width: 300px"/></td>
 					</tr>
 					<tr>
 						<td valign="top">新闻发布时间和来源：</td>
 						<td>
-							<textarea rows="3" cols="60" id="summary" name="summary">${newObj.publishDateAndSrc}</textarea>
+							<textarea rows="3" cols="60" id="publishDateAndSrc" name="publishDateAndSrc">${newObj.publishDateAndSrc}</textarea>
 						</td>
 					</tr>
 					<tr>

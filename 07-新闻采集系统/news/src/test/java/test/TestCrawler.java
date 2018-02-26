@@ -1,6 +1,7 @@
 package test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.Test;
@@ -65,6 +66,7 @@ public class TestCrawler {
 	@Test
 	public void testSaveNewsFromIndex() {
 		List<New> news = crawlerService.getNewsUrlsAndComments();
+		Collections.reverse(news);	//让最后抓取的最先保存
 		for (New newObj : news) {
 			System.out.println("================");
 			System.out.println("获取" + newObj.getUrl());

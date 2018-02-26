@@ -12,10 +12,10 @@
 		<%@ include file="/WEB-INF/tags/header.jsp"%>
 
 		<div class="m-search">
-			<form id="searchForm">
+			<div id="searchForm">
 				<input type="text" id="searchText" placeholder="输入搜索内容..." />
-				<button id="searchSubmit" type="submit">搜索</button>
-			</form>
+				<button type="button"  onclick="search()">搜索</button>
+			</div>
 		</div>
 		<div class="m-zone">
 			<div class="m-tit m-tit-1">
@@ -37,7 +37,7 @@
 				</div>
 			</c:forEach>
 			<div class="m-load">
-				<span>查看更多</span>
+				<span><a style="color:#4883e1" href="${pageContext.request.contextPath}/latest.html">查看更多</a></span>
 			</div>
 		</div>
 		
@@ -61,7 +61,7 @@
 				</div>
 			</c:forEach>
 			<div class="m-load">
-				<span>查看更多</span>
+				<span><a style="color:#4883e1" href="${pageContext.request.contextPath}/hotest.html">查看更多</a></span>
 			</div>
 		</div>
 		

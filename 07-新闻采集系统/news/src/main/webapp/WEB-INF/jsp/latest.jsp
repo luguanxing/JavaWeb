@@ -13,10 +13,10 @@
 		<%@ include file="/WEB-INF/tags/header.jsp"%>
 
 		<div class="m-search">
-			<form id="searchForm">
+			<div id="searchForm">
 				<input type="text" id="searchText" placeholder="输入搜索内容..." />
-				<button id="searchSubmit" type="submit">搜索</button>
-			</form>
+				<button type="button"  onclick="search()">搜索</button>
+			</div>
 		</div>
 		<div class="m-zone">
 			<div class="m-tit m-tit-1">
@@ -48,10 +48,10 @@
 					<a class="link-next">上一页</a>
 				</c:if>
 				<span style="font-size:.3rem; color:#4883e1; margin-bottom: 3%;">第${currentPage}/${totalPages}页</span>
-				<c:if test="${currentPage != totalPages}">
+				<c:if test="${currentPage < totalPages}">
 					<a class="link-next" style="background:white" href="${pageContext.request.contextPath}/latest/${currentPage+1}.html">下一页</a>
 				</c:if>
-				<c:if test="${currentPage == totalPages}">
+				<c:if test="${currentPage >= totalPages}">
 					<a class="link-next">下一页</a>
 				</c:if>
 			</center>

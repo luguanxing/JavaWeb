@@ -1,7 +1,7 @@
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
 		<meta content="telephone=no" name="format-detection" />
-		<script>
+		<script charset="utf-8">
 			var uAgent = window.navigator.userAgent,
 				isIphone = uAgent.match(/iphone/i),
 				is2345 = uAgent.match(/Mb2345/i),
@@ -31,4 +31,5 @@
 			}
 		</script>
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/news/css/style.css">
-		<script>var __$nodeid=345075;</script>
+
+		

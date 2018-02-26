@@ -1,6 +1,7 @@
 package news.service.impl;
 
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class MyTimingCrawler {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		logger.warn(sdf.format(new Date()) + " 进行爬取");
 		List<New> news = crawlerService.getNewsUrlsAndComments();
+		Collections.reverse(news);	//让最后抓取的最先保存
 		for (New newObj : news) {
 			logger.warn("================");
 			logger.warn("获取" + newObj.getUrl());

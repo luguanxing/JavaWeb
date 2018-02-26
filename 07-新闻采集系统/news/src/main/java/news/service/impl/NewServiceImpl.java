@@ -1,12 +1,19 @@
 package news.service.impl;
 
-import java.util.Collections;
-import java.util.Comparator;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.TimeZone;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocument;
+import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -269,6 +276,68 @@ public class NewServiceImpl implements NewService {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	@Override
+	public List<New> getSearchNews(String keyword, Integer startRow, Integer pageSize) {
+		//设置查询条件
+		SolrQuery query = new SolrQuery();
+		List<New> news = new ArrayList();
+		query.set("q", keyword);
+		query.setStart(startRow);
+		query.setRows(pageSize);
+		query.set("df", "new_keyword");
+		query.setHighlight(true);
+		query.addHighlightField("new_title");
+		query.addHighlightField("new_contentText");
+		query.setHighlightSimplePre("<em>");
+		query.setHighlightSimplePost("</em>");
+		try {
+			//执行查询,获取QueryResponse对象
+			QueryResponse queryResponse = solrServer.query(query);
+			//取文档列表,取总记录数
+			SolrDocumentList solrDocumentList = queryResponse.getResults();
+			//遍历文档列表,取出域内容
+			Map<String, Map<String, List<String>>> highlighting = queryResponse.getHighlighting();
+			for (SolrDocument solrDocument : solrDocumentList) {
+				New newObj = new New();
+				newObj.setId(Integer.parseInt(solrDocument.get("id").toString()));
+				//取高亮
+				List<String> titleList = highlighting.get(solrDocument.get("id")).get("new_title");
+				if (titleList != null && !titleList.isEmpty()) {
+					String hightLightTitle = titleList.get(0);
+					newObj.setTitle(hightLightTitle);
+				} else {
+					String defaultTitle = solrDocument.get("new_title").toString();
+					newObj.setTitle(defaultTitle);
+				}
+				newObj.setPublishDateAndSrc(solrDocument.get("new_publishDateAndSrc").toString());
+				newObj.setCommentCount(Integer.parseInt(solrDocument.get("new_commentCount").toString()));
+				news.add(newObj);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return news;
+	}
+
+	@Override
+	public Integer getSearchNewsCount(String keyword) {
+		//设置查询条件
+		SolrQuery query = new SolrQuery();
+		query.set("q", keyword);
+		query.set("df", "new_keyword");
+		Long result = 0L;
+		try {
+			//执行查询,获取QueryResponse对象
+			QueryResponse queryResponse = solrServer.query(query);
+			//取文档列表,取总记录数
+			SolrDocumentList solrDocumentList = queryResponse.getResults();
+			result = solrDocumentList.getNumFound();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result.intValue();
 	}
 
 }
