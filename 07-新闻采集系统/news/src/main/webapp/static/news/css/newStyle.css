@@ -31,3 +31,19 @@
     line-height: 13px;
     padding: 6px 0;
 }
+
+.outLink {
+	white-space: pre-wrap;
+	border : 1px dashed gray;
+	padding : 2%;
+}
+
+.outLinkText {
+    color: #f33;
+    font-weight: bold !important;
+    font-size: large !important;
+}
+
+.outLink p {
+	margin : 0;
+}

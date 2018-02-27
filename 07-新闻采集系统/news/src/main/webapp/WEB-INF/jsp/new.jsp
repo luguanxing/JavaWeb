@@ -28,6 +28,18 @@
 			<div class="newContent">
 				${newObj.content}
 			</div>
+			<script>
+				var outLink = document.getElementsByTagName("pre")[0];
+				if (outLink != undefined) {
+					outLink.setAttribute("class", "outLink");
+					outLink.style = "";
+		            //添加label ，存放指标名称  
+		            var div = document.createElement("p");  
+		            div.innerText = "延伸阅读";  
+		            div.setAttribute("class", "outLinkText");
+		            outLink.insertBefore(div, outLink.children[0]);  
+				}
+			</script>
 		</div>
 
 		<%@ include file="/WEB-INF/tags/footer.jsp"%>

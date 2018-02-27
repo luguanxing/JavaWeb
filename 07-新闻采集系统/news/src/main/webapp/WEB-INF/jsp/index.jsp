@@ -36,8 +36,12 @@
 				  </a>
 				</div>
 			</c:forEach>
-			<div class="m-load">
-				<span><a style="color:#4883e1" href="${pageContext.request.contextPath}/latest.html">查看更多</a></span>
+			<div class="m-list-1">
+				<a class="j-link" href="${pageContext.request.contextPath}/latest.html">
+					<div class="m-load">
+						<span>查看更多</span>
+					</div>
+				</a>
 			</div>
 		</div>
 		
@@ -60,8 +64,12 @@
 				  </a>
 				</div>
 			</c:forEach>
-			<div class="m-load">
-				<span><a style="color:#4883e1" href="${pageContext.request.contextPath}/hotest.html">查看更多</a></span>
+			<div class="m-list-1">
+				<a class="j-link" href="${pageContext.request.contextPath}/hotest.html">
+					<div class="m-load">
+						<span>查看更多</span>
+					</div>
+				</a>
 			</div>
 		</div>
 		
