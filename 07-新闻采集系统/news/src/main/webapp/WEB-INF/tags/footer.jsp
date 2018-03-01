@@ -25,13 +25,15 @@
 		</div>
 		<div class="m-ft">
 			<nav class="m-fnav">
-				<a href="/" >主页</a>
+				<a href="/">主页</a>
 				<a href="/blog/comment.html" >评论留言</a>
 				<a href="https://github.com/luguanxing">Github</a>
 			</nav>
-			<div class="m-finfo">
-				新闻采集系统 - By Luguanxing
-				<span class="copyright">Copyright © luguanxing.com - 2018</span>
-			</div>
+			<a href="/">
+				<div class="m-finfo">
+					新闻采集系统 - By Luguanxing
+					<span class="copyright">Copyright © luguanxing.com - 2018</span>
+				</div>
+			</a>
 		</div>
   

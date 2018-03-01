@@ -60,14 +60,14 @@
 		<div class="m-pager">
 			<center>
 				<c:if test="${currentPage != 1}">
-					<a class="link-next" style="background:white" href="${pageContext.request.contextPath}/search/${currentPage-1}.html">上一页</a>
+					<a class="link-next" style="background:white" href="${pageContext.request.contextPath}/search/${keyword}/${currentPage-1}.html">上一页</a>
 				</c:if>
 				<c:if test="${currentPage == 1}">
 					<a class="link-next">上一页</a>
 				</c:if>
 				<span style="font-size:.3rem; color:#4883e1; margin-bottom: 3%;">第${currentPage}/${totalPages}页</span>
 				<c:if test="${currentPage < totalPages}">
-					<a class="link-next" style="background:white" href="${pageContext.request.contextPath}/search/${currentPage+1}.html">下一页</a>
+					<a class="link-next" style="background:white" href="${pageContext.request.contextPath}/search/${keyword}/${currentPage+1}.html">下一页</a>
 				</c:if>
 				<c:if test="${currentPage >= totalPages}">
 					<a class="link-next">下一页</a>
